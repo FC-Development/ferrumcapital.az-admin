@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\MainWeb;
 
-use App\Actions\Career\MkSliderAction as CareerMkSliderAction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Actions\MainWeb\MkSliderAction;
