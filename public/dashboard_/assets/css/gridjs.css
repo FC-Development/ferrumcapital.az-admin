@@ -1,0 +1,195 @@
+.gridjs-container {
+       display: block !important;
+       padding: unset !important;
+}
+
+.gridjs-wrapper {
+       box-shadow: unset !important;
+       border-color: unset !important;
+       border-top-width: unset !important;
+}
+
+.gridjs-wrapper:nth-last-of-type(2) {
+       border-bottom-width: unset !important;
+       border-radius: 5px !important;
+}
+
+th.gridjs-th {
+       background-color: rgb(232 238 249) !important;
+       border: unset !important;
+       color: rgb(33 52 70 / 75%) !important;
+       font-size: 0.875rem !important;
+       font-weight: 600 !important;
+}
+
+td.gridjs-td {
+       border: unset !important;
+       border-top: 1px solid #f1f1f1 !important;
+}
+
+.btn-suc {
+       background-color: rgb(0 128 0 / 15%);
+       color: #008000;
+       font-weight: 500;
+}
+
+.btn-wt {
+       background-color: rgb(154 107 0 / 15%);
+       color: #9A6B00;
+       font-weight: 500;
+}
+
+.btn-dg {
+       background-color: rgb(218 27 36 / 15%);
+       color: #DA1B24;
+       font-weight: 500;
+}
+
+.btn-dk {
+       background-color: rgb(232 238 249 / 50%);
+       color: rgb(33 52 70 / 50%);
+       font-weight: 500;
+}
+
+.f-sm {
+       font-size: 0.875rem;
+       line-height: 1.25rem;
+}
+
+.gridjs-head {
+       margin-bottom: 5px;
+       margin-top: -3px;
+}
+
+.gridjs-wrapper {
+       margin-top: 23px;
+}
+
+h4 {
+       margin-top: 4px;
+}
+
+.gridjs-search-input {
+       width: 350px !important;
+
+}
+
+.gridjs-footer {
+       box-shadow: unset !important;
+       padding: 24px !important;
+       border-top: 1px solid #f1f1f1 !important;
+}
+
+input.gridjs-input {
+       border: 1px solid #f1f1f1 !important;
+}
+
+.gridjs-pagination .gridjs-pages button {
+       border: 1px solid #f1f1f1 !important;
+}
+
+.gridjs-pagination {
+       color: rgb(33 52 70 / 75%) !important;
+       font-size: 14px !important;
+}
+
+.gridjs-pagination .gridjs-pages button:first-child {
+       border-bottom-left-radius: 3px !important;
+       border-top-left-radius: 3px !important;
+}
+
+.gridjs-pagination .gridjs-pages button:last-child {
+       border-bottom-right-radius: 3px !important;
+       border-top-right-radius: 3px !important;
+}
+
+input.gridjs-input:focus {
+       box-shadow: unset !important;
+}
+
+.mt-8 {
+       margin-top: 0.5rem !important;
+}
+
+.priority {
+       max-width: 28px;
+       text-align: center;
+}
+
+/* 
+.gridjs-wrapper{
+       margin-top: 5.4em;
+}
+
+h4{
+       margin-top: 1em;
+} */
+.gridjs-search {
+       float: right !important;
+}
+
+#vakansiya {
+       margin-top: 0 !important;
+}
+
+#sortVacancy {
+       display: inline-block;
+       position: absolute;
+       right: 380px;
+       z-index: 2;
+}
+
+#select_vacancy {
+       width: 200px !important;
+}
+
+#vacancy_grid {
+       margin-top: -30px;
+}
+
+#vakansiya {
+       display: inline-block;
+}
+
+.form-select {
+       -webkit-appearance: none;
+       -moz-appearance: none;
+       background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='13' height='13' fill='grey' class='bi bi-caret-down-fill' viewBox='0 0 16 16'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>");
+       background-repeat: no-repeat;
+       background-position-x: 96%;
+       background-position-y: 15px;
+       cursor: pointer;
+}
+
+.sidebar-default .iq-sidebar-menu .side-menu li.active .submenu li.active>a {
+       color: #000 !important;
+       stroke: #000 !important;
+}
+
+.sidebar-default .iq-sidebar-menu .side-menu li.active .submenu li.active>.svg-icon>i>svg {
+       stroke: #000 !important;
+}
+
+#select_vacancy {
+       background-color: #ffff;
+}
+
+button.gridjs-sort {
+       height: 1rem !important;
+}
+
+.btn-slider {
+       cursor: pointer;
+}
+
+.tab-nav-pane li .active {
+       color: #DA1B24 !important;
+       border-bottom: none;
+}
+
+.tab-nav-pane a:hover {
+       color: #DA1B24 !important;
+}
+table.gridjs-table {
+       width: 100%;
+}
