@@ -1,1 +1,3 @@
-test
+$("#addNewCustomerSliderBTN").click(() => {
+    $("#NewCustomerSliderModal").modal("show");
+})
