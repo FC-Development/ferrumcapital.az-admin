@@ -25,4 +25,13 @@ class MkSliderController extends Controller
         $mk_slider_data = $this->mk_action->getData();
         return $mk_slider_data;
     }
+    public function postData(Request $request)
+    {
+        $create_data = $this->mk_action->postData($request);
+        return $create_data;
+    }
+    public function deleteData(Request $request)
+    {
+        echo "Hello";
+    }
 }

@@ -38,7 +38,6 @@ Route::prefix('dashboard')->group( function(){
        Route::post('/login',[UserController::class,'store'])->name('login');
        Route::middleware(['auth'])->group(function() {
               Route::post('/logout',[UserController::class,'destroy'])->name('logout');
-
               /** hr */
               Route::get("/career_blog",[CorpBlogController::class,'blogPage'])->name('admin.career_blog');
               Route::get("/vacancy",[VacancyController::class,'vacancyPage'])->name('admin.vacancy');
@@ -47,6 +46,8 @@ Route::prefix('dashboard')->group( function(){
               Route::get("/applications",[ApplicationsController::class,'index'])->name('admin.applications');
               Route::get("/career_testimnl",[CareerTestimnlController::class,'testimonialPage'])->name('admin.career_testimnl');
               
+
+
               Route::get("/mkslider", [MkSliderController::class,'mksliderPage'])->name('admin.mkslider');  
               Route::get('/business_partner_apply',[PartnerBusinessController::class,'returnView'])->name('admin.businessApply');
               Route::get('/subscription',[SubscriptionController::class,'getSubsPage'])->name('admin.subscription');
@@ -89,7 +90,7 @@ Route::prefix('dashboard')->group( function(){
                      Route::post("/life_gallery/post",[LifegController::class,'postLifeG']);
                      Route::post("/life_gallery/delete",[LifegController::class,'deleteLifeG']);
 
-
+                     Route::post("/create/FerrumCapital/MusteriKabineti/slider",[MkSliderController::class,'getData']);
                      Route::get("/corp_gallery/get",[CorpGalleryController::class,'getCorpGal']);
                      Route::post("/corp_gallery/post",[CorpGalleryController::class,'postCorpGal']);
                      Route::post("/corp_gallery/delete",[CorpGalleryController::class,'deleteCorpGal']);
