@@ -5,14 +5,13 @@ namespace App\Http\Controllers\MainWeb;
 use App\Actions\Career\MkSliderAction as CareerMkSliderAction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Actions\MainWeb\MkSliderAction;
+use App\Actions\Career\MkSliderAction;
 use Illuminate\Support\Facades\Http;
 use App\Models\MkSlider;
 
 class MkSliderController extends Controller
 {
-    public MkSlider $mk_slider_data;
-    public MkSliderAction $mk_action;
+    private MkSliderAction $mk_action;
     public function __construct(MkSliderAction $mk_action)
     {
         $this->mk_action = $mk_action;
