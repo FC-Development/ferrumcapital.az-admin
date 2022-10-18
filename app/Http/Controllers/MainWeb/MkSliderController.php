@@ -11,15 +11,19 @@ use App\Models\MkSlider;
 
 class MkSliderController extends Controller
 {
-
+    public MkSlider $mk_slider_data;
+    public MkSliderAction $mk_action;
+    public function __construct(MkSliderAction $mk_action)
+    {
+        $this->mk_action = $mk_action;
+    }
     public function mksliderPage(Request $request)
     {
         return view('dashboard.main-web.customer-slider');
     }
     public function getData()
     {
-        $mk_action = new MkSliderAction();
-        $mk_slider_data = mk_action->getData();
+        $mk_slider_data = $this->mk_action->getData();
         return $mk_slider_data;
     }
 }
