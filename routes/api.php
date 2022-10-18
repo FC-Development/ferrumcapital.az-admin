@@ -17,4 +17,4 @@ use App\Http\Controllers\MainWeb\MkSliderController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get("/FerrumCapital/MusteriKabineti/slider",[MkSliderController::class,'getData']);
+Route::get("/get/FerrumCapital/MusteriKabineti/slider",[MkSliderController::class,'getData']);
