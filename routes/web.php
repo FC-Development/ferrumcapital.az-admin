@@ -89,8 +89,11 @@ Route::prefix('dashboard')->group( function(){
                      Route::get("/life_gallery/get",[LifegController::class,'getLifeG']);
                      Route::post("/life_gallery/post",[LifegController::class,'postLifeG']);
                      Route::post("/life_gallery/delete",[LifegController::class,'deleteLifeG']);
+                     /* MK Slider  */
+                     Route::post("/create/FerrumCapital/MusteriKabineti/slider",[MkSliderController::class,'postData']);
+                     Route::get("/get/FerrumCapital/MusteriKabineti/slider",[MkSliderController::class,'getData']);
+                     Route::post("/delete/FerrumCapital/MusteriKabineti/slider",[MkSliderController::class,'deleteData']);
 
-                     Route::post("/create/FerrumCapital/MusteriKabineti/slider",[MkSliderController::class,'getData']);
                      Route::get("/corp_gallery/get",[CorpGalleryController::class,'getCorpGal']);
                      Route::post("/corp_gallery/post",[CorpGalleryController::class,'postCorpGal']);
                      Route::post("/corp_gallery/delete",[CorpGalleryController::class,'deleteCorpGal']);

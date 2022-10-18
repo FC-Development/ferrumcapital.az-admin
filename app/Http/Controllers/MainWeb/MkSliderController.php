@@ -32,6 +32,7 @@ class MkSliderController extends Controller
     }
     public function deleteData(Request $request)
     {
-        echo "Hello";
+        $deleted_data = $this->mk_action->deleteData($request);
+        return $deleted_data;
     }
 }
