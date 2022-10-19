@@ -54,7 +54,7 @@ if (top.location.pathname === '/dashboard/mkslider') {
     GetMkSlider.render(document.getElementById("grid_mkSlider"));
 }
 
-$(document).on("click",".delete-mkSlider",function(){
+$(document).on("click",".delete-mkSlider",function(e){
     e.preventDefault();
     Swal.fire({
         title: "Kontenti silmək istədiyinizdən əminsinizmi?",
