@@ -12,5 +12,5 @@ class MkSlider extends Model
     protected $table = 'nc_a5um__mk_slider';
     protected $primaryKey = 'uniq_id';
     public $incrementing = false;
-    
+    protected $fillable= ["title","description","uniq_id"];
 }
