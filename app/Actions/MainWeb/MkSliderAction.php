@@ -39,10 +39,7 @@ class MkSliderAction extends AdminMethods
                             'description' => htmlentities($request->input('description')),
                             'uniq_id' => Str::random(6)
                      ]);
-              if ($created_data == 1) 
-              {
-                     return response()->json(['msg' => 'Created'],200);
-              }
+              return response($created_data);
        }
        public function updateData(Request $request)
        {
