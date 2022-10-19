@@ -27,7 +27,7 @@
                 <form class="modal-body" id="NewCustomerSliderForm">
                     @csrf
                     <div class="row">
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-12 mb-3">
                             <label for="title" class="f-sm form-label font-weight-bold text-muted text-uppercase">Başlıq</label>
                             <input type="text" class="form-control border border-light"  name="customer_new_slider_header" minlength="2" required>
                         </div>
