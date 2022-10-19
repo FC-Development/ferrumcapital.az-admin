@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions\Career;
+namespace App\Actions\MainWeb;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Abstracts\AdminMethods;
