@@ -35,7 +35,7 @@ let GetMkSlider = new gridjs.Grid({
     sort: true,
     server: {
         url: "/dashboard/csapi/get/FerrumCapital/MusteriKabineti/slider",
-        then: data => data.map(card => [
+        then: data => data.data.map(card => [
             card.title,
             card.description,
             gridjs.html(`
