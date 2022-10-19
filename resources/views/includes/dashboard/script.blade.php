@@ -29,7 +29,8 @@
         <script src="/dashboard_/assets/js/dash_settings.js"></script>
         <script src="/dashboard_/assets/js/printthis/printThis.js"></script>
 
-
+        <!-- MkSlider -->
+        <script src="/dashboard_/assets/js/mkslider.js"></script>
         <!-- Blog -->
 
         <script src="/dashboard_/assets/js/main-web/kenan-blog.js"></script>
