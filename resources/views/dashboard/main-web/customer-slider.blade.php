@@ -29,11 +29,11 @@
                     <div class="row">
                         <div class="col-md-12 mb-3">
                             <label for="title" class="f-sm form-label font-weight-bold text-muted text-uppercase">Başlıq</label>
-                            <input type="text" class="form-control border border-light"  name="customer_new_slider_header" minlength="2" required>
+                            <input type="text" class="form-control border border-light"  name="title" minlength="2" required>
                         </div>
                         <div class="col-md-12 mb-3">
                             <label for="" class="f-sm form-label font-weight-bold text-muted text-uppercase">Açıqlama</label>
-                            <textarea type="text" class="form-control border border-light" id="customer_new_slider_quote" name="customer_new_slider_quote" minlength="2" required=""></textarea>
+                            <textarea type="text" class="form-control border border-light" id="customer_new_slider_quote" name="description" minlength="2" required=""></textarea>
                         </div>
                     </div>
                     <div class="row mt-4" style="float: right;">
