@@ -14,7 +14,7 @@
             Əlavə et
         </button>
     </div>
-    <div>on going proccess...</div>
+    <div id="grid_mkSlider"></div>
     <div class="modal fade hide pr-0" id="NewCustomerSliderModal" tabindex="-1" aria-modal="false" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
