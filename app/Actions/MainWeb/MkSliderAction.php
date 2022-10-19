@@ -23,10 +23,8 @@ class MkSliderAction extends AdminMethods
        {
               $uniq_id = $request->input('uniq_id');
               $deleted_data = $this->mk_slider->where('uniq_id',$uniq_id)->delete();
-              if ($deleted_data == 1) 
-              {
-                     return response()->json(['msg'=>"Deleted"],200);
-              }
+              if($deleted_data) return response()->json(["msg" => "Deleted"],201);
+              return response()->json(['msg' => $deleted_data],500);
        }
        public function postData(Request $request)
        {
