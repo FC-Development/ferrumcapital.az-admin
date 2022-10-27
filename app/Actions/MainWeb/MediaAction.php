@@ -7,6 +7,8 @@ use App\Abstracts\AdminMethods;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Media;
+use Throwable;
 
 class MediaAction extends AdminMethods
 {
@@ -14,12 +16,8 @@ class MediaAction extends AdminMethods
 
        public function getData()
        {
-              $response = Http::withHeaders(
-                     ['xc-auth' => env('NOCODB_AUTH')]
-                     )
-                 ->get("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/media");
-              if(!isset($response['msg']))
-              {
+              try {
+                     $response = Media::all();
                      $res_arr=[];
                      foreach((\json_decode($response,true)) as $key => $value)
                      {
@@ -36,8 +34,12 @@ class MediaAction extends AdminMethods
                             ];
                             array_push($res_arr,$tmp__);
                      }
-                     return response($res_arr);
+                     return $res_arr;
+              } catch(Throwable $e) {
+                     return response("Error",404);
               }
+             
+              
 
        }
        public function postData(Request $request)
