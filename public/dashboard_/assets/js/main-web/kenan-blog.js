@@ -123,7 +123,6 @@ $(document).on('click', '.update-blog', function () {
                      _token: $('meta[name="csrf-token"]').attr('content')
               },
               success: function (data) {
-                     console.log(JSON.parse(data))
                      let parse_data = (data)[0];
                      console.log(parse_data);
                      $("#modelWindows").modal("show");
