@@ -11,5 +11,5 @@ class BlogMain extends Model
     protected $hidden = ['id'];
     protected $table = 'nc_a5um__blog_post';
     protected $primaryKey = 'uniq_id';
-    protected $incrementing= false;
+    public $incrementing= false;
 }
