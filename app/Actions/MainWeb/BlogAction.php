@@ -64,8 +64,8 @@ class BlogAction extends AdminMethods
                  $last_res = BlogMain::where('uniq_id',$id)->update([
                      "status" => $request->input('status')
                  ]);
-                 $tmp_arr_['response'] = $last_res->json();
-                 return response(200);
+                 $tmp_arr_['response'] = $last_res;
+                 return response($tmp_arr_,200);
        }
        public function updateData(Request $request)
        {
