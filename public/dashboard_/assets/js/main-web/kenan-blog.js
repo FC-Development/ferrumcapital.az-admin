@@ -124,7 +124,7 @@ $(document).on('click', '.update-blog', function () {
               },
               success: function (data) {
                      console.log(JSON.parse(data))
-                     let parse_data = JSON.parse(data)[0];
+                     let parse_data = (data)[0];
                      console.log(parse_data);
                      $("#modelWindows").modal("show");
                      $("#UpdateBlog #meta_description").val(parse_data.meta_description)
