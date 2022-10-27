@@ -29,6 +29,7 @@ use App\Http\Controllers\MainWeb\PartnerBusinessController;
 use  App\Http\Controllers\MainWeb\BrandController;
 use App\Http\Controllers\MainWeb\TeamController;
 use App\Http\Controllers\MainWeb\MkSliderController;
+use App\Http\Controllers\MainWeb\CampaignsController;
 use App\Http\Middleware\SetIpAddress;
 
 Route::prefix('dashboard')->group( function(){
@@ -45,9 +46,10 @@ Route::prefix('dashboard')->group( function(){
               Route::get("/careerfaq",[FaqController::class,'faqPage'])->name('admin.careerfaq');
               Route::get("/applications",[ApplicationsController::class,'index'])->name('admin.applications');
               Route::get("/career_testimnl",[CareerTestimnlController::class,'testimonialPage'])->name('admin.career_testimnl');
+
+              /* Campaigns */
+              Route::get("/campaigns", [CampaignsController::class, 'campaignsPage'])->name('admin.campaigns');
               
-
-
               Route::get("/mkslider", [MkSliderController::class,'mksliderPage'])->name('admin.mkslider');  
               Route::get('/business_partner_apply',[PartnerBusinessController::class,'returnView'])->name('admin.businessApply');
               Route::get('/subscription',[SubscriptionController::class,'getSubsPage'])->name('admin.subscription');
@@ -69,7 +71,7 @@ Route::prefix('dashboard')->group( function(){
               Route::get("/brandsector",[BrandSecController::class,'brandSecPage'])->name('admin.brandsector');
               Route::get("/brand",[BrandController::class,'brandPage'])->name('admin.brand');
               Route::get("/team",[TeamController::class,'teamPage'])->name('admin.team');
-              Route::prefix('csapi')->group(function(){
+              Route::prefix('csapi')->group(function() {
                      Route::get('/get/business/partner/all/apply',[PartnerBusinessController::class,'returnAll']);
                      Route::get('/get/partner/apply/{uniq_id}',[PartnerApplyController::class,'getApplyByUniqID']);
                      Route::get('/get/business/apply/{uniq_id}',[BusinessApplyController::class,'getBusinessByUniqID']);
@@ -132,92 +134,98 @@ Route::prefix('dashboard')->group( function(){
                      Route::post("/application/status/update/{id}",[ApplicationsController::class,'updateApplyStatus']);
                      Route::get("/application/find/{uniq_id}",[ApplicationsController::class,'findData']);
 
+                     /** Campaigns **/
+
+                     /** Blog **/
                      Route::post("/blog/post",[BlogController::class,'postBlog']);
-              Route::get("/blog/get",[BlogController::class,'getBlog']);
-              Route::post("/blog/delete",[BlogController::class,'deleteBlog']);
-              Route::post("/blog/find",[BlogController::class,'findBlog']);
-              Route::post("/blog/update",[BlogController::class,'updateBlog']);
-              Route::post("/blog/status/update/{id}",[BlogController::class,'updateBlogStatus']);
+                     Route::get("/blog/get",[BlogController::class,'getBlog']);
+                     Route::post("/blog/delete",[BlogController::class,'deleteBlog']);
+                     Route::post("/blog/find",[BlogController::class,'findBlog']);
+                     Route::post("/blog/update",[BlogController::class,'updateBlog']);
+                     Route::post("/blog/status/update/{id}",[BlogController::class,'updateBlogStatus']);
 
-              /** Media */
-              Route::post("/media/post",[MediaController::class,'postMedia']);
-              Route::get("/media/get",[MediaController::class,'getMedia']);
-              Route::post("/media/delete",[MediaController::class,'deleteMedia']);
-              Route::post("/media/find",[MediaController::class,'findMedia']);
-              Route::post("/media/update",[MediaController::class,'updateMedia']);
-              Route::post("/media/status/update/{id}",[MediaController::class,'updateMediaStatus']);
+                     /** Media */
+                     Route::post("/media/post",[MediaController::class,'postMedia']);
+                     Route::get("/media/get",[MediaController::class,'getMedia']);
+                     Route::post("/media/delete",[MediaController::class,'deleteMedia']);
+                     Route::post("/media/find",[MediaController::class,'findMedia']);
+                     Route::post("/media/update",[MediaController::class,'updateMedia']);
+                     Route::post("/media/status/update/{id}",[MediaController::class,'updateMediaStatus']);
 
-              /** Tools */
-              Route::post("/tools/post",[ToolsController::class,'postTools']);
-              Route::get("/tools/get",[ToolsController::class,'getTools']);
-              Route::post("/tools/delete",[ToolsController::class,'deleteTools']);
-              Route::post("/tools/find",[ToolsController::class,'findTools']);
-              Route::post("/tools/update",[ToolsController::class,'updateTools']);
-              Route::post("/tools/status/update/{id}",[ToolsController::class,'updateToolStatus']);
-              /** Guides */
-              Route::post("/guides/post",[GuidesController::class,'postGuides']);
-              Route::get("/guides/get",[GuidesController::class,'getGuides']);
-              Route::post("/guides/delete",[GuidesController::class,'deleteGuides']);
-              Route::post("/guides/find",[GuidesController::class,'findGuides']);
-              Route::post("/guides/update",[GuidesController::class,'updateGuide']);
-              Route::post("/guides/status/update/{id}",[GuidesController::class,'updateGuideStatus']);
+                     /** Tools */
+                     Route::post("/tools/post",[ToolsController::class,'postTools']);
+                     Route::get("/tools/get",[ToolsController::class,'getTools']);
+                     Route::post("/tools/delete",[ToolsController::class,'deleteTools']);
+                     Route::post("/tools/find",[ToolsController::class,'findTools']);
+                     Route::post("/tools/update",[ToolsController::class,'updateTools']);
+                     Route::post("/tools/status/update/{id}",[ToolsController::class,'updateToolStatus']);
 
-              /** FAQ */
-              Route::post("/faq/post",[MainWebFaq::class,'postFaq']);
-              Route::get("/faq/get",[MainWebFaq::class,'getFaq']);
-              Route::post("/faq/delete",[MainWebFaq::class,'deleteFaq']);
-              Route::post("/faq/find",[MainWebFaq::class,'findFaq']);
-              Route::post("/faq/update",[MainWebFaq::class,'updateFaq']);
-              /** Testimonial Korporativ */
-              Route::post("/testimonial-korp/post",[TestimonialKorpController::class,'postTestimonial']);
-              Route::get("/testimonial-korp/get",[TestimonialKorpController::class,'getTestimonial']);
-              Route::post("/testimonial-korp/delete",[TestimonialKorpController::class,'deleteTestimonial']);
-              Route::post("/testimonial-korp/find",[TestimonialKorpController::class,'findTestimonial']);
-              Route::post("/testimonial-korp/update",[TestimonialKorpController::class,'updateTestimonial']);
-              Route::post("/testimonial-korp/status/update/{id}",[TestimonialKorpController::class,'updateTestimonialStatus']);
-              /** Testimonial Customer */
-              Route::post("/testimonial-cstmr/post",[TestimonialCstmrController::class,'postTestimonial']);
-              Route::get("/testimonial-cstmr/get",[TestimonialCstmrController::class,'getTestimonial']);
-              Route::post("/testimonial-cstmr/delete",[TestimonialCstmrController::class,'deleteTestimonial']);
-              Route::post("/testimonial-cstmr/find",[TestimonialCstmrController::class,'findTestimonial']);
-              Route::post("/testimonial-cstmr/update",[TestimonialCstmrController::class,'updateTestimonial']);
-              Route::post("/testimonial-cstmr/status/update/{id}",[TestimonialCstmrController::class,'updateTestimonialStatus']);
+                     /** Guides */
+                     Route::post("/guides/post",[GuidesController::class,'postGuides']);
+                     Route::get("/guides/get",[GuidesController::class,'getGuides']);
+                     Route::post("/guides/delete",[GuidesController::class,'deleteGuides']);
+                     Route::post("/guides/find",[GuidesController::class,'findGuides']);
+                     Route::post("/guides/update",[GuidesController::class,'updateGuide']);
+                     Route::post("/guides/status/update/{id}",[GuidesController::class,'updateGuideStatus']);
 
-              // Busines Factoring Statistic
-              Route::get("/bf-statistic/get",[BfStatisticController::class,'getBfStats']);
-              Route::post("/bf-statistic/post",[BfStatisticController::class,'postBfStats']);
-              Route::post("/bf-statistic/delete",[BfStatisticController::class,'deleteBfStats']);
-              Route::post("/bf-statistic/find",[BfStatisticController::class,'findBfStats']);
-              Route::post("/bf-statistic/update",[BfStatisticController::class,'updateBfStats']);
-              // Partner Factoring Statistic
-              Route::get("/pf-statistic/get",[PfStatisticController::class,'getPfStats']);
-              Route::post("/pf-statistic/post",[PfStatisticController::class,'postPfStats']);
-              Route::post("/pf-statistic/delete",[PfStatisticController::class,'deletePfStats']);
-              Route::post("/pf-statistic/find",[PfStatisticController::class,'findPfStats']);
-              Route::post("/pf-statistic/update",[PfStatisticController::class,'updatePfStats']);
+                     /** FAQ */
+                     Route::post("/faq/post",[MainWebFaq::class,'postFaq']);
+                     Route::get("/faq/get",[MainWebFaq::class,'getFaq']);
+                     Route::post("/faq/delete",[MainWebFaq::class,'deleteFaq']);
+                     Route::post("/faq/find",[MainWebFaq::class,'findFaq']);
+                     Route::post("/faq/update",[MainWebFaq::class,'updateFaq']);
 
-              // Brand Sector 
-              Route::get("/brand_sector/get",[BrandSecController::class,'getBrandSec']);
-              Route::post("/brand_sector/post",[BrandSecController::class,'postBrandSec']);
-              Route::post("/brand_sector/delete",[BrandSecController::class,'deleteBrandSec']);
-              Route::post("/brand_sector/find",[BrandSecController::class,'findBrandSec']);
-              Route::post("/brand_sector/update",[BrandSecController::class,'updateBrandSec']);
+                     /** Testimonial Korporativ */
+                     Route::post("/testimonial-korp/post",[TestimonialKorpController::class,'postTestimonial']);
+                     Route::get("/testimonial-korp/get",[TestimonialKorpController::class,'getTestimonial']);
+                     Route::post("/testimonial-korp/delete",[TestimonialKorpController::class,'deleteTestimonial']);
+                     Route::post("/testimonial-korp/find",[TestimonialKorpController::class,'findTestimonial']);
+                     Route::post("/testimonial-korp/update",[TestimonialKorpController::class,'updateTestimonial']);
+                     Route::post("/testimonial-korp/status/update/{id}",[TestimonialKorpController::class,'updateTestimonialStatus']);
 
-              // Brand
-              Route::post("/brand/post",[BrandController::class,'postBrand']);
-              Route::get("/brand/get",[BrandController::class,'getBrand']);
-              Route::post("/brand/delete",[BrandController::class,'deleteBrand']);
-              Route::post("/brand/find",[BrandController::class,'findBrand']);
-              Route::post("/brand/update",[BrandController::class,'updateBrand']);
-              Route::post("/brand/status/update/{id}",[BrandController::class,'updateBrandStatus']);
+                     /** Testimonial Customer */
+                     Route::post("/testimonial-cstmr/post",[TestimonialCstmrController::class,'postTestimonial']);
+                     Route::get("/testimonial-cstmr/get",[TestimonialCstmrController::class,'getTestimonial']);
+                     Route::post("/testimonial-cstmr/delete",[TestimonialCstmrController::class,'deleteTestimonial']);
+                     Route::post("/testimonial-cstmr/find",[TestimonialCstmrController::class,'findTestimonial']);
+                     Route::post("/testimonial-cstmr/update",[TestimonialCstmrController::class,'updateTestimonial']);
+                     Route::post("/testimonial-cstmr/status/update/{id}",[TestimonialCstmrController::class,'updateTestimonialStatus']);
 
-              // Team
-              Route::post("/team/post",[TeamController::class,'postTeam']);
-              Route::get("/team/get",[TeamController::class,'getTeam']);
-              Route::post("/team/delete",[TeamController::class,'deleteTeam']);
-              Route::post("/team/find",[TeamController::class,'findTeam']);
-              Route::post("/team/update",[TeamController::class,'updateTeam']);
-              Route::post("/team/status/update/{id}",[TeamController::class,'updateTeamStatus']);
+                     // Busines Factoring Statistic
+                     Route::get("/bf-statistic/get",[BfStatisticController::class,'getBfStats']);
+                     Route::post("/bf-statistic/post",[BfStatisticController::class,'postBfStats']);
+                     Route::post("/bf-statistic/delete",[BfStatisticController::class,'deleteBfStats']);
+                     Route::post("/bf-statistic/find",[BfStatisticController::class,'findBfStats']);
+                     Route::post("/bf-statistic/update",[BfStatisticController::class,'updateBfStats']);
+                     // Partner Factoring Statistic
+                     Route::get("/pf-statistic/get",[PfStatisticController::class,'getPfStats']);
+                     Route::post("/pf-statistic/post",[PfStatisticController::class,'postPfStats']);
+                     Route::post("/pf-statistic/delete",[PfStatisticController::class,'deletePfStats']);
+                     Route::post("/pf-statistic/find",[PfStatisticController::class,'findPfStats']);
+                     Route::post("/pf-statistic/update",[PfStatisticController::class,'updatePfStats']);
+
+                     // Brand Sector 
+                     Route::get("/brand_sector/get",[BrandSecController::class,'getBrandSec']);
+                     Route::post("/brand_sector/post",[BrandSecController::class,'postBrandSec']);
+                     Route::post("/brand_sector/delete",[BrandSecController::class,'deleteBrandSec']);
+                     Route::post("/brand_sector/find",[BrandSecController::class,'findBrandSec']);
+                     Route::post("/brand_sector/update",[BrandSecController::class,'updateBrandSec']);
+
+                     // Brand
+                     Route::post("/brand/post",[BrandController::class,'postBrand']);
+                     Route::get("/brand/get",[BrandController::class,'getBrand']);
+                     Route::post("/brand/delete",[BrandController::class,'deleteBrand']);
+                     Route::post("/brand/find",[BrandController::class,'findBrand']);
+                     Route::post("/brand/update",[BrandController::class,'updateBrand']);
+                     Route::post("/brand/status/update/{id}",[BrandController::class,'updateBrandStatus']);
+
+                     // Team
+                     Route::post("/team/post",[TeamController::class,'postTeam']);
+                     Route::get("/team/get",[TeamController::class,'getTeam']);
+                     Route::post("/team/delete",[TeamController::class,'deleteTeam']);
+                     Route::post("/team/find",[TeamController::class,'findTeam']);
+                     Route::post("/team/update",[TeamController::class,'updateTeam']);
+                     Route::post("/team/status/update/{id}",[TeamController::class,'updateTeamStatus']);
               });
        });
 });

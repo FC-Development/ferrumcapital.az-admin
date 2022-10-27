@@ -38,6 +38,12 @@
                 </a>
             </li>
             @endcan
+            <li class="sidebar-layout">
+                <a href="{{ route('admin.campaigns') }}" class="svg-icon">
+                    <i class="fa-solid fa-1x fa-rectangle-ad"></i>
+                    <span class="ml-2">&nbsp;&nbsp;&nbsp;Kampaniyalar</span>
+                </a>
+            </li>
             @can('viewMarketing',auth()->user())
             <li class="sidebar-layout">
                 <a href="{{ route('admin.businessApply') }}" class="svg-icon">

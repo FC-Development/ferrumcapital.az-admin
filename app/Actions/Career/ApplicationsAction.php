@@ -8,13 +8,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use App\Models\CareerApplication;
-
+use App\Models\VacancyModel;
 class ApplicationsAction extends AdminMethods
 {
     private CareerApplication $application;
-    public function __construct(CareerApplication $application)
+    private VacancyModel $vacancy;
+    public function __construct(CareerApplication $application,VacancyModel $vacancy)
     {
         $this->application = $application;
+        $this->vacancy = $vacancy;
     }
     public function getData()
     {
@@ -44,8 +46,8 @@ class ApplicationsAction extends AdminMethods
                     "certificates" => json_decode(json_decode($value['certificates'])),
                     "url" => json_decode($value['url']),
                     "cv" =>($value['cv']),
-                    "status" => $value['status']
-
+                    "status" => $value['status'],
+                    "vacancy_source" => $this->vacancy->where('uniq_id',$value['vacancy_source'])->select("title")->get()
                 ];
                 array_push($res_arr,$tmp__);
             }

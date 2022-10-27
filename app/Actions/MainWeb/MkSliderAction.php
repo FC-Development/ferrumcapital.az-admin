@@ -33,8 +33,8 @@ class MkSliderAction extends AdminMethods
               mk_slider->
               create(
                      [
-                            'title' => htmlentities($request->input('title')),
-                            'description' => htmlentities($request->input('description')),
+                            'title' => ($request->input('title')),
+                            'description' => ($request->input('description')),
                             'uniq_id' => Str::random(6)
                      ]);
               if($created_data) return response()->json(["msg" => "Created"],201);

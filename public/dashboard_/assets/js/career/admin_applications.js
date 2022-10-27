@@ -4,6 +4,7 @@ let GetApplications = new gridjs.Grid({
         { name: "Nömrə", id: "phone" },
         { name: "Email", id: "email" },
         { name: 'Status', id: "status" },
+        { name: '---', id: "--" },
         { name: "Əməliyyat" }
     ],
     sort: true,
@@ -17,6 +18,7 @@ let GetApplications = new gridjs.Grid({
             card.phone,
             card.email,
             gridjs.html(statusBtnApplication(card.status, card.uniq_id, "cApplyStatusBTN")),
+            moment(card.created_at).format("LLL"),
             gridjs.html(`
                      <div class='d-flex'>
                             <button class="btn btn-sm detail-applications" data-uniq-id="${card.uniq_id}">
@@ -179,6 +181,9 @@ $(document).on('click', '.detail-applications', function (e) {
                 item[1].forEach(each => {
                     $("#applicationUniq #educationField").append(callEducation(each))
                 })
+            }
+            else if(item[0]==='vacancy_source') {
+                item[1].length >0 && $("#applicationUniq #vacancy_source").html(item[1][0].title)
             }
             else if (item[0] === 'experience') {
                 item[1].length > 0 ? item[1].forEach(each => {

@@ -10,14 +10,15 @@ use App\Http\Requests\MainWeb\StoreBrandRequest;
 class BrandController extends Controller
 {
     //
+    
     public function brandPage()
     {
         return view('dashboard.main-web.brand');
     }
     public function getBrand()
     {
-        $respone = new BrandAction();
-        return response($respone->getData());
+        $response = new BrandAction();
+        return $response->getData();
     }
     public function postBrand(StoreBrandRequest $request)
     {

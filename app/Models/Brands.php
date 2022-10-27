@@ -10,10 +10,17 @@ class Brands extends Model
     use HasFactory;
     protected $hidden = ['id'];
     protected $table = 'nc_a5um__products';
-    protected $primaryKey='uniq_id';
-    protected $fillable =['status'];
+    protected $fillable =['status',"uniq_id","status","name","phone","adress","sector_id","city","website","logo","links"];
+    /**
+         * Indicates if the model should be timestamped.
+         *
+         * @var bool
+        */
+    public $timestamps = false;
+
     public function sector()
     {
         return $this->belongsTo(BrandSectors::class,'sector_id','uniq_id');
     }
+    
 }

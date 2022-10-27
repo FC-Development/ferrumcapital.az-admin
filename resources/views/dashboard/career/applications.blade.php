@@ -147,6 +147,16 @@
                             <div class="card mb-0">
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item p-3" >
+                                        <h5 class="font-weight-bold pb-2">Vakansiya İstiqaməti</h5>
+                                        <div class="row fieldList" id="vacancy_source">
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="card mb-0">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item p-3" >
                                         <h5 class="font-weight-bold pb-2">Təhsil</h5>
                                         <div class="row fieldList"  id="educationField">
 
