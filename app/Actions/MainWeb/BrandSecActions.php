@@ -8,12 +8,31 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use App\Models\BrandSectors;
+use Throwable;
+
 class BrandSecActions extends AdminMethods
 {
        public function getData()
        {
-              $response = BrandSectors::all();
-              return $response;
+              try{
+                     $response = BrandSectors::all();
+                     $res_arr=[];
+                            foreach((\json_decode($response,true)) as $key => $value)
+                            {
+                                   $tmp__ = [
+                                          'uniq_id' => $value['uniq_id'],
+                                          'title_az' => \json_decode($value['title'],true)['az'],
+                                          'title_en' => \json_decode($value['title'],true)['en'],
+                                          'cover' => ($value['cover']),
+                                   ];
+                                   array_push($res_arr,$tmp__);
+                            }
+                            return $res_arr;
+              } catch(Throwable $e){
+                     return response("Error",404);
+              }
+             
+                 
        }
        public function postData(Request $request)
        {
