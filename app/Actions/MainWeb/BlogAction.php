@@ -71,16 +71,10 @@ class BlogAction extends AdminMethods
        {
               $uniq_id = $request->input('uniq_id');
 
-              $get_data = Http::withHeaders([
-                     'xc-auth' => env('NOCODB_AUTH'),
-                     'Content-Type' => 'application/json'
-                 ])->get("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/blogpost/?where=(uniq_id,like,".$uniq_id.")");
-              $id = $get_data[0]['id'];
+              $get_data = BlogMain::where('uniq_id',$uniq_id)->get();
               $updatedCover = $this->uploadAvatar($request,'cover',$get_data[0]['cover'],'main_blog');
               $updatedInclude = $this->uploadAvatar($request,'include_image',$get_data[0]['include_image'],'main_blog');
-              $response = Http::withHeaders(
-                     ['xc-auth' => env("NOCODB_AUTH")]
-              )->put("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/blogpost/$id",[
+              $response = BlogMain::where('uniq_id',$uniq_id)->update([
                      'title' => $request['title'],
                      'tips_text' => $request['tips_text'],
                      'cover' => $updatedCover,
@@ -89,7 +83,6 @@ class BlogAction extends AdminMethods
                      'language' => $request['blog_lang'],
                      'meta_description' => $request['meta_description']
               ]);
-
               return $response;
        }
 
