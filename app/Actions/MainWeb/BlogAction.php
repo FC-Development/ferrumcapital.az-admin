@@ -46,21 +46,15 @@ class BlogAction extends AdminMethods
        public function deleteData(Request $request)
        {
               $uniq_id = $request->input('id');
-              $get_data=Http::withHeaders(
-                     ['xc-auth' => env('NOCODB_AUTH')]
-                     )
-                     ->get("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/blogpost/?where=(uniq_id,like,".$uniq_id.")");
-                     var_dump($get_data);
+              $get_data= BlogMain::where('uniq_id',$uniq_id)->get();
               $id=$get_data[0]['id'];
               
               $cover__ = explode('/',$get_data[0]['cover'])[4];
               $include__ = explode('/',$get_data[0]['include_image'])[4];
               Storage::disk('s3')->delete("main_blog/".$cover__);
               Storage::disk('s3')->delete("main_blog/".$include__);
-              $response=Http::withHeaders(
-                     ['xc-auth' => env('NOCODB_AUTH')]
-              )->delete("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/blogpost/".$id);
-              return response($response->json());
+              $response= BlogMain::where('uniq_id',$uniq_id)->delete();
+              return $response;
        }
        public function updateDataStatus(Request $request,$id)
        {
