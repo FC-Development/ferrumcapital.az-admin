@@ -12,5 +12,5 @@ class Campaigns extends Model
     protected $table = 'nc_a5um__campaigns';
     protected $primaryKey = 'uniq_id';
     public $incrementing = false;
-    protected $fillable = ["uniq_id" ,"answer", "en", "question"];
+    protected $fillable = ["uniq_id" ,"campaign_title", "campaign_image", "campaign_mobile_image", "description", "end_duration", "status"];
 }
