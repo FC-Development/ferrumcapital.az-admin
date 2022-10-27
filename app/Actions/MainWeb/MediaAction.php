@@ -41,9 +41,7 @@ class MediaAction extends AdminMethods
        }
        public function postData(Request $request)
        {
-              $response= Http::withHeaders(
-                     ['xc-auth' => env('NOCODB_AUTH')]
-              )->post("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/media",[
+              $response= Media::create([
                      'uniq_id' => Str::random(6),
                      'status' => 'active',
                      'media_body' => $request->input('media_body'),
@@ -61,72 +59,58 @@ class MediaAction extends AdminMethods
        public function findData(Request $request)
        {
               $uniq_id = $request->input('uniq_id');
-              $get_data = Http::withHeaders(['xc-auth' => env('NOCODB_AUTH')])
-              ->get("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/media/?where=(uniq_id,like,".$uniq_id.")");
+              $get_data = Media::where('uniq_id',$uniq_id)->get();
               return $get_data;
        }
        public function deleteData(Request $request)
        {
               $uniq_id = $request->input('id');
-              $get_data=Http::withHeaders(
-                     ['xc-auth' => env('NOCODB_AUTH')]
-                     )
-                     ->get("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/media/?where=(uniq_id,like,".$uniq_id.")");
-                     var_dump($get_data);
-              $id=$get_data[0]['id'];
+              $get_data= Media::where('uniq_id',$uniq_id)->get();
               Storage::disk('main')->delete($get_data[0]['cover']);
               Storage::disk('main')->delete($get_data[0]['include_image']);
-              $response=Http::withHeaders(
-                     ['xc-auth' => env('NOCODB_AUTH')]
-              )->delete("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/media/".$id);
-              return response($response->json());
+              $response=Media::where('uniq_id',$uniq_id)->delete();
+              return $response;
        }
        public function updateDataStatus(Request $request,$id)
        {
-              $tmp_arr_ = array(
-                     "response" =>"",
-                     "state" => true
-                 );
-                 $response = Http::withHeaders([
-                     'xc-auth' => \env('NOCODB_AUTH'),
-                     'Content-Type' => 'application/json'
-                 ])->get("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/media/?where=(uniq_id,like,".$id.")");
-                 $last_res = Http::withHeaders([
-                     'xc-auth' => env('NOCODB_AUTH'),
-                     'Content-Type' => 'application/json'
-                 ])->put('http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/media/'.$response[0]['id'], [
-                     "status" => $request->input('status')
-                 ]);
-                 $tmp_arr_['response'] = $last_res->json();
-                 return response(200);
+              try {
+                     $tmp_arr_ = array(
+                            "response" =>"",
+                            "state" => true
+                        );
+                        $last_res = Media::where("uniq_id",$id)->update([
+                            "status" => $request->input('status')
+                        ]);
+                        $tmp_arr_['response'] = $last_res;
+                        return response("updated",200);
+              } catch(Throwable $e) {
+                     return response("ERrror",404);
+              }
+             
        }
        public function updateData(Request $request)
        {
-              $data = $request->validate([
-                     'title' => 'min:3',
-                     'media_body_edit' => 'min:3',
-                     'tips_text' => 'min:3',
-                     
-              ]);
-              $uniq_id = $request->input('uniq_id');
-
-              $get_data = Http::withHeaders([
-                     'xc-auth' => env('NOCODB_AUTH'),
-                     'Content-Type' => 'application/json'
-                 ])->get("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/media/?where=(uniq_id,like,".$uniq_id.")");
-              $id = $get_data[0]['id'];
-              $response = Http::withHeaders(
-                     ['xc-auth' => env("NOCODB_AUTH")]
-              )->put("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/media/$id",[
-                     'title' => $data['title'],
-                     'tips_text' => $data['tips_text'],
-                     'cover' => "",
-                     'media_body' => $data['media_body_edit'],
-                     'include_image' => "",
-                     "language" => $request->input('media_lang'),
-                     'meta_description' => $request->input('meta_description')
-              ]);
-
-              return $response;
+              try{
+                     $data = $request->validate([
+                            'title' => 'min:3',
+                            'media_body_edit' => 'min:3',
+                            'tips_text' => 'min:3',
+                            
+                     ]);
+                     $uniq_id = $request->input('uniq_id');
+                     $response = Media::where('uniq_id',$uniq_id)->update([
+                            'title' => $data['title'],
+                            'tips_text' => $data['tips_text'],
+                            'cover' => "",
+                            'media_body' => $data['media_body_edit'],
+                            'include_image' => "",
+                            "language" => $request->input('media_lang'),
+                            'meta_description' => $request->input('meta_description')
+                     ]);
+                     return $response;
+              } catch(Throwable $e) {
+                     return response("Error",404);
+              }
+              
        }
 }
