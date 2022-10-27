@@ -101,8 +101,7 @@ $(document).on('click','.update-media',function(){
                      _token: $('meta[name="csrf-token"]').attr('content')
               },
               success:function(data){
-                     console.log(JSON.parse(data))
-                     let parse_data = JSON.parse(data)[0];
+                     let parse_data = (data)[0];
                      $("#modelWindows").modal("show");
                      CampaignEditorMediaEdit.setData(parse_data.media_body);
                      $(`input[id='title_edit']`).val(parse_data.title)
