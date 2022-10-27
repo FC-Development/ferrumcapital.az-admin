@@ -36,9 +36,7 @@ class BrandSecActions extends AdminMethods
        }
        public function postData(Request $request)
        {
-              $response= Http::withHeaders(
-                     ['xc-auth' => env('NOCODB_AUTH')]
-              )->post("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/brand_sector",[
+              $response= BrandSectors::create([
                      'uniq_id' => Str::random(9),
                      'title' => \json_encode(['az'=>$request->input('title_az'),'en' =>$request->input('title_en')]),
                      'cover' =>$this->uploadAvatar($request,'cover','','brand_sector'),
@@ -47,11 +45,10 @@ class BrandSecActions extends AdminMethods
        }
        public function findData(Request $request)
        {
-              $uniq_id = $request->input('uniq_id');
-              $get_data = Http::withHeaders(['xc-auth' => env('NOCODB_AUTH')])
-              ->get("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/brand_sector/?where=(uniq_id,like,".$uniq_id.")");
-              if(!isset($get_data['msg']))
-              {   
+              try {
+                     $uniq_id = $request->input('uniq_id');
+                     $get_data = BrandSectors::where('uniq_id',$uniq_id)->get();
+                     
                      $res_arr=[];
                             foreach((\json_decode($get_data,true)) as $key => $value)
                             {
@@ -64,7 +61,11 @@ class BrandSecActions extends AdminMethods
                                    array_push($res_arr,$tmp__);
                             }
                             return $res_arr;
+              } catch(Throwable $e) {
+                     return response("error",404);
               }
+              
+              
        }
        public function deleteData(Request $request)
        {
