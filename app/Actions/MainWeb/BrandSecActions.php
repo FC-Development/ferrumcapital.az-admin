@@ -7,30 +7,13 @@ use App\Abstracts\AdminMethods;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
-
+use App\Models\BrandSectors;
 class BrandSecActions extends AdminMethods
 {
        public function getData()
        {
-              $response = Http::withHeaders(
-                     ['xc-auth' => env('NOCODB_AUTH')]
-                     )
-                 ->get("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/brand_sector");
-                 if(!isset($response['msg']))
-                 {   
-                        $res_arr=[];
-                               foreach((\json_decode($response,true)) as $key => $value)
-                               {
-                                      $tmp__ = [
-                                             'uniq_id' => $value['uniq_id'],
-                                             'title_az' => \json_decode($value['title'],true)['az'],
-                                             'title_en' => \json_decode($value['title'],true)['en'],
-                                             'cover' => ($value['cover']),
-                                      ];
-                                      array_push($res_arr,$tmp__);
-                               }
-                               return $res_arr;
-                 }
+              $response = BrandSectors::all();
+              return $response;
        }
        public function postData(Request $request)
        {

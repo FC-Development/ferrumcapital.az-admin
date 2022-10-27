@@ -11,6 +11,7 @@ class BrandSectors extends Model
     protected $hidden = ['id'];
     protected $primaryKey = 'uniq_id';
     protected $table = 'nc_a5um__brand_sector';
+    protected $fillable = ["uniq_id","title_az","title_en","cover"];
     public function  brands() {
         return $this->hasMany(Brands::class,'sector_id','uniq_id');
     }
