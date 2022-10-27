@@ -18,6 +18,7 @@ class ApplicationsAction extends AdminMethods
         $this->application = $application;
         $this->vacancy = $vacancy;
     }
+    
     public function getData()
     {
             $response= $this->application::all();

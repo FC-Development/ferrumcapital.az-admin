@@ -10,37 +10,14 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
-
+use App\Models\BlogMain;
 class BlogAction extends AdminMethods
 {
        protected $time;
        public function getData()
        {
-              $response = Http::withHeaders(
-                     ['xc-auth' => env('NOCODB_AUTH')]
-                     )
-                 ->get("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/blogpost");
-              if(!isset($response['msg']))
-              {
-                     $res_arr=[];
-                     foreach((\json_decode($response,true)) as $key => $value)
-                     {
-                            $tmp__ = [
-                                   'uniq_id' => $value['uniq_id'],
-                                   'title' => $value['title'],
-                                   'create_time' => $this->getCreatedAtAttribute($value['created_at']),
-                                   'cover' => $value['cover'],
-                                   'incl_img' => $value['include_image'],
-                                   'tips_text' => $value['tips_text'],
-                                   'status' => $value['status'],
-                                   'blog_body' => $value['blog_body'],
-                                   'blog_lang' => $value['language'],
-                                   'meta_description' => $value['meta_description']
-                            ];
-                            array_push($res_arr,$tmp__);
-                     }
-                     return $res_arr;
-              }
+              $response = BlogMain::all();
+              return $response;
 
        }
        public function postData(Request $request)
