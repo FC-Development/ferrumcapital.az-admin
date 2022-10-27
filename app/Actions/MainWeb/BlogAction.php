@@ -22,9 +22,7 @@ class BlogAction extends AdminMethods
        }
        public function postData(Request $request)
        {
-              $response= Http::withHeaders(
-                     ['xc-auth' => env('NOCODB_AUTH')]
-              )->post("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/blogpost",[
+              $response= BlogMain::create([
                      'uniq_id' => Str::random(6),
                      'status' => 'active',
                      'blog_body' => $request->input('blog_body'),
@@ -42,8 +40,7 @@ class BlogAction extends AdminMethods
        public function findData(Request $request)
        {
               $uniq_id = $request->input('uniq_id');
-              $get_data = Http::withHeaders(['xc-auth' => env('NOCODB_AUTH')])
-              ->get("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/blogpost/?where=(uniq_id,like,".$uniq_id.")");
+              $get_data = BlogMain::where('uniq_id',$uniq_id)->get();
               return $get_data;
        }
        public function deleteData(Request $request)
