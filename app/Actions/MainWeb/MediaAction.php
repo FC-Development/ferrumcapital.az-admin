@@ -24,7 +24,7 @@ class MediaAction extends AdminMethods
                             $tmp__ = [
                                    'uniq_id' => $value['uniq_id'],
                                    'title' => $value['title'],
-                                   'create_time' => $this->getCreatedAtAttribute($value['created_at']),
+                                   'create_time' => $value['created_at'],
                                    'cover' => "",
                                    'incl_img' => "",
                                    'tips_txt' => $value['tips_text'],
@@ -36,7 +36,6 @@ class MediaAction extends AdminMethods
                      }
                      return $res_arr;
               } catch(Throwable $e) {
-                     throw new ErrorException($e);
                      return response("Error",404);
               }
        }
