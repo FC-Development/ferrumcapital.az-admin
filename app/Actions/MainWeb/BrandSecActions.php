@@ -70,34 +70,20 @@ class BrandSecActions extends AdminMethods
        public function deleteData(Request $request)
        {
               $uniq_id = $request->input('id');
-              $get_data=Http::withHeaders(
-                     ['xc-auth' => env('NOCODB_AUTH')]
-                     )
-                     ->get("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/brand_sector/?where=(uniq_id,like,".$uniq_id.")");
-                     var_dump($get_data);
-              $id=$get_data[0]['id'];
+              $get_data=BrandSectors::where('uniq_id',$uniq_id)->get();
               if($get_data[0]['cover']!="") {
                      $cover__ = explode("/",$get_data[0]['cover'])[4];
                      Storage::disk('s3')->delete('brand_sector/'.$cover__);
               }
-              $response=Http::withHeaders(
-                     ['xc-auth' => env('NOCODB_AUTH')]
-              )->delete("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/brand_sector/".$id);
-              return response($response->json()); 
+              $response=BrandSectors::where('uniq_id',$uniq_id)->delete();
+              return $response; 
        }
        public function updateData(Request $request)
        {
               $uniq_id = $request->input('uniq_id');
-              $get_data = Http::withHeaders([
-                     'xc-auth' => env('NOCODB_AUTH'),
-                     'Content-Type' => 'application/json'
-                 ])->get("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/brand_sector/?where=(uniq_id,like,".$uniq_id.")");
-              var_dump($get_data->body());
-              $id = $get_data[0]['id'];
+              $get_data = BrandSectors::where('uniq_id',$uniq_id)->get();
               $updatedImage = $this->uploadAvatar($request,'cover',$get_data[0]['cover'],'brand_sector');
-              $response = Http::withHeaders(
-                     ['xc-auth' => env("NOCODB_AUTH")] 
-              )->put("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/brand_sector/$id",[
+              $response = BrandSectors::where("uniq_id",$uniq_id)->update([
                      'title' => \json_encode(['az'=>$request->input('title_az'),'en' =>$request->input('title_en')]),
                      'cover' => $updatedImage
               ]);
