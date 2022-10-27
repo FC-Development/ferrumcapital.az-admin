@@ -48,7 +48,6 @@ class BlogAction extends AdminMethods
               $uniq_id = $request->input('id');
               $get_data= BlogMain::where('uniq_id',$uniq_id)->get();
               $id=$get_data[0]['id'];
-              
               $cover__ = explode('/',$get_data[0]['cover'])[4];
               $include__ = explode('/',$get_data[0]['include_image'])[4];
               Storage::disk('s3')->delete("main_blog/".$cover__);
@@ -62,14 +61,7 @@ class BlogAction extends AdminMethods
                      "response" =>"",
                      "state" => true
                  );
-                 $response = Http::withHeaders([
-                     'xc-auth' => \env('NOCODB_AUTH'),
-                     'Content-Type' => 'application/json'
-                 ])->get("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/blogpost/?where=(uniq_id,like,".$id.")");
-                 $last_res = Http::withHeaders([
-                     'xc-auth' => env('NOCODB_AUTH'),
-                     'Content-Type' => 'application/json'
-                 ])->put('http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/blogpost/'.$response[0]['id'], [
+                 $last_res = BlogMain::where('uniq_id',$id)->update([
                      "status" => $request->input('status')
                  ]);
                  $tmp_arr_['response'] = $last_res->json();

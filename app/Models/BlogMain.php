@@ -12,5 +12,5 @@ class BlogMain extends Model
     protected $table = 'nc_a5um__blog_post';
     protected $primaryKey = 'uniq_id';
     public $incrementing= false;
-    protected $fillable= ["uniq_id","status","blog_body","title","cover","include_image","tips_text","slug","section,language,meta_description"];
+    protected $fillable= ["status","blog_body","title","cover","include_image","tips_text","slug","section,language,meta_description"];
 }
