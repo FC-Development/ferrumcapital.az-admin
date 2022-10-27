@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Media;
+use ErrorException;
 use Throwable;
 
 class MediaAction extends AdminMethods
 {
-       protected $time;
 
        public function getData()
        {
@@ -36,11 +36,9 @@ class MediaAction extends AdminMethods
                      }
                      return $res_arr;
               } catch(Throwable $e) {
+                     throw new ErrorException($e);
                      return response("Error",404);
               }
-             
-              
-
        }
        public function postData(Request $request)
        {
