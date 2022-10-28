@@ -49,16 +49,16 @@ Route::prefix('dashboard')->group( function(){
 
               /* Campaigns */
               Route::get("/campaigns", [CampaignsController::class, 'campaignsPage'])->name('admin.campaigns');
-              
-              Route::get("/mkslider", [MkSliderController::class,'mksliderPage'])->name('admin.mkslider');  
+
+              Route::get("/mkslider", [MkSliderController::class,'mksliderPage'])->name('admin.mkslider');
               Route::get('/business_partner_apply',[PartnerBusinessController::class,'returnView'])->name('admin.businessApply');
               Route::get('/subscription',[SubscriptionController::class,'getSubsPage'])->name('admin.subscription');
-              
+
               Route::get("/statistic_career",[StatisticController::class,'statisticPage'])->name('admin.statistic');
               Route::get('/userPage',[UserController::class,'registerPage'])->name('admin.userPage');
               Route::get("/life_gallery",[LifegController::class,'lifePage'])->name('admin.life_gallery');
               Route::get("/corp_gallery",[CorpGalleryController::class,'galleryPage'])->name('admin.corp_gallery');
-              
+
               Route::get("/blog",[BlogController::class,'blogPage'])->name('admin.blog');
               Route::get("/media",[MediaController::class,'mediaPage'])->name('admin.media');
               Route::get("/tool",[ToolsController::class,'toolsPage'])->name('admin.tool');
@@ -204,7 +204,7 @@ Route::prefix('dashboard')->group( function(){
                      Route::post("/pf-statistic/find",[PfStatisticController::class,'findPfStats']);
                      Route::post("/pf-statistic/update",[PfStatisticController::class,'updatePfStats']);
 
-                     // Brand Sector 
+                     // Brand Sector
                      Route::get("/brand_sector/get",[BrandSecController::class,'getBrandSec']);
                      Route::post("/brand_sector/post",[BrandSecController::class,'postBrandSec']);
                      Route::post("/brand_sector/delete",[BrandSecController::class,'deleteBrandSec']);
