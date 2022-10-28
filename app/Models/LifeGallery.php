@@ -10,4 +10,6 @@ class LifeGallery extends Model
     use HasFactory;
     protected $hidden = ['id'];
     protected $table = 'nc_a5um__life_gallery';
+    public $incrementing = false;
+    protected $fillable = ['uniq_id','image_upload'];
 }
