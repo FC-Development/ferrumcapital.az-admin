@@ -44,9 +44,7 @@ class CampaignsAction extends AdminMethods
               $get_data= BlogMain::where('uniq_id',$uniq_id)->get();
               $id=$get_data[0]['id'];
               $cover__ = explode('/',$get_data[0]['cover'])[4];
-              $include__ = explode('/',$get_data[0]['include_image'])[4];
-              Storage::disk('s3')->delete("main_blog/".$cover__);
-              Storage::disk('s3')->delete("main_blog/".$include__);
+              Storage::disk('s3')->delete("campaign_images/".$cover__);
               $response= BlogMain::where('uniq_id',$uniq_id)->delete();
               return $response;
        }
