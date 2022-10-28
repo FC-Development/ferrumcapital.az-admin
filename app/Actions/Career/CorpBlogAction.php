@@ -7,18 +7,19 @@ use App\Abstracts\AdminMethods;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
-
+use App\Models\CareerBlogs;
 class CorpBlogAction extends AdminMethods
 {
-       protected $time;
-       public function getData()
+       private CareerBlogs $careerBlogs;
+       public function __construct(CareerBlogs $careerBlogs)
        {
-              $response = Http::withHeaders(
-                     ['xc-auth' => env('NOCODB_AUTH')]
-                     )
-                 ->get("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/career_blog");
-              if(!isset($response['msg']))
-              {
+           $this->careerBlogs = $careerBlogs;
+       }
+
+    public function getData()
+       {
+              $response = $this->careerBlogs->all();
+
                      $res_arr=[];
                      foreach((\json_decode($response,true)) as $key => $value)
                      {
@@ -36,8 +37,8 @@ class CorpBlogAction extends AdminMethods
                             ];
                             array_push($res_arr,$tmp__);
                      }
-                     return $res_arr;
-              }
+                     return response()->json($res_arr);
+
 
        }
        public function postData(Request $request)

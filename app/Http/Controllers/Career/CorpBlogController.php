@@ -10,24 +10,30 @@ use App\Http\Requests\Career\StoreBlogRequest;
 class CorpBlogController extends Controller
 {
     //
+    private $blog;
+    public function __construct(CorpBlogAction $blog)
+    {
+        $this->blog = $blog;
+    }
+
     public function blogPage()
     {
         return view('dashboard.career.blog');
     }
     public function getBlog()
     {
-        $response = new CorpBlogAction();
-        return $response->getData();
+        $response = $this->blog->getData();
+        return $response;
     }
     public function postBlog(StoreBlogRequest $request)
     {
-        $postBlog = new CorpBlogAction(); 
+        $postBlog = new CorpBlogAction();
         $blog = $postBlog->postData($request);
         return response($blog);
     }
     public function deleteBlog(Request $request)
     {
-        
+
       $deletedBlog = new CorpBlogAction();
       $blog = $deletedBlog->deleteData($request);
       return response($blog);
