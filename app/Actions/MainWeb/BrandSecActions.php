@@ -16,6 +16,7 @@ class BrandSecActions extends AdminMethods
        {
               try{
                      $response = BrandSectors::all();
+                     dd($response);
                      $res_arr=[];
                             foreach((\json_decode($response,true)) as $key => $value)
                             {
