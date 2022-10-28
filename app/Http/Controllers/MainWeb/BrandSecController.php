@@ -17,7 +17,7 @@ class BrandSecController extends Controller
     public function getBrandSec()
     {
         $response = new BrandSecActions();
-        return $response;
+        return $response->getData();
     }
     public function postBrandSec(StoreBrandSecRequest $request)
     {
