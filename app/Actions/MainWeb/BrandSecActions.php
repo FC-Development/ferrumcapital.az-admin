@@ -16,19 +16,18 @@ class BrandSecActions extends AdminMethods
        {
               try{
                      $response = BrandSectors::all();
-                     dd($response);
                      $res_arr=[];
-                            foreach((\json_decode($response,true)) as $key => $value)
-                            {
-                                   $tmp__ = [
-                                          'uniq_id' => $value['uniq_id'],
-                                          'title_az' => \json_decode($value['title'],true)['az'],
-                                          'title_en' => \json_decode($value['title'],true)['en'],
-                                          'cover' => ($value['cover']),
-                                   ];
-                                   array_push($res_arr,$tmp__);
-                            }
-                            return $res_arr;
+                    foreach((\json_decode($response,true)) as $key => $value)
+                    {
+                           $tmp__ = [
+                                  'uniq_id' => $value['uniq_id'],
+                                  'title_az' => \json_decode($value['title'],true)['az'],
+                                  'title_en' => \json_decode($value['title'],true)['en'],
+                                  'cover' => ($value['cover']),
+                           ];
+                           array_push($res_arr,$tmp__);
+                    }
+                    return response()->json($res_arr,200);
               } catch(Throwable $e){
                      throw new \Exception($e);
               }
