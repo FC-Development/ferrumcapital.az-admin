@@ -9,56 +9,53 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
+use App\Models\Campaigns;
+use Throwable;
 
 class CampaignsAction extends AdminMethods
 {
-       protected $time;
        public function getData()
        {
-              $response = Http::withHeaders(
-                     ['xc-auth' => env('NOCODB_AUTH')]
-                     )
-                 ->get("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/blogpost");
-              if(!isset($response['msg']))
-              {
-                     $res_arr=[];
-                     foreach((\json_decode($response,true)) as $key => $value)
-                     {
-                            $tmp__ = [
-                                   'uniq_id' => $value['uniq_id'],
-                                   'title' => $value['title'],
-                                   'create_time' => $this->getCreatedAtAttribute($value['created_at']),
-                                   'cover' => $value['cover'],
-                                   'incl_img' => $value['include_image'],
-                                   'tips_text' => $value['tips_text'],
-                                   'status' => $value['status'],
-                                   'blog_body' => $value['blog_body'],
-                                   'blog_lang' => $value['language'],
-                                   'meta_description' => $value['meta_description']
-                            ];
-                            array_push($res_arr,$tmp__);
-                     }
-                     return $res_arr;
-              }
+              $response = Campaigns::where('status', '=', 1)->get();
+              return response()->json($response);
 
        }
        public function postData(Request $request)
        {
-              $response= Http::withHeaders(
-                     ['xc-auth' => env('NOCODB_AUTH')]
-              )->post("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/blogpost",[
+              $response = Campaigns::create([
                      'uniq_id' => Str::random(6),
-                     'status' => 'active',
-                     'blog_body' => $request->input('blog_body'),
-                     'title' => $request->input('title'),
-                     'cover' =>$this->uploadAvatar($request,'cover','','main_blog'),
-                     'include_image' =>$this->uploadAvatar($request,'include_image','','main_blog'),
-                     'tips_text' => $request->input('tips_text'),
-                     'slug' => $this->slugOlustur($request->input('title')),
-                     'section'=>'blog',
-                     "language" => $request->input('blog_lang'),
-                     'meta_description' => $request->input('meta_description')
+                     'status' => 1,
+                     'campaign_title' => $request->input('campaign_title_input'),
+                     'campaign_image' =>$this->uploadAvatar($request,'image_campaign_input','','campaign_images'),
+                     'campaign_mobile_image' =>$this->uploadAvatar($request,'image_mobile_campaign_input','','campaign_images'),
+                     'description' => $request->input('CampaignModalEditor_input'),
+                     'slug' => $this->slugOlustur($request->input('campaign_title_input')),
+                     "end_duration" => $request->input('campaign_lastdate_input')
               ]);
+              return response()->json($response);
+       }
+       public function findData(Request $request)
+       {
+              return null;
+       }
+       public function deleteData(Request $request)
+       {
+              $uniq_id = $request->input('id');
+              $get_data= BlogMain::where('uniq_id',$uniq_id)->get();
+              $id=$get_data[0]['id'];
+              $cover__ = explode('/',$get_data[0]['cover'])[4];
+              $include__ = explode('/',$get_data[0]['include_image'])[4];
+              Storage::disk('s3')->delete("main_blog/".$cover__);
+              Storage::disk('s3')->delete("main_blog/".$include__);
+              $response= BlogMain::where('uniq_id',$uniq_id)->delete();
               return $response;
+       }
+       public function updateDataStatus(Request $request,$id)
+       {
+              return null;
+       }
+       public function updateData(Request $request)
+       {
+              return null;
        }
 }
