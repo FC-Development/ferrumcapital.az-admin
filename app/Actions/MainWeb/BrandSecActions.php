@@ -29,10 +29,10 @@ class BrandSecActions extends AdminMethods
                             }
                             return $res_arr;
               } catch(Throwable $e){
-                     return response("Error",404);
+                     throw new \Exception($e);
               }
-             
-                 
+
+
        }
        public function postData(Request $request)
        {
@@ -48,7 +48,7 @@ class BrandSecActions extends AdminMethods
               try {
                      $uniq_id = $request->input('uniq_id');
                      $get_data = BrandSectors::where('uniq_id',$uniq_id)->get();
-                     
+
                      $res_arr=[];
                             foreach((\json_decode($get_data,true)) as $key => $value)
                             {
@@ -64,8 +64,8 @@ class BrandSecActions extends AdminMethods
               } catch(Throwable $e) {
                      return response("error",404);
               }
-              
-              
+
+
        }
        public function deleteData(Request $request)
        {
@@ -76,7 +76,7 @@ class BrandSecActions extends AdminMethods
                      Storage::disk('s3')->delete('brand_sector/'.$cover__);
               }
               $response=BrandSectors::where('uniq_id',$uniq_id)->delete();
-              return $response; 
+              return $response;
        }
        public function updateData(Request $request)
        {
