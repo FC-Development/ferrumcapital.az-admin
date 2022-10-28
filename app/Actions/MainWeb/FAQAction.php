@@ -113,7 +113,6 @@ class FAQAction extends AdminMethods
               } catch(Throwable $e) {
                      throw new Exception($e);
               }
-              
        }
 
 }
