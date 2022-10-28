@@ -12,5 +12,6 @@ class Testimonials extends Model
     protected $hidden = ['id'];
     protected $table = 'nc_a5um__dinamic_main_web';
     protected $primaryKey = 'uniq_id';
+    public $incrementing = false;
     protected $fillable = ["uniq_id", "status", "youtube_url", "fullname", "quote", "title", "image", "company_logo"];
 }
