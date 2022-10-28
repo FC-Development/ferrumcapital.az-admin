@@ -9,18 +9,23 @@ use App\Http\Requests\Career\StoreStatisticRequest;
 class StatisticController extends Controller
 {
     //
+    private $statistic;
+    public function __construct(StatisticAction $statistic)
+    {
+        $this->statistic = $statistic;
+    }
     public function statisticPage()
     {
         return view('dashboard.career.statistic');
     }
     public function getCstatistic()
     {
-        $statistic= new StatisticAction();
-        return \response($statistic->getData());
+        $statistic= $this->statistic->getData();
+        return $statistic;
     }
     public function postCstatistic(StoreStatisticRequest $request)
     {
-        $postStats = new StatisticAction(); 
+        $postStats = new StatisticAction();
         $stats = $postStats->postData($request);
         return response($stats);
     }
@@ -31,7 +36,7 @@ class StatisticController extends Controller
         return response("Success",200);
     }
     public function deleteStats(Request $request)
-    {   
+    {
       $deletedStats = new StatisticAction();
       $stats = $deletedStats->deleteData($request);
       return response($stats);

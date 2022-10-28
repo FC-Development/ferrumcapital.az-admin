@@ -11,4 +11,6 @@ class CareerStatistics extends Model
     protected $hidden = ['id'];
     protected $table = 'nc_a5um__cr_statistic';
     protected $primaryKey = 'uniq_id';
+    public $incrementing = false;
+    protected $fillable = ["uniq_id","title","value","description"];
 }
