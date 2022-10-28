@@ -21,9 +21,10 @@ class ApplicationsAction extends AdminMethods
     
     public function getData()
     {
-            $response= $this->application::all();
-            return $response;
+        $response= $this->application::all();
+        return $response;
     }
+    
     public function findData($uniq_id)
     {
         $get_data = $this->application::where('uniq_id',$uniq_id)->get();
