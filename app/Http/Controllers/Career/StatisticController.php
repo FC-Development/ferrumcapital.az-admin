@@ -25,26 +25,22 @@ class StatisticController extends Controller
     }
     public function postCstatistic(StoreStatisticRequest $request)
     {
-        $postStats = new StatisticAction();
-        $stats = $postStats->postData($request);
-        return response($stats);
+        $stats = $this->statistic->postData($request);
+        return ($stats);
     }
     public function updateStats(StoreStatisticRequest $request)
     {
-        $updateStats = new StatisticAction();
-        $bfStats = $updateStats->updateData($request);
-        return response("Success",200);
+        $bfStats = $this->statistic->updateData($request);
+        return $bfStats;
     }
     public function deleteStats(Request $request)
     {
-      $deletedStats = new StatisticAction();
-      $stats = $deletedStats->deleteData($request);
-      return response($stats);
+      $stats = $this->statistic->deleteData($request);
+      return ($stats);
     }
     public function findStats(Request $request)
     {
-        $findStats = new StatisticAction();
-        $stats = $findStats->findData($request);
-        return response($stats);
+        $stats = $this->statistic->findData($request);
+        return ($stats);
     }
 }
