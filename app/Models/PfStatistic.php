@@ -11,4 +11,6 @@ class PfStatistic extends Model
     protected $hidden = ['id'];
     protected $table = 'nc_a5um__pf_statistic';
     protected $primaryKey = 'uniq_id';
+    public $incrementing = false;
+    protected $fillable = ["uniq_id","header","value","category"];
 }

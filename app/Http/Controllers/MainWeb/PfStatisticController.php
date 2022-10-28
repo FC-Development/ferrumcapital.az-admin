@@ -17,13 +17,13 @@ class PfStatisticController extends Controller
     public function getPfStats()
     {
         $pfStats= new PfStatisticAction();
-        return \response($pfStats->getData());
+        return $pfStats->getData();
     }
     public function postPfStats(StorePfStatsRequest $request)
     {
-        $postPfStats = new PfStatisticAction(); 
+        $postPfStats = new PfStatisticAction();
         $pfStats = $postPfStats->postData($request);
-        return response($pfStats);
+        return ($pfStats);
     }
     public function updatePfStats(StorePfStatsRequest $request)
     {
@@ -32,15 +32,15 @@ class PfStatisticController extends Controller
         return response("Success",200);
     }
     public function deletePfStats(Request $request)
-    {   
+    {
       $deletedPfStats = new PfStatisticAction();
       $pfStats = $deletedPfStats->deleteData($request);
-      return response($pfStats);
+      return ($pfStats);
     }
     public function findPfStats(Request $request)
     {
         $findPfStats = new PfStatisticAction();
         $pfStats = $findPfStats->findData($request);
-        return response($pfStats);
+        return ($pfStats);
     }
 }

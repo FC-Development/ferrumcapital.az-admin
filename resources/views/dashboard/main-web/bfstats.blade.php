@@ -2,7 +2,7 @@
 @section('content')
     <div class="row justify-content-between ml-0 mr-0">
         <div class="header-title">
-            <h4 class="card-title">Business Factoring</h4>
+            <h4 class="card-title">Biznes Rəqəmlərlə</h4>
         </div>
         <button class="btn btn-primary addNewBfStatsBTN" type="button">
             <i class="mr-1" style="position: relative; top: -1px;">
@@ -74,7 +74,7 @@
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Əlavə et</h5>
+                    <h5 class="modal-title">Yenilə</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -117,7 +117,7 @@
                     <div class="row mt-4" style="float: right;">
                         <div class="col-lg-12">
                             <button type="submit" class="btn btn-primary" id="add-cat">
-                                Əlavə et
+                                Yenilə
                             </button>
                         </div>
                     </div>
