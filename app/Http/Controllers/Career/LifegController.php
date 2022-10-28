@@ -9,26 +9,30 @@ use App\Http\Requests\Career\StoreLifegRequest;
 class LifegController extends Controller
 {
     //
+    private $lifeGallery;
+    public function __construct(LifegAction $lifeGallery)
+    {
+        $this->lifeGallery = $lifeGallery;
+    }
+
     public function lifePage()
     {
         return view('dashboard.career.lifegallery');
     }
     public function getLifeG()
     {
-        $response = new LifegAction();
-        return $response->getData();
+        $response = $this->lifeGallery->getData();
+        return $response;
     }
     public function postLifeG(StoreLifegRequest $request)
     {
-        $postGallery = new LifegAction(); 
-        $gallery = $postGallery->postData($request);
-        return response($gallery);
+        $gallery = $this->lifeGallery->postData($request);
+        return ($gallery);
     }
     public function deleteLifeG(Request $request)
     {
-        
-      $deletedGallery = new LifegAction();
-      $gallery = $deletedGallery->deleteData($request);
-      return response($gallery);
+
+      $gallery = $this->lifeGallery->deleteData($request);
+      return ($gallery);
     }
 }
