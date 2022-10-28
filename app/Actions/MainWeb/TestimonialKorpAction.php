@@ -127,7 +127,7 @@ class TestimonialKorpAction extends AdminMethods
                    $tmp__ = [
                        'uniq_id' => $value['uniq_id'],
                        'image' => $value['image'],
-                       'create_time' => $this->getCreatedAtAttribute($value['created_at']),
+                       'create_time' => ($value['created_at']),
                        'fullname_az' => json_decode($value['fullname'],true)['az'],
                        'fullname_en' => \json_decode($value['fullname'],true)['en'],
                        'youtube_url' => $value['youtube_url'],
