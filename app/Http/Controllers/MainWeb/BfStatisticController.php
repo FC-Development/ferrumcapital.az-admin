@@ -17,22 +17,22 @@ class BfStatisticController extends Controller
     public function getBfStats()
     {
         $bfStats= new BfStatisticAction();
-        return \response($bfStats->getData());
+        return $bfStats->getData();
     }
     public function postBfStats(StoreBfStatsRequest $request)
     {
-        $postBfStats = new BfStatisticAction(); 
+        $postBfStats = new BfStatisticAction();
         $bfStats = $postBfStats->postData($request);
-        return response($bfStats);
+        return $bfStats;
     }
     public function updateBfStats(StoreBfStatsRequest $request)
     {
         $updateBfStats = new BfStatisticAction();
         $bfStats = $updateBfStats->updateData($request);
-        return response("Success",200);
+        return $bfStats;
     }
     public function deleteBfStats(Request $request)
-    {   
+    {
       $deletedBfStats = new BfStatisticAction();
       $bfStats = $deletedBfStats->deleteData($request);
       return response($bfStats);
@@ -41,6 +41,6 @@ class BfStatisticController extends Controller
     {
         $findBfStats = new BfStatisticAction();
         $bfStats = $findBfStats->findData($request);
-        return response($bfStats);
+        return $bfStats;
     }
 }
