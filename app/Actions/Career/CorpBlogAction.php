@@ -27,7 +27,7 @@ class CorpBlogAction extends AdminMethods
                                    'uniq_id' => $value['uniq_id'],
                                    'blog_body' => $value['blog_body'],
                                    'title' => $value['title'],
-                                   'create_time' => $this->getCreatedAtAttribute($value['created_at']),
+                                   'create_time' => ($value['created_at']),
                                    'cover' => $value['cover'],
                                    'incl_img' => $value['include_image'],
                                    'tips_txt' => $value['tips_text'],
