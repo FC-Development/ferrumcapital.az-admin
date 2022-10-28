@@ -65,7 +65,7 @@
                                 <div class="input-group-prepend">
                                     <label class="input-group-text" for="campaign_status_input">Status</label>
                                 </div>
-                                <select class="custom-select" id="campaign_status_input">
+                                <select class="custom-select" id="campaign_status_input" name="campaign_status_input">
                                     <option value="0">Aktiv</option>
                                     <option value="1">Deaktiv</option>
                                 </select>

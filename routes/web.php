@@ -135,7 +135,7 @@ Route::prefix('dashboard')->group( function(){
                      Route::get("/application/find/{uniq_id}",[ApplicationsController::class,'findData']);
 
                      /** Campaigns **/
-
+                     Route::get("/campaigns/list", [CampaignsController::class, 'getCampaigns']);
                      /** Blog **/
                      Route::post("/blog/post",[BlogController::class,'postBlog']);
                      Route::get("/blog/get",[BlogController::class,'getBlog']);
