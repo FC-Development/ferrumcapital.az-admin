@@ -11,4 +11,6 @@ class CareerGalery extends Model
     protected $hidden = ['id'];
     protected $table = 'nc_a5um__cl_gallery';
     protected $primaryKey = 'uniq_id';
+    public $incrementing = false;
+    protected $fillable = ['uniq_id','image_upload'];
 }

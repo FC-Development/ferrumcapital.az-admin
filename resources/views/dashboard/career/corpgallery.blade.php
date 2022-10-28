@@ -2,7 +2,7 @@
 @section('content')
     <div class="row justify-content-between ml-0 mr-0">
         <div class="header-title">
-            <h4 class="card-title">Corporative Gallery</h4>
+            <h4 class="card-title">Karyera Qalereyası</h4>
         </div>
         <button class="btn btn-primary addCorpGalleryBTN" type="button">
             <i class="mr-1" style="position: relative; top: -1px;">

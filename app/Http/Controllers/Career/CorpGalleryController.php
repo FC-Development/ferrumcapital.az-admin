@@ -9,25 +9,29 @@ use App\Actions\Career\CorpGaleryAction;
 class CorpGalleryController extends Controller
 {
     //
+    private $gallery;
+    public function __construct(CorpGaleryAction $gallery)
+    {
+        $this->gallery= $gallery;
+    }
+
     public function galleryPage()
     {
         return view('dashboard.career.corpgallery');
     }
     public function getCorpGal()
     {
-        $response = new CorpGaleryAction();
-        return $response->getData();
+        $response = $this->gallery->getData();
+        return $response;
     }
     public function postCorpGal(StoreCorpGalRequest $request)
     {
-        $postGallery = new CorpGaleryAction(); 
-        $gallery = $postGallery->postData($request);
-        return response($gallery);
+        $gallery = $this->gallery->postData($request);
+        return ($gallery);
     }
     public function deleteCorpGal(Request $request)
     {
-      $deletedGallery = new CorpGaleryAction();
-      $gallery = $deletedGallery->deleteData($request);
-      return response($gallery);
+      $gallery = $this->gallery->deleteData($request);
+      return ($gallery);
     }
 }
