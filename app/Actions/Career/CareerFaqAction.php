@@ -70,7 +70,7 @@ class CareerFaqAction extends AdminMethods
                     'uniq_id' => $value['uniq_id'],
                     'answer_az' => json_decode($value['answer'],true)['az'],
                     'answer_en' =>json_decode($value['answer'],true)['en'],
-                    'create_time' => $this->getCreatedAtAttribute($value['created_at']),
+                    'create_time' => ($value['created_at']),
                     'question_az' => json_decode($value['question'],true)['az'],
                     'question_en' => json_decode($value['question'],true)['en'],
                 ];
