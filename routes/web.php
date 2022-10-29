@@ -73,7 +73,7 @@ Route::prefix('dashboard')->group( function(){
               Route::get("/team",[TeamController::class,'teamPage'])->name('admin.team');
               Route::prefix('csapi')->group(function() {
                      Route::get("/get/department/all",[DepartmentController::class,'getDepartment']);
-                     Route::get("/create/department",[DepartmentController::class,'createDeparment']);
+                     Route::post("/create/department",[DepartmentController::class,'createDeparment']);
                      Route::get('/get/business/partner/all/apply',[PartnerBusinessController::class,'returnAll']);
                      Route::get('/get/partner/apply/{uniq_id}',[PartnerApplyController::class,'getApplyByUniqID']);
                      Route::get('/get/business/apply/{uniq_id}',[BusinessApplyController::class,'getBusinessByUniqID']);
