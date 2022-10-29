@@ -8,6 +8,12 @@ use App\Actions\Career\CareerFaqAction;
 use App\Http\Requests\MainWeb\StoreFaqRequest;
 class FaqController extends Controller
 {
+    private $careerFaq;
+    public function __construct(CareerFaqAction $careerFaq)
+    {
+        $this->careerFaq = $careerFaq;
+    }
+
     //
     public function faqPage()
     {
@@ -15,31 +21,27 @@ class FaqController extends Controller
     }
     public function updateFaq(StoreFaqRequest $request)
     {
-        $updateFaq = new CareerFaqAction();
-        $blog = $updateFaq->updateData($request);
-        return response("Success",200);
+        $blog = $this->careerFaq->updateData($request);
+        return $blog;
     }
     public function getFaq()
     {
-        $response = new CareerFaqAction();
-        return $response->getData();
+        $response = $this->careerFaq->getData();
+        return $response;
     }
     public function postFaq(StoreFaqRequest $request)
     {
-        $postFaq = new CareerFaqAction(); 
-        $faq = $postFaq->postData($request);
-        return response($faq);
+        $faq = $this->careerFaq->postData($request);
+        return ($faq);
     }
     public function deleteFaq(Request $request)
     {
-      $deletedFaq = new CareerFaqAction();
-      $faq = $deletedFaq->deleteData($request);
-      return response($faq);
+      $faq = $this->careerFaq->deleteData($request);
+      return ($faq);
     }
     public function findFaq(Request $request)
     {
-        $findFaq = new CareerFaqAction();
-        $faq = $findFaq->findData($request);
-        return response($faq);
+        $faq = $this->careerFaq->findData($request);
+        return ($faq);
     }
 }

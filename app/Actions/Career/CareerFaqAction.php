@@ -8,100 +8,110 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use App\Models\CareerFaq;
+use mysql_xdevapi\Exception;
+
 class CareerFaqAction extends AdminMethods
-{      
-       
-     function postData(Request $request)
+{
+    private CareerFaq $careerFaq;
+    public function __construct(CareerFaq $careerFaq)
     {
-        $response= Http::withHeaders(
-              ['xc-auth' => env('NOCODB_AUTH')]
-       )->post("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/career_faq",[
-              'uniq_id' => Str::random(6),
-              'answer' => \json_encode(['az'=>$request->input('answer_az'),'en' => $request->input('answer_en')]),
-              'question' => json_encode(['az'=>$request->input('question_az'),'en' => $request->input('question_en')]),
-       ]);
-       return $response;
+        $this->careerFaq = $careerFaq;
+    }
+
+    function postData(Request $request)
+    {
+        try {
+            $response= $this->careerFaq->create([
+                'uniq_id' => Str::random(6),
+                'answer' => \json_encode(['az'=>$request->input('answer_az'),'en' => $request->input('answer_en')]),
+                'question' => json_encode(['az'=>$request->input('question_az'),'en' => $request->input('question_en')]),
+            ]);
+            return response()->json($response);
+        } catch (\Throwable $e) {
+            throw new \Exception($e);
+        }
+
     }
 
     function getData()
     {
-            $response = Http::withHeaders(
-              ['xc-auth' => env('NOCODB_AUTH')]
-              )
-          ->get("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/career_faq");
-              if(!isset($response['msg']))
-              {   
-                     $res_arr=[];
-                     foreach((\json_decode($response,true)) as $key => $value)
-                     {
-                            $tmp__ = [
-                                   'uniq_id' => $value['uniq_id'],
-                                   'answer_az' => json_decode($value['answer'],true)['az'],
-                                   'answer_en' =>json_decode($value['answer'],true)['en'],
-                                   'create_time' => $this->getCreatedAtAttribute($value['created_at']),
-                                   'question_az' => json_decode($value['question'],true)['az'],
-                                   'question_en' => json_decode($value['question'],true)['en'],
-                            ];
-                            array_push($res_arr,$tmp__);
-                     }
-                     return $res_arr;
-              }
+        try {
+            $response = $this->careerFaq->all();
+            $res_arr=[];
+            foreach((\json_decode($response,true)) as $key => $value)
+            {
+                $tmp__ = [
+                    'uniq_id' => $value['uniq_id'],
+                    'answer_az' => json_decode($value['answer'],true)['az'],
+                    'answer_en' =>json_decode($value['answer'],true)['en'],
+                    'create_time' => ($value['created_at']),
+                    'question_az' => json_decode($value['question'],true)['az'],
+                    'question_en' => json_decode($value['question'],true)['en'],
+                ];
+                array_push($res_arr,$tmp__);
+            }
+            return response()->json($res_arr);
+        } catch (\Throwable $e) {
+            throw new Exception($e);
+        }
+
+
     }
 
     function findData(Request $request)
     {
-       $uniq_id = $request->input('uniq_id');
-       $get_data = Http::withHeaders(['xc-auth' => env('NOCODB_AUTH')])
-       ->get("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/career_faq/?where=(uniq_id,like,".$uniq_id.")");
-       if(!isset($get_data['msg']))
-              {   
-                     $res_arr=[];
-                     foreach((\json_decode($get_data,true)) as $key => $value)
-                     {
-                            $tmp__ = [
-                                   'uniq_id' => $value['uniq_id'],
-                                   'answer_az' => json_decode($value['answer'],true)['az'],
-                                   'answer_en' =>json_decode($value['answer'],true)['en'],
-                                   'create_time' => $this->getCreatedAtAttribute($value['created_at']),
-                                   'question_az' => json_decode($value['question'],true)['az'],
-                                   'question_en' => json_decode($value['question'],true)['en'],
-                            ];
-                            array_push($res_arr,$tmp__);
-                     }
-                     return $res_arr;
-              }
+        try {
+            $uniq_id = $request->input('uniq_id');
+            $get_data = $this->careerFaq->where("uniq_id",$uniq_id)->get();
+            $res_arr=[];
+            foreach((\json_decode($get_data,true)) as $key => $value)
+            {
+                $tmp__ = [
+                    'uniq_id' => $value['uniq_id'],
+                    'answer_az' => json_decode($value['answer'],true)['az'],
+                    'answer_en' =>json_decode($value['answer'],true)['en'],
+                    'create_time' => $this->getCreatedAtAttribute($value['created_at']),
+                    'question_az' => json_decode($value['question'],true)['az'],
+                    'question_en' => json_decode($value['question'],true)['en'],
+                ];
+                array_push($res_arr,$tmp__);
+            }
+            return response()->json($res_arr);
+        }
+        catch (\Throwable $e) {
+            throw new  \Exception($e);
+        }
+
+
     }
     function deleteData(Request $request)
     {
-       $uniq_id = $request->input('id');
-       $get_data=Http::withHeaders(
-              ['xc-auth' => env('NOCODB_AUTH')]
-              )
-              ->get("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/career_faq/?where=(uniq_id,like,".$uniq_id.")");
-       $id=$get_data[0]['id'];
-       $response=Http::withHeaders(
-              ['xc-auth' => env('NOCODB_AUTH')]
-       )->delete("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/career_faq/".$id);
-       return response($response->json()); 
+        try {
+            $uniq_id = $request->input('id');
+            $response=$this->careerFaq->where("uniq_id",$uniq_id)->delete();
+            return response()->json($response);
+        } catch (\Throwable $e) {
+            throw new \Exception($e);
+        }
+
     }
     function updateData(Request $request)
     {
-       $uniq_id = $request->input('uniq_id');
-       $get_data = Http::withHeaders([
-              'xc-auth' => env('NOCODB_AUTH'),
-              'Content-Type' => 'application/json'
-          ])->get("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/career_faq/?where=(uniq_id,like,".$uniq_id.")");
-       $id = $get_data[0]['id'];
-       $response = Http::withHeaders(
-              ['xc-auth' => env("NOCODB_AUTH")] 
-       )->put("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/career_faq/$id",[
-              'answer' => \json_encode(['az'=>$request->input('answer_az'),'en' => $request->input('answer_en')]),
-              'question' => json_encode(['az'=>$request->input('question_az'),'en' => $request->input('question_en')]),
-       ]);
+        try {
+            $uniq_id = $request->input('uniq_id');
+            $response = $this->careerFaq->where("uniq_id",$uniq_id)->update([
+                'answer' => \json_encode(['az'=>$request->input('answer_az'),'en' => $request->input('answer_en')]),
+                'question' => json_encode(['az'=>$request->input('question_az'),'en' => $request->input('question_en')]),
+            ]);
+            return response()->json($response);
+        } catch (\Throwable $e) {
+            throw new \Exception($e);
+        }
+
     }
     public function updateDataStatus(Request $request, $id)
     {
 
     }
-    
+
 }

@@ -12,5 +12,5 @@ class CareerFaq extends Model
     protected $table = 'nc_a5um__career_faq';
     protected $primaryKey = 'uniq_id';
     public $incrementing = false;
-    protected $fillable = ["uniq_id" ,"answer", "en", "question"];
+    protected $fillable = ["uniq_id" ,"answer", "question"];
 }
