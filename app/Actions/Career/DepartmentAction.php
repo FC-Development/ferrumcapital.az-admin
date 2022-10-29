@@ -50,7 +50,7 @@ class DepartmentAction extends \App\Abstracts\AdminMethods
     {
         try {
             $uniq_id = $request->input("uniq_id");
-
+            return response()->json($this->department->vacancies(),404);
             if($this->department->vacancies()) {
                 return response()->json($this->department->vacancies(),404);
                 $data = $this->department->where("uniq_id",$uniq_id)->delete();
