@@ -92,8 +92,8 @@ $(document).on('click', '.delete-cblog', function (e) {
        )
 })
 $(document).on('click', '.update-cblog', function () {
-
-
+    $("#UpdateCareerBlog #cover_edit").nextAll("a").remove()
+    $("#UpdateCareerBlog #include_image_edit").nextAll("a").remove()
        let tmp__ = $(this).attr('data-uniq-id')
 
        $(`input[name="uniq_id"]`).val(tmp__);
