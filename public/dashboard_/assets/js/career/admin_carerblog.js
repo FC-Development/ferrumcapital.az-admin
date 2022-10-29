@@ -102,7 +102,7 @@ $(document).on('click', '.update-cblog', function () {
                      _token: $('meta[name="csrf-token"]').attr('content')
               },
               success: function (data) {
-                     let parse_data = JSON.parse(data)[0];
+                     let parse_data = (data)[0];
                      $("#CareerModalUpd").modal("show");
                      $("#UpdateCareerBlog #cover_edit").after(`<a href="${parse_data.cover}">Şəkilə bax</a>`)
                      $("#UpdateCareerBlog #include_image_edit").after(`<a href="${parse_data.include_image}">Şəkilə bax</a>`)
