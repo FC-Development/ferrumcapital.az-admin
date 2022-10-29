@@ -55,7 +55,7 @@ class DepartmentAction extends \App\Abstracts\AdminMethods
                 return response()->json($data);
             }
             else{
-                return response()->json("Vakansiyaya baglidir",404);
+                return response()->json($this->department->vacancies(),404);
             }
 
         } catch (\Throwable $e) {
