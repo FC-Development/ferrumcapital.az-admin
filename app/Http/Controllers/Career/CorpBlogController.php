@@ -27,33 +27,28 @@ class CorpBlogController extends Controller
     }
     public function postBlog(StoreBlogRequest $request)
     {
-        $postBlog = new CorpBlogAction();
-        $blog = $postBlog->postData($request);
-        return response($blog);
+        $blog = $this->blog->postData($request);
+        return ($blog);
     }
     public function deleteBlog(Request $request)
     {
 
-      $deletedBlog = new CorpBlogAction();
-      $blog = $deletedBlog->deleteData($request);
-      return response($blog);
+      $blog = $this->blog->deleteData($request);
+      return ($blog);
     }
     public function findBlog(Request $request)
     {
-        $findBlog = new CorpBlogAction;
-        $blog = $findBlog->findData($request);
-        return response($blog);
+        $blog = $this->blog->findData($request);
+        return ($blog);
     }
     public function updateBlogStatus(Request $request,$id)
     {
-        $statusBlog = new CorpBlogAction();
-         $blog=$statusBlog->updateDataStatus($request,$id);
-         return response($blog);
+         $blog=$this->blog->updateDataStatus($request,$id);
+         return ($blog);
     }
     public function updateBlog(StoreBlogRequest $request)
     {
-        $updateBlog = new CorpBlogAction();
-        $blog = $updateBlog->updateData($request);
-        return response("Success",200);
+        $blog = $this->blog->updateData($request);
+        return $blog;
     }
 }
