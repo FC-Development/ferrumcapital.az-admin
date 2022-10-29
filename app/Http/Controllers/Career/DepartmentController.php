@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Career;
 
 use App\Actions\Career\DepartmentAction;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
@@ -23,7 +24,7 @@ class DepartmentController extends Controller
     /**
      * @return DepartmentAction
      */
-    public function getDepartment(): DepartmentAction
+    public function getDepartment(): JsonResponse
     {
         return $this->department->getData();
     }
