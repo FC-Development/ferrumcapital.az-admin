@@ -84,11 +84,8 @@ $(document).on('submit', '#Vacancy1Form', function (e) {
 if (top.location.pathname === '/dashboard/vacancy') {
     $.ajax({
         type: "get",
-        url: "http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/department",
+        url: "/dashboard/csapi/get/department/all",
         dataType: "json",
-        headers: {
-            'xc-auth': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Inl1c2lmLmV5bnVsbGFiZXlsaUBmZXJydW1jYXBpdGFsLmF6IiwiZmlyc3RuYW1lIjpudWxsLCJsYXN0bmFtZSI6bnVsbCwiaWQiOjEsInJvbGVzIjoidXNlciIsImlhdCI6MTY2MDkwOTkxMX0.HttDn-LRM3wErtkaamXwJVhEmMpm0JX2gizDjlg0MTM'
-        },
         success: function (data) {
             data.forEach(item => {
                 $('#department').append(`
