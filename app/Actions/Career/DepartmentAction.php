@@ -51,7 +51,9 @@ class DepartmentAction extends \App\Abstracts\AdminMethods
     {
         try {
             $uniq_id = $request->input("uniq_id");
-            return response()->json($this->department->hasMany(VacancyModel::class),404);
+            $vacancy = VacancyModel::where("department_id",$uniq_id);
+            return $vacancy;
+            return response()->json($this->department->where('uniq_id',$uniq_id)->,404);
             if($this->department->vacancies()) {
                 return response()->json($this->department->vacancies(),404);
                 $data = $this->department->where("uniq_id",$uniq_id)->delete();
