@@ -38,7 +38,7 @@ $(document).on("click",'.deleteDepartmentBTN',function (){
         if (result.isConfirmed) {
             $.ajax({
                 type: "post",
-                url: "/dashboard/csapi/department/delete",
+                url: "/dashboard/csapi/delete/department",
                 data: {
                     uniq_id: $(this).attr("data-uniq-id"),
                     _token: $('meta[name="csrf-token"]').attr('content')
