@@ -10,44 +10,44 @@ use App\Actions\Career\VacancyAction;
 class VacancyController extends Controller
 {
     //
+    private $vacancy;
+    public function __construct(VacancyAction $vacancy)
+    {
+        $this->vacancy = $vacancy;
+    }
+
     public function vacancyPage()
     {
         return view('dashboard.career.vacancy');
     }
     public function getVacancy()
     {
-        $obj = new VacancyAction();
-        return response($obj->getData());
+        $obj = $this->vacancy->getData();
+        return $obj;
     }
     public function postVacancy(StoreVacancyRequest $request)
     {
-        $obj = new VacancyAction();
-        $postVacancy = $obj->postData($request);
-        return response($postVacancy);
-        return response('Successfully',200);
+        $postVacancy = $this->vacancy->postData($request);
+        return ($postVacancy);
     }
     public function deleteVacancy(Request $request)
     {
-        $obj = new VacancyAction();
-        $deleteObj = $obj->deleteData($request);
-        return response($deleteObj);
+        $deleteObj = $this->vacancy->deleteData($request);
+        return ($deleteObj);
     }
     public function findVacancy(Request $request)
     {
-        $obj = new VacancyAction();
-        $findObj = $obj->findData($request);
-        return response($findObj);
+        $findObj = $this->vacancy->findData($request);
+        return ($findObj);
     }
     public function updateVacancyStatus(Request $request,$id)
     {
-        $obj = new VacancyAction();
-         $objUpdateStat=$obj->updateDataStatus($request,$id);
-         return response($objUpdateStat);
+         $objUpdateStat=$this->vacancy->updateDataStatus($request,$id);
+         return ($objUpdateStat);
     }
     public function updateVacancy(StoreVacancyRequest $request)
     {
-        $obj = new VacancyAction();
-        $updateObj = $obj->updateData($request);
-        return response($updateObj);
+        $updateObj = $this->vacancy->updateData($request);
+        return ($updateObj);
     }
 }

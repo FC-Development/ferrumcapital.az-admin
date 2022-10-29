@@ -115,7 +115,7 @@ $(document).on('click', '.updateVacancy', function () {
         },
         success: function (data) {
             $("#EditVacancyModal").modal("show");
-            parsing_ = JSON.parse(data)[0]
+            parsing_ = (data)[0]
             Object.entries(parsing_).forEach(item => {
                 if (item[0] === 'respons_punkt') {
                     JSON.parse(item[1]).forEach(each => {
