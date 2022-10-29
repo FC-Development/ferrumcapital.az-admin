@@ -1,10 +1,11 @@
         {{-- CKEDITOR --}}
         <script src="//cdn.ckeditor.com/4.17.2/standard/ckeditor.js"></script>
         {{-- PrintThis --}}
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js" integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <!-- Backend Bundle JavaScript -->
         <script src="/dashboard_/assets/js/backend-bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js" integrity="sha512-42PE0rd+wZ2hNXftlM78BSehIGzezNeQuzihiBCvUEB3CVxHvsShF86wBWwQORNxNINlBPuq7rG4WWhNiTVHFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <!-- Chart Custom JavaScript -->
         <script src="/dashboard_/assets/js/customizer.js"></script>
         <script src="/dashboard_/assets/js/sidebar.js"></script>

@@ -41,11 +41,13 @@ class CampaignsAction extends AdminMethods
        public function deleteData(Request $request)
        {
               $uniq_id = $request->input('id');
-              $get_data= BlogMain::where('uniq_id',$uniq_id)->get();
-              $id=$get_data[0]['id'];
-              $cover__ = explode('/',$get_data[0]['cover'])[4];
-              Storage::disk('s3')->delete("campaign_images/".$cover__);
-              $response= BlogMain::where('uniq_id',$uniq_id)->delete();
+              $get_data = Campaigns::where('uniq_id',$uniq_id)->get();
+              $id = $get_data[0]['id'];
+              $image = explode('/',$get_data[0]['campaign_image'])[4];
+              Storage::disk('s3')->delete("campaign_images/".$image);
+              $mobile_image = explode('/',$get_data[0]['campaign_mobile_image'])[4];
+              Storage::disk('s3')->delete("campaign_images/".$mobile_image);
+              $response = Campaigns::where('uniq_id',$uniq_id)->delete();
               return $response;
        }
        public function updateDataStatus(Request $request,$id)
