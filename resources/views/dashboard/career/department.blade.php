@@ -5,6 +5,7 @@
             <h4 class="card-title">Departament</h4>
         </div>
         <form id="departmentForm" >
+            @csrf
             <input type="text" name="title" class="form-control w-25">
             <button class="btn btn-primary btn-sm addNewDepartmentBTN w-25 mt-3" type="submit">
                 <i class="mr-1" style="position: relative; top: -1px;">
