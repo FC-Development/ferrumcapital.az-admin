@@ -2,6 +2,7 @@
 
 namespace App\Actions\Career;
 
+use App\Models\VacancyModel;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\Department;
@@ -50,7 +51,7 @@ class DepartmentAction extends \App\Abstracts\AdminMethods
     {
         try {
             $uniq_id = $request->input("uniq_id");
-            return response()->json($this->department->vacancies(),404);
+            return response()->json($this->department->hasMany(VacancyModel::class),404);
             if($this->department->vacancies()) {
                 return response()->json($this->department->vacancies(),404);
                 $data = $this->department->where("uniq_id",$uniq_id)->delete();
