@@ -57,7 +57,7 @@ class DepartmentAction extends \App\Abstracts\AdminMethods
                 return response()->json($data);
             }
             else{
-                return response()->json($this->department->vacancies(),404);
+                return response()->json("Departamentə uyğun vakansiya mövcuddur!",404);
             }
 
         } catch (\Throwable $e) {
