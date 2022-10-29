@@ -9,44 +9,45 @@ use App\Http\Requests\Career\StoreCareerTestmnl;
 class CareerTestimnlController extends Controller
 {
     //
+    private $testimonial;
+    public function __construct(TestimonialAction $testimonial)
+    {
+        $this->testimonial=$testimonial;
+    }
+
     public function testimonialPage()
     {
         return view('dashboard.career.testimonial');
     }
     public function getTestimonial()
     {
-        $response = new TestimonialAction();
-        return $response->getData();
+        $response = $this->testimonial->getData();
+        return $response;
     }
     public function postTestimonial(StoreCareerTestmnl $request)
     {
-        $postBlog = new TestimonialAction(); 
-        $blog = $postBlog->postData($request);
-        return response($blog);
+        $testimonial = $this->testimonial->postData($request);
+        return response($testimonial);
     }
     public function updateTestimonial(StoreCareerTestmnl $request)
     {
-        $updateBlog = new TestimonialAction();
-        $blog = $updateBlog->updateData($request);
-        return response("Success",200);
+        $testimonial = $this->testimonial->updateData($request);
+        return $testimonial;
     }
     public function deleteTestimonial(Request $request)
     {
-        
-      $deletedBlog = new TestimonialAction();
-      $blog = $deletedBlog->deleteData($request);
-      return response($blog);
+
+        $testimonial = $this->testimonial->deleteData($request);
+      return ($testimonial);
     }
     public function findTestimonial(Request $request)
     {
-        $findBlog = new TestimonialAction();
-        $blog = $findBlog->findData($request);
-        return response($blog);
+        $testimonial = $this->testimonial->findData($request);
+        return ($testimonial);
     }
     public function updateTestimonialStatus(Request $request,$id)
     {
-        $statusBlog = new TestimonialAction();
-         $blog=$statusBlog->updateDataStatus($request,$id);
-         return response($blog);
+        $testimonial=$this->testimonial->updateDataStatus($request,$id);
+         return ($testimonial);
     }
 }
