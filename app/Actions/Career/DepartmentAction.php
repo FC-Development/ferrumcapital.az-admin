@@ -50,8 +50,14 @@ class DepartmentAction extends \App\Abstracts\AdminMethods
     {
         try {
             $uniq_id = $request->input("uniq_id");
-            $data = $this->department->where("uniq_id",$uniq_id)->delete();
-            return response()->json($data);
+            if(!$this->department->vacancies()) {
+                $data = $this->department->where("uniq_id",$uniq_id)->delete();
+                return response()->json($data);
+            }
+            else{
+                return response()->json("Vakansiyaya baglidir",404);
+            }
+
         } catch (\Throwable $e) {
             throw new \Exception($e);
         }
