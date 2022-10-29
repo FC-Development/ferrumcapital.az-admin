@@ -27,6 +27,32 @@ var DepartmentTable = new gridjs.Grid({
 if (top.location.pathname == '/dashboard/department'){
     DepartmentTable.render(document.getElementById("DepartmentTable"))
 }
+$(document).on("click",'.deleteDepartmentBTN',function (){
+    Swal.fire({
+        title: "Departamenti silmək istədiyinizdən əminsinizmi?",
+        showDenyButton: true,
+        icon: 'info',
+        confirmButtonText: 'Bəli',
+        denyButtonText: `Xeyr`,
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                type: "post",
+                url: "/dashboard/csapi/department/delete",
+                data: {
+                    uniq_id: $(this).attr("data-uniq-id"),
+                    _token: $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function () {
+                    DepartmentTable.forceRender();
+                    Swal.fire('Silindi', '', 'success');
+                }
+            })
+        } else {
+            Swal.fire('Silinmədi', '', 'info');
+        }
+    })
+})
 $(document).on('submit', '#departmentForm', function (e) {
     e.preventDefault();
     let url = "/dashboard/csapi/create/department"

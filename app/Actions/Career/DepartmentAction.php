@@ -2,6 +2,7 @@
 
 namespace App\Actions\Career;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\Department;
 use Illuminate\Support\Str;
@@ -45,8 +46,15 @@ class DepartmentAction extends \App\Abstracts\AdminMethods
         // TODO: Implement findData() method.
     }
 
-    public function deleteData(Request $request)
+    public function deleteData(Request $request) : JsonResponse
     {
+        try {
+            $uniq_id = $request->input("uniq_id");
+            $data = $this->department->where("uniq_id",$uniq_id)->delete();
+            return response()->json($data);
+        } catch (\Throwable $e) {
+            throw new \Exception($e);
+        }
         // TODO: Implement deleteData() method.
     }
 

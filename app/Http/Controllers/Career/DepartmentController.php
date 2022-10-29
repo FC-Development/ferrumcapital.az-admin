@@ -32,9 +32,17 @@ class DepartmentController extends Controller
     /**
     * @return JsonResponse
      */
-    public function createDeparment(Request $request) : JsonResponse
+    public function createDepartment(Request $request) : JsonResponse
     {
         $data = $this->department->postData($request);
+        return $data;
+    }
+    /**
+     * @return JsonResponse
+     */
+    public function deleteDepartment(Request $request) : JsonResponse
+    {
+        $data = $this->department->deleteData($request);
         return $data;
     }
 }
