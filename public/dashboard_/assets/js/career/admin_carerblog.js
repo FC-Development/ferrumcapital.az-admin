@@ -93,6 +93,7 @@ $(document).on('click', '.delete-cblog', function (e) {
 })
 $(document).on('click', '.update-cblog', function () {
        let tmp__ = $(this).attr('data-uniq-id')
+    $("#UpdateCareerBlog").reset();
        $(`input[name="uniq_id"]`).val(tmp__);
        $.ajax({
               type: "post",
