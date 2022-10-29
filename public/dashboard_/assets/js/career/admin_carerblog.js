@@ -104,6 +104,8 @@ $(document).on('click', '.update-cblog', function () {
                      _token: $('meta[name="csrf-token"]').attr('content')
               },
               success: function (data) {
+                  $("#UpdateCareerBlog #cover_edit").after().remove()
+                  $("#UpdateCareerBlog #include_image_edit").after().remove()
                      let parse_data = (data)[0];
                      $("#CareerModalUpd").modal("show");
                      $("#UpdateCareerBlog #cover_edit").after(`<a href="${parse_data.cover}">Şəkilə bax</a>`)
