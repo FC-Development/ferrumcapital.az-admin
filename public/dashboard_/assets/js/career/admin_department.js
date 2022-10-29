@@ -5,9 +5,9 @@ var ID = function () {
     return '_' + Math.random().toString(36).substr(2, 9);
 };
 var DepartmentTable = new gridjs.Grid({
-    columns: ["Department"],
+    columns: ["Department","Yaradılma tarixi","Silmək"],
     pagination: {
-        limit: 4
+        limit: 10
     },
     sort: true,
     server: {
