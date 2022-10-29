@@ -51,7 +51,7 @@ class DepartmentAction extends \App\Abstracts\AdminMethods
     {
         try {
             $uniq_id = $request->input("uniq_id");
-            $vacancy = VacancyModel::where("department_id",$uniq_id);
+            $vacancy = VacancyModel::where("department_id",$uniq_id)->get();
             return response()->json($vacancy);
             return response()->json($this->department->where('uniq_id',$uniq_id)->,404);
             if($this->department->vacancies()) {
