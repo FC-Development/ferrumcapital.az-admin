@@ -46,6 +46,9 @@ $(document).on("click",'.deleteDepartmentBTN',function (){
                 success: function () {
                     DepartmentTable.forceRender();
                     Swal.fire('Silindi', '', 'success');
+                },
+                error:function (request,status,error) {
+                    Swal.fire('Departamentə uyğun vakansiya mövcuddur!', '', 'warning');
                 }
             })
         } else {
