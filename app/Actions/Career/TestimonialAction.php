@@ -28,7 +28,7 @@ class TestimonialAction extends AdminMethods
                        'uniq_id' => $value['uniq_id'],
                        'fullname_az' => json_decode($value['fullname'],true)['az'] ,
                        'fullname_en' =>json_decode($value['fullname'],true)['en'],
-                       'create_time' => $this->getCreatedAtAttribute($value['created_at']),
+                       'create_time' => ($value['created_at']),
                        'text_az' =>\json_decode($value['text'],true)['az'],
                        'text_en' => \json_decode($value['text'],true)['en'],
                    ];
