@@ -4,6 +4,8 @@ namespace App\Actions\Career;
 
 use Illuminate\Http\Request;
 use App\Models\Department;
+use Illuminate\Support\Str;
+
 class DepartmentAction extends \App\Abstracts\AdminMethods
 {
     private Department $department;
@@ -25,6 +27,16 @@ class DepartmentAction extends \App\Abstracts\AdminMethods
 
     public function postData(Request $request)
     {
+        try {
+            $data = $this->department->create([
+                'title' =>$request->input('title'),
+                'slug' => $request->input('slug'),
+                'uniq_id' =>Str::random(6)
+            ]);
+            return response()->json($data);
+        } catch (\Throwable $e) {
+            throw new \Exception($e);
+        }
         // TODO: Implement postData() method.
     }
 

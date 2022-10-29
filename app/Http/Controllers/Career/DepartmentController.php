@@ -22,10 +22,19 @@ class DepartmentController extends Controller
         return view('dashboard.career.department');
     }
     /**
-     * @return DepartmentAction
+     * @return JsonResponse
      */
     public function getDepartment(): JsonResponse
     {
         return $this->department->getData();
+    }
+
+    /**
+    * @return JsonResponse
+     */
+    public function createDeparment(Request $request) : JsonResponse
+    {
+        $data = $this->department->postData($request);
+        return $data;
     }
 }

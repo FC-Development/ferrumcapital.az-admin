@@ -7,7 +7,7 @@ var ID = function () {
 
 $(document).on('submit', '#departmentForm', function (e) {
     e.preventDefault();
-    let url = "http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/department"
+    let url = "/dashboard/csapi/create/department"
     let tmp__ = {};
     $(this).serializeArray().map(function (obj, item) {
         tmp__[obj.name] = obj.value
