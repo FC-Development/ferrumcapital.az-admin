@@ -11,6 +11,7 @@ class Department extends Model
     protected $hidden = ['id'];
     protected $table = 'nc_a5um__department';
     protected $primaryKey='uniq_id';
+    public $incrementing = false;
     public function vacancies()
     {
        return $this->hasMany(VacancyModel::class,'department_id','uniq_id');
