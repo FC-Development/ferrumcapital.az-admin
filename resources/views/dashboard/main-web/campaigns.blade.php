@@ -2,7 +2,7 @@
 @section('content')
     <div class="row justify-content-between ml-0 mr-0">
         <div class="header-title">
-            <h4 class="card-title">Kampaniyalar</h4>hazirlanir...
+            <h4 class="card-title">Kampaniyalar</h4>
         </div>
         <button class="btn btn-primary addNewCampaignBTN" type="button">
             <i class="mr-1" style="position: relative; top: -1px;">
@@ -54,7 +54,7 @@
                         <div class="col-md-12 mb-3">
                             <span class="f-sm form-label font-weight-bold text-muted text-uppercase">Açıqlama</span>
                             <br>
-                            <textarea name="CampaignModalEditor_input" id="CampaignModalEditor_input"></textarea>
+                            <textarea id="CampaignModalEditor_input"></textarea>
                         </div>
                         <div class="col-md-12 mb-3">
                             <label for="campaign_lastdate_input">Son tarix</label>

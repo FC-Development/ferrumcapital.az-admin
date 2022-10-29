@@ -8,6 +8,7 @@ use \App\Actions\MainWeb\CampaignsAction;
 use App\Models\Campaigns;
 use Exception;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\MainWeb\StoreCampaignsRequest;
 
 class CampaignsController extends Controller
 {
@@ -21,39 +22,17 @@ class CampaignsController extends Controller
         return $response->getData();
     }
 
-    // public function postBlog(StoreBlogRequest $request)
-    // {
-    //     $postBlog = new BlogAction(); 
-    //     $blog = $postBlog->postData($request);
-    //     return response($blog);
-    // }
+    public function postCampaign(StoreCampaignsRequest $request)
+    {
+        $postCampaign = new CampaignsAction(); 
+        $campaignRes = $postCampaign->postData($request);
+        return response($campaignRes);
+    }
 
-    // public function deleteBlog(Request $request)
-    // {
-        
-    //   $deletedBlog = new BlogAction();
-    //   $blog = $deletedBlog->deleteData($request);
-    //   return response($blog);
-    // }
-
-    // public function findBlog(Request $request)
-    // {
-    //     $findBlog = new BlogAction;
-    //     $blog = $findBlog->findData($request);
-    //     return response($blog);
-    // }
-
-    // public function updateBlogStatus(Request $request,$id)
-    // {
-    //     $statusBlog = new BlogAction();
-    //      $blog=$statusBlog->updateDataStatus($request,$id);
-    //      return response($blog);
-    // }
-
-    // public function updateBlog(StoreBlogRequest $request)
-    // {
-    //     $updateBlog = new BlogAction();
-    //     $blog = $updateBlog->updateData($request);
-    //     return response("Success",200);
-    // }
+    public function deleteCampaign(Request $request, $uniq_id)
+    {
+        $deletedCampaign = new CampaignsAction();
+        $campaignRes = $deletedCampaign->deleteData($request);
+        return response($campaignRes);
+    }
 }

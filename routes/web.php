@@ -136,6 +136,9 @@ Route::prefix('dashboard')->group( function(){
 
                      /** Campaigns **/
                      Route::get("/campaigns/list", [CampaignsController::class, 'getCampaigns']);
+                     Route::post("/campaigns/new", [CampaignsController::class, 'postCampaign']);
+                     Route::post("/campaigns/delete/{id}", [CampaignsController::class, 'deleteCampaign']);
+
                      /** Blog **/
                      Route::post("/blog/post",[BlogController::class,'postBlog']);
                      Route::get("/blog/get",[BlogController::class,'getBlog']);
