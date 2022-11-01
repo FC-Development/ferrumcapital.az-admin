@@ -17,14 +17,24 @@ let GetCampaignRequests = new gridjs.Grid({
             card.finCode,
             card.mobilePhone,
             card.campaignSource,
-            gridjs.html(`
-                     <div class='d-flex'>
-                            <button type="button" class="btn btn-sm btn-warning changeRequestStatus" data-uniq-id="${card.uniq_id}">${card.status}</button>
-                     </div>
-                     `)
+            statusBtnRequest(card.status,card.uniq_id,'changeRequestStatus')
         ]),
     }
 })
+function statusBtnRequest(data, uniq_id, className) {
+    if (data === 'gözləmədə') {
+        return `<button class="btn btn-sm btn-suc ${className}" data-val="${data}" data-uniq-id="${uniq_id}">gözləmədə</button>`
+    }
+    else if (data === "zəng edildi") {
+        return `<button class="btn btn-sm btn-warning ${className}" data-val="${data}" data-uniq-id="${uniq_id}">zəng edildi</button>`
+    }
+    else if (data === "rədd edildi") {
+        return `<button class="btn btn-sm btn-dg ${className}" data-val="${data}" data-uniq-id="${uniq_id}">rədd edildi</button>`
+    }
+    else {
+        return `<button class="btn btn-sm btn-dk ${className}" data-val="${data}" data-uniq-id="${uniq_id}">Seçim edilməyib</button>`
+    }
+}
 $(document).on("click",".changeRequestStatus",function (){
     $("#RequestStatusModal").modal("show")
     $(`#updateCampaignRequestStatusForm input[name="uniq_id"]`).val($(this).data("uniq-id"));
