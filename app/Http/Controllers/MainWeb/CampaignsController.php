@@ -12,27 +12,46 @@ use App\Http\Requests\MainWeb\StoreCampaignsRequest;
 
 class CampaignsController extends Controller
 {
+    private $campaigns;
+    public function __construct(CampaignsAction $campaigns)
+    {
+        $this->campaigns = $campaigns;
+    }
+
     public function campaignsPage()
     {
         return view('dashboard.main-web.campaigns');
     }
     public function getCampaigns()
     {
-        $response = new CampaignsAction();
-        return $response->getData();
+        $response = $this->campaigns->getData();
+        return $response;
     }
 
     public function postCampaign(StoreCampaignsRequest $request)
     {
-        $postCampaign = new CampaignsAction(); 
-        $campaignRes = $postCampaign->postData($request);
-        return response($campaignRes);
+        $campaignRes = $this->campaigns->postData($request);
+        return ($campaignRes);
     }
 
     public function deleteCampaign(Request $request, $uniq_id)
     {
-        $deletedCampaign = new CampaignsAction();
-        $campaignRes = $deletedCampaign->deleteData($request);
+        $campaignRes = $this->campaigns->deleteData($request);
         return response($campaignRes);
+    }
+    public function updateCampaignStatus(Request $request,$id)
+    {
+        $campaignRes= $this->campaigns->updateDataStatus($request,$id);
+        return $campaignRes;
+    }
+    public function updateCampaign(Request $request)
+    {
+        $campaignRes= $this->campaigns->updateData($request);
+        return $campaignRes;
+    }
+    public function findCampaign(Request $request)
+    {
+        $campaignRes=$this->campaigns->findData($request);
+        return $campaignRes;
     }
 }

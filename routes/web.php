@@ -29,6 +29,7 @@ use App\Http\Controllers\MainWeb\PartnerBusinessController;
 use  App\Http\Controllers\MainWeb\BrandController;
 use App\Http\Controllers\MainWeb\TeamController;
 use App\Http\Controllers\MainWeb\MkSliderController;
+use App\Http\Controllers\MainWeb\CampaignRequest;
 use App\Http\Controllers\MainWeb\CampaignsController;
 use App\Http\Middleware\SetIpAddress;
 
@@ -49,7 +50,7 @@ Route::prefix('dashboard')->group( function(){
 
               /* Campaigns */
               Route::get("/campaigns", [CampaignsController::class, 'campaignsPage'])->name('admin.campaigns');
-
+              Route::get("/campaigns/request",[CampaignRequest::class,'getView'])->name('admin.campaignRequest');
               Route::get("/mkslider", [MkSliderController::class,'mksliderPage'])->name('admin.mkslider');
               Route::get('/business_partner_apply',[PartnerBusinessController::class,'returnView'])->name('admin.businessApply');
               Route::get('/subscription',[SubscriptionController::class,'getSubsPage'])->name('admin.subscription');
