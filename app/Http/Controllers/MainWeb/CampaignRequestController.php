@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Actions\MainWeb\CampaignRequestAction;
-class CampaignRequest extends Controller
+class CampaignRequestController extends Controller
 {
     //
     private $campaignRequest;
