@@ -76,7 +76,9 @@
         <script src="/dashboard_/assets/js/career/admin_cfaq.js"></script>
         {{-- Career Testimonial --}}
         <script src="/dashboard_/assets/js/career/admin_testimonial.js"></script>
-        
+
         {{-- Applications --}}
         <script src="/dashboard_/assets/js/career/admin_applications.js?{{date(now())}}"></script>
         <script src="/dashboard_/assets/js/campaigns.js?{{date(now())}}"></script>
+        {{-- Campaign request --}}
+        <script src="/dashboard_/assets/js/main-web/admin_campaignRequest.js?{{date(now())}}"></script>
