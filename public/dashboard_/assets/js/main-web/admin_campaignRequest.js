@@ -29,7 +29,7 @@ $(document).on("click",".changeRequestStatus",function (){
     $("#RequestStatusModal").modal("show")
     $(`#updateCampaignRequestStatusForm input[name="uniq_id"]`).val($(this).data("uniq-id"));
 })
-$("#requestStatus select").change(function () {
+$("#updateCampaignRequestStatusForm select").change(function () {
     $.post(`/dashboard/csapi/campaign/request/update/status/${$(`#updateCampaignRequestStatusForm input[name="uniq_id"]`).val()}`, {
             status: $("#requestStatus").find(":selected").val(),
             _token: $('meta[name="csrf-token"]').attr('content')
