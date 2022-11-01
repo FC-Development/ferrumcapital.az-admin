@@ -59,7 +59,6 @@ class CampaignRequestAction extends \App\Abstracts\AdminMethods
             $data = $this->campaignRequest->where("uniq_id",$id)->update([
                 'status' => $request->input('status')
             ]);
-            dd($data);
             return response()->json($data);
         } catch (\Throwable $e) {
             throw new Exception($e);
