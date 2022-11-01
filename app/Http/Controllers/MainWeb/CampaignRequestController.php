@@ -26,15 +26,13 @@ class CampaignRequestController extends Controller
     }
     public function deleteRequest(Request $request)
     {
-        $campaignReq=$this->deleteRequest($request);
+        $campaignReq=$this->campaignRequest->deleteRequest($request);
         return $campaignReq;
     }
     public function updateRequestStatus(Request $request,$id)
     {
-        dd($id);
-        $campaignReq = $this->updateRequestStatus($request,$id);
+        $campaignReq = $this->campaignRequest->updateRequestStatus($request,$id);
         return $campaignReq;
-
     }
 
 }
