@@ -29,9 +29,9 @@ class CampaignRequestController extends Controller
         $campaignReq=$this->deleteRequest($request);
         return $campaignReq;
     }
-    public function updateRequestStatus(Request $request)
+    public function updateRequestStatus(Request $request,$id)
     {
-        $campaignReq = $this->updateRequestStatus($request);
+        $campaignReq = $this->updateRequestStatus($request,$id);
         return $campaignReq;
 
     }

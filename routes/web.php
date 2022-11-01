@@ -144,7 +144,7 @@ Route::prefix('dashboard')->group( function(){
                      Route::post("/campaigns/delete/{id}", [CampaignsController::class, 'deleteCampaign']);
                     /** Campaigns request */
                     Route::get("/campaign/request/list",[CampaignRequestController::class,'getAllRequests']);
-                    Route::post("/campaign/request/update/status",[CampaignRequestController::class,'updateRequestStatus']);
+                    Route::post("/campaign/request/update/status/{id}",[CampaignRequestController::class,'updateRequestStatus']);
 
                      /** Blog **/
                      Route::post("/blog/post",[BlogController::class,'postBlog']);
