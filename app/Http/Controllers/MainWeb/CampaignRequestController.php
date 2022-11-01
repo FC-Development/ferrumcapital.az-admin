@@ -31,7 +31,7 @@ class CampaignRequestController extends Controller
     }
     public function updateRequestStatus(Request $request,$id)
     {
-        $campaignReq = $this->campaignRequest->updateRequestStatus($request,$id);
+        $campaignReq = $this->campaignRequest->updateDataStatus($request,$id);
         return $campaignReq;
     }
 
