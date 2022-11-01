@@ -53,12 +53,13 @@ class CampaignRequestAction extends \App\Abstracts\AdminMethods
         // TODO: Implement updateData() method.
     }
 
-    public function updateDataStatus(Request $request, $id)
+    public function updateDataStatus(Request $request,$id)
     {
         try {
             $data = $this->campaignRequest->where("uniq_id",$id)->update([
                 'status' => $request->input('status')
             ]);
+            dd($data);
             return response()->json($data);
         } catch (\Throwable $e) {
             throw new Exception($e);
