@@ -17,7 +17,9 @@ let GetCampaignRequests = new gridjs.Grid({
             card.finCode,
             card.mobilePhone,
             card.campaignSource,
-            statusBtnRequest(card.status,card.uniq_id,'changeRequestStatus')
+            gridjs.html(`
+                    ${statusBtnRequest(card.status,card.uniq_id,'changeRequestStatus')}
+                     `)
         ]),
     }
 })
