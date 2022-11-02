@@ -40,7 +40,7 @@ class BrandAction extends AdminMethods
                      array_push($res_arr,$tmp__);
               }
               return $res_arr;
-              
+
        }
        public function postData(Request $request)
        {
@@ -61,9 +61,9 @@ class BrandAction extends AdminMethods
        public function updateData(Request $request)
        {
               $uniq_id = $request->input('uniq_id');
-              
+
               $get_data = Brands::where('uniq_id',$uniq_id)->get();
-              
+
               $updatedLogo = $this->uploadAvatar($request,'logo',$get_data[0]['logo'],'brand_logo');
               $response = Brands::where('uniq_id',$uniq_id)->update([
                      'name' => $request['name'],
@@ -80,16 +80,10 @@ class BrandAction extends AdminMethods
        }
        public function updateDataStatus(Request $request, $id)
        {
-              $tmp_arr_ = array(
-                     "response" =>"",
-                     "state" => true
-                 );
-               
-                 $last_res = Brands::where('uniq_id',$id)->update([
+               $last_res = Brands::where('uniq_id',$id)->update([
                      "status" => $request->input('status')
                  ]);
-                 $tmp_arr_['response'] = $last_res->json();
-                 return response(200);
+                 return response()->json("Updated",200);
        }
        public function deleteData(Request $request)
        {
@@ -98,6 +92,6 @@ class BrandAction extends AdminMethods
               $logo__ = explode("/",$get_data[0]['logo'])[4];
               Storage::disk('s3')->delete("brand_logo".$logo__);
               $response= Brands::where('uniq_id',$uniq_id)->delete();
-              return response()->json($response); 
+              return response()->json($response);
        }
 }
