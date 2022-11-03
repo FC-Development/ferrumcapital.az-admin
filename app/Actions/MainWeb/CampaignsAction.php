@@ -37,7 +37,7 @@ class CampaignsAction extends AdminMethods
            try {
                $slug =  $this->slugOlustur($request->input('campaign_title_input'));
                $check_slug = $this->campaigns->where('slug',$slug)->get();
-               if ($check_slug) return response()->json("Slug mövcuddur",404);
+               if ($check_slug) return response()->json("Eyni başlıqda kampaniya mövcuddur!",404);
                $response = $this->campaigns->create([
                    'uniq_id' => Str::random(6),
                    'status' => 1,

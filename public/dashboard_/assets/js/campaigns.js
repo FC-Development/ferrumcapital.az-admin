@@ -80,7 +80,8 @@ if(top.location.pathname === '/dashboard/campaigns') {
                 Swal.fire('Məlumat', 'yeni kampaniya uğurla əlavə edildi', 'success')
                 $("#loading").hide()
             },
-            error: () => {
+            error: (resp) => {
+                console.log(resp)
                 Swal.fire('Xəta', 'bir daha cəhd edin', 'error')
                 $("#loading").hide()
             },
