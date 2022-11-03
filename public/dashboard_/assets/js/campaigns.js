@@ -81,8 +81,8 @@ if(top.location.pathname === '/dashboard/campaigns') {
                 $("#loading").hide()
             },
             error: (resp) => {
-                console.log(resp)
-                Swal.fire('Xəta', 'bir daha cəhd edin', 'error')
+                console.log(resp.responseJSON)
+                Swal.fire('Xəta', `${resp.responseJSON}`, 'error')
                 $("#loading").hide()
             },
             complete: (data) => {
