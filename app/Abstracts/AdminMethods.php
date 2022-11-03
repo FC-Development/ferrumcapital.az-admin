@@ -37,8 +37,7 @@ abstract class AdminMethods
         $string = str_replace('"','',$string);
         $string = str_replace('!','-',$string);
         $string = str_replace('?','-',$string);
-        $slug= strtolower($string.uniqid());
-
+        $slug= strtolower($string);
         return $slug;
     }
        protected function getCreatedAtAttribute($date) {
@@ -48,7 +47,7 @@ abstract class AdminMethods
        {
                if($request->file($img_name))
                {
-                     
+
                      if($old_value!=''){
                             $img__ = explode('/',$old_value)[4];
                             Storage::disk('s3')->delete("/$path/".$img__);
