@@ -45,7 +45,7 @@ class CampaignsAction extends AdminMethods
                    'campaign_image' =>$this->uploadAvatar($request,'image_campaign_input','','campaign_images'),
                    'campaign_mobile_image' =>$this->uploadAvatar($request,'image_mobile_campaign_input','','campaign_images'),
                    'description' => $request->input('CampaignModalEditor_input'),
-                   'slug' => $this->slugOlustur($request->input('campaign_title_input')),
+                   'slug' => $slug,
                    "end_duration" => $request->input('campaign_lastdate_input')
                ]);
                return response()->json($response);

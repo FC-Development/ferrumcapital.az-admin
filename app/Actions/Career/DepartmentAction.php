@@ -30,9 +30,12 @@ class DepartmentAction extends \App\Abstracts\AdminMethods
     public function postData(Request $request)
     {
         try {
+            $slug = $this->slugOlustur($request->input('slug'));
+            $check_slug = $this->department->where("slug",$slug)->get();
+            if($check_slug) return response()->json("Eyni başlıqda departament mövcuddur");
             $data = $this->department->create([
                 'title' =>$request->input('title'),
-                'slug' => $request->input('slug'),
+                'slug' =>$slug,
                 'uniq_id' =>Str::random(6)
             ]);
             return response()->json($data);

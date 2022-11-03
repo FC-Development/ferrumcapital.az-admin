@@ -50,6 +50,9 @@ class CorpBlogAction extends AdminMethods
        public function postData(Request $request)
        {
            try {
+               $slug = $this->slugOlustur($request->input('title'));
+               $check_slug = $this->careerBlogs->where('slug',$slug)->get();
+               if ($check_slug) return response()->json("Eyni başlıqda blog mövcuddur!",404);
                $response= $this->careerBlogs->create([
                    'uniq_id' => Str::random(6),
                    'status' => 'active',
@@ -58,7 +61,7 @@ class CorpBlogAction extends AdminMethods
                    'cover' =>$this->uploadAvatar($request,'cover','','career_blog'),
                    'include_image' =>$this->uploadAvatar($request,'include_image','','career_blog'),
                    'tips_text' => $request->input('tips_text'),
-                   'slug' => $this->slugOlustur($request->input('title')),
+                   'slug' => $slug,
                    'section' => 'blog',
                    'language' => $request->input('blog_lang'),
                    'meta_description' => $request->input('meta_description')
