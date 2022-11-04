@@ -18,13 +18,13 @@ class ApplicationsAction extends AdminMethods
         $this->application = $application;
         $this->vacancy = $vacancy;
     }
-    
+
     public function getData()
     {
         $response= $this->application::all();
         return $response;
     }
-    
+
     public function findData($uniq_id)
     {
         $get_data = $this->application::where('uniq_id',$uniq_id)->get();
@@ -63,22 +63,11 @@ class ApplicationsAction extends AdminMethods
     }
     public function updateDataStatus(Request $request, $uniq_id)
     {
-        $tmp_arr_ = array(
-            "response" =>"",
-            "state" => true
-        );
-        $response = Http::withHeaders([
-            'xc-auth' => env('NOCODB_AUTH'),
-            'Content-Type' => 'application/json'
-        ])->get("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/applications/?where=(uniq_id,like,".$uniq_id.")");
-        $last_res = Http::withHeaders([
-            'xc-auth' => env('NOCODB_AUTH'),
-            'Content-Type' => 'application/json'
-        ])->put('http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/applications/'.$response[0]['id'], [
+
+        $last_res = $this->application->where("uniq_id",$uniq_id)->update([
             "status" => $request->input('status')
         ]);
-        $tmp_arr_['response'] = $last_res->json();
-        return response(200);
+        return response()->json("Updated",200);
     }
     public function updateData(Request $request)
     {
