@@ -49,7 +49,7 @@
                         <div class="font-weight-bold col-lg-12 mb-2">
                             <label for="hyperlink" class="text-secondary font-weight-bold">Vakansiya haqqında</label>
                             <input type="text" name="description" id="description"
-                                class="form-control w-25 border border-light">
+                                class="form-control w-100 border border-light">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <label for="hyperlink" class="text-secondary font-weight-bold">Nə iş görür?</label>
