@@ -52,7 +52,7 @@
                                 class="form-control w-100 border border-light">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <label for="hyperlink" class="text-secondary font-weight-bold">Tələblər
+                                    <label for="hyperlink" class="text-secondary font-weight-bold">Hansı özəlliklərə malik olmalıdır?
                                     </label>
                                     <div class="row">
                                         <input type="text"
