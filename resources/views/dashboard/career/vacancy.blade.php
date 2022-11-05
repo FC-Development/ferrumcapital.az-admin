@@ -58,7 +58,7 @@
                                         <input type="text"
                                                class="form-control col-lg-3 w-25 respons_punkt border border-light"
                                                id="respons_punkt" name="respons_punkt" minlength="2" required>
-                                        <button class="btn btn-sm addResponsPunkt">
+                                        <button type="button" class="btn btn-sm addResponsPunkt">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="red"
                                                  class="bi bi-plus-circle" viewBox="0 0 16 16">
                                                 <path
@@ -71,13 +71,18 @@
                                 </div>
                             </div>
                             <div class="row">
+                                <div class="font-weight-bold col-lg-12 mb-2">
+                                    <label for="hyperlink" class="text-secondary font-weight-bold">Nə iş görür başlıq</label>
+                                    <input type="text" name="responsibility" id="responsibility"
+                                           class="form-control w-25 border border-light">
+                                </div>
                                 <div class="col-lg-12">
                                     <label for="hyperlink" class="text-secondary font-weight-bold">Nə iş görür?</label>
                                     <div class="row">
                                         <input type="text"
                                             class="form-control col-lg-3 ml-2  desc_punkt border border-light"
                                             id="desc_punkt" name="desc_punkt" minlength="2" required>
-                                        <button class="btn btn-sm addDescPunkt">
+                                        <button type="button" class="btn btn-sm addDescPunkt">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="red"
                                                 class="bi bi-plus-circle" viewBox="0 0 16 16">
                                                 <path
@@ -90,11 +95,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="font-weight-bold col-lg-12 mb-2">
-                            <label for="hyperlink" class="text-secondary font-weight-bold">Nə iş görür başlıq</label>
-                            <input type="text" name="responsibility" id="responsibility"
-                                class="form-control w-25 border border-light">
-                        </div>
+
                         <div class="font-weight-bold col-lg-12 mb-4">
                             <label for="hyperlink" class="text-secondary font-weight-bold">Extra info</label>
                             <div class="row">
