@@ -112,7 +112,7 @@
                                         id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">
                                         <span class="mb-0 mr-2 user-name">{{ auth()->user()->username }}</span>
-                                        <img src="/dashboard_/assets/images/user/1.jpg" class="img-fluid avatar-rounded"
+                                        <img src="/dashboard_/assets/images/user/user.png" class="img-fluid avatar-rounded"
                                             alt="user">
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">

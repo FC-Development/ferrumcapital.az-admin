@@ -17,7 +17,7 @@ class VacancyAction extends AdminMethods
     public function getData()
     {
         try {
-            $response = $this->vacancyModel->with('department')->leftJoin('nc_a5um__department','nc_a5um__vacancy.department_id','=','nc_a5um__department.uniq_id')->select('nc_a5um__vacancy.*','nc_a5um__department.title as d_title','nc_a5um__department.slug as d_slug')->get();
+            $response = $this->vacancyModel->with('department')->leftJoin('nc_a5um__department','nc_a5um__vacancy.department_id','=','nc_a5um__department.uniq_id')->select('nc_a5um__vacancy.*','nc_a5um__department.title as d_title','nc_a5um__department.slug as d_slug')->orderBy('created_at','desc')->get();
             return response()->json($response,200)->header('Content-type','application/json')->getContent();
         } catch (\Throwable $e) {
             throw new \Exception($e);
@@ -38,9 +38,9 @@ class VacancyAction extends AdminMethods
                 'respons_punkt' => $request->input('respons_punkt'),
                 'extra_info' => $request->input('extra_info'),
                 'slug' => str_replace('"','',$this->slugOlustur($request->input('title'))),
-                'department_slug' => $this->slugOlustur($request->input('department'))
+                // 'department_slug' => $this->slugOlustur($request->input('department'))
             ]);
-            return response()->json("Created",201);
+            return response()->json("Created",200);
         } catch (\Throwable $e) {
             throw new \Exception($e);
         }
@@ -63,7 +63,7 @@ class VacancyAction extends AdminMethods
             $uniq_id = $request->input('uniq_id');
             $response = $this->vacancyModel->where("uniq_id",$uniq_id)->update([
                 'title' => $request['title'],
-                'department' => $request->input('department'),
+                // 'department' => $request->input('department'),
                 'date_duration' => $request->input('date_duration'),
                 'extra_info' => $request->input('extra_info'),
             ]);

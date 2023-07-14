@@ -17,7 +17,7 @@ class CampaignRequestAction extends \App\Abstracts\AdminMethods
     public function getData()
     {
         try {
-            $data = $this->campaignRequest->all();
+            $data = $this->campaignRequest::orderBy('id', 'DESC')->get();
             return response()->json($data);
         } catch (\Throwable $e) {
             throw new Exception($e);

@@ -24,7 +24,6 @@ class DepartmentAction extends \App\Abstracts\AdminMethods
         } catch (\Throwable $e) {
             throw new \Exception($e);
         }
-        // TODO: Implement getData() method.
     }
 
     public function postData(Request $request)

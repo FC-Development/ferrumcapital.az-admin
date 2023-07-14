@@ -1,10 +1,11 @@
 let GetCampaignRequests = new gridjs.Grid({
     columns: [
         { name: "Ad,Soyad" },
-        { name: "Finkod", id: "fincode" },
-        { name: "Mobil nömrə"},
+        { name: "Finkod", id: "fincode", width: '155px' },
+        { name: "Mobil nömrə", width: '200px'},
         { name: "Kampaniya mənbəsi" },
-        { name: "Status" }
+        { name: "Status", width: '155px' },
+        { name: "Mwraciət tarixi" }
     ],
     sort: true,
     pagination: {
@@ -16,10 +17,9 @@ let GetCampaignRequests = new gridjs.Grid({
             `${card.name} ${card.surname}`,
             card.finCode,
             card.mobilePhone,
-            card.campaignSource,
-            gridjs.html(`
-                    ${statusBtnRequest(card.status,card.uniq_id,'changeRequestStatus')}
-                     `)
+            gridjs.html(`${card.campaignSource}`),
+            gridjs.html(`${statusBtnRequest(card.status,card.uniq_id,'changeRequestStatus')}`),
+            gridjs.html(`${moment(card.created_at).lang("az").format("LLL")}`),
         ]),
     }
 })

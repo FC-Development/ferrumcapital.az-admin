@@ -72,14 +72,14 @@ $(document).on('submit', '#Vacancy1Form', function (e) {
         respons_punkt: JSON.stringify(tmp__data.respons_punkt),
         extra_info: JSON.stringify({ "Department": tmp__data.department, 'salary': tmp__data.salary, 'time': tmp__data.time_duration, 'deadline': tmp__data.deadline, 'requirement': tmp__data.special_req }),
     },
-        function (data) {
-            if (data === "Successfully") {
-                VacancyTable.forceRender();
-                Swal.fire('Yeniləndi', '', 'success');
-                $("#NewVacancyModal").modal("hide");
-                $("#VacancyForm")[0].reset()
-            }
-        });
+    function (data, status) {
+        if (status === "success") {
+            VacancyTable.forceRender();
+            Swal.fire('Yeniləndi', '', 'success');
+            $("#NewVacancyModal").modal("hide");
+            $("#VacancyForm")[0].reset()
+        }
+    });
 })
 if (top.location.pathname === '/dashboard/vacancy') {
     $.ajax({

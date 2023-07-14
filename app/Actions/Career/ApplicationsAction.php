@@ -21,7 +21,7 @@ class ApplicationsAction extends AdminMethods
 
     public function getData()
     {
-        $response= $this->application::all();
+        $response= $this->application->orderBy('created_at','desc')->get();
         return $response;
     }
 

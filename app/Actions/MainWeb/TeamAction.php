@@ -45,9 +45,7 @@ class TeamAction extends AdminMethods
        }
        public function postData(Request $request)
        {
-              $response= Http::withHeaders(
-                     ['xc-auth' => env('NOCODB_AUTH')]
-              )->post("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/team",[
+              $response= $this->team->create([
                      'uniq_id' => Str::random(6),
                      'fullname' => json_encode(['az'=>$request['fullname_az'],'en'=>$request['fullname_en']]),
                      'title' => json_encode(['az'=>$request['title_az'],'en'=>$request['title_en']]),
@@ -94,36 +92,25 @@ class TeamAction extends AdminMethods
        public function deleteData(Request $request)
        {
               $uniq_id = $request->input('id');
-              $get_data=Http::withHeaders(
-                     ['xc-auth' => env('NOCODB_AUTH')]
-                     )
-                     ->get("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/team/?where=(uniq_id,like,".$uniq_id.")");
-              $id=$get_data[0]['id'];
+              $get_data=$this->team->where('uniq_id',$uniq_id)->get();
               $cover__ =explode("/",$get_data[0]['cover_photo'])[4];
               $another_image__ =explode("/",$get_data[0]['another_image'])[4];
               $another_image_2__ =explode("/",$get_data[0]['another_image_2'])[4];
               Storage::disk('s3')->delete($cover__);
               Storage::disk('main')->delete("team/".$another_image__);
               Storage::disk('main')->delete("team/".$another_image_2__);
-              $response=Http::withHeaders(
-                     ['xc-auth' => env('NOCODB_AUTH')]
-              )->delete("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/team/".$id);
-              return $response->json();
+              $response=$this->team->where('uniq_id',$uniq_id)->delete();
+              return $response;
        }
        public function updateData(Request $request)
        {
               $uniq_id = $request->input('uniq_id');
-              $get_data = Http::withHeaders([
-                     'xc-auth' => env('NOCODB_AUTH'),
-                     'Content-Type' => 'application/json'
-                 ])->get("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/team/?where=(uniq_id,like,".$uniq_id.")");
-              $id = $get_data[0]['id'];
+              $get_data = $this->team->where('uniq_id',$uniq_id)->get();
+              
               $updatedCover = $this->uploadAvatar($request,'cover_photo',$get_data[0]['cover_photo'],'team');
               $updatedAddition = $this->uploadAvatar($request,'another_image',$get_data[0]['another_image'],'team');
               $updatedAddition_2 = $this->uploadAvatar($request,'another_image_2',$get_data[0]['another_image_2'],'team');
-              $response = Http::withHeaders(
-                     ['xc-auth' => env("NOCODB_AUTH")]
-              )->put("http://172.16.10.132:3574/nc/ferrumcapital_main_a5um/api/v1/team/$id",[
+              $response = $this->team->where('uniq_id',$uniq_id)->update([
                      'fullname' => json_encode(['az'=>$request['fullname_az'],'en'=>$request['fullname_en']]),
                     'title' => json_encode(['az'=>$request['title_az'],'en'=>$request['title_en']]),
                      'linkedin' => $request['linkedin'],

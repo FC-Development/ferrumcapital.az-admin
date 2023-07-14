@@ -17,6 +17,7 @@ let CampaignListTable = new gridjs.Grid({
         limit: 10
     },
     sort: true,
+    search: true,
     server: {
         url: "/dashboard/csapi/campaigns/list",
         then: data => data.map(card => [

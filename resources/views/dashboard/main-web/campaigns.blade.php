@@ -40,14 +40,14 @@
                         <div class="col-md-6 mb-3">
                             <span class="f-sm form-label font-weight-bold text-muted text-uppercase">Şəkil</span>
                             <div class="custom-file mt-8">
-                                <input type="file" class="custom-file-input" name="image_campaign_input" accept="image/png, image/jpeg">
+                                <input type="file" class="custom-file-input" name="image_campaign_input" accept="image/png, image/jpeg" required>
                                 <label for="image" class="custom-file-label">Seçim edin</label>
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <span class="f-sm form-label font-weight-bold text-muted text-uppercase">Mobil Şəkil</span>
                             <div class="custom-file mt-8">
-                                <input type="file" class="custom-file-input" name="image_mobile_campaign_input" accept="image/png, image/jpeg">
+                                <input type="file" class="custom-file-input" name="image_mobile_campaign_input" accept="image/png, image/jpeg" required>
                                 <label for="image" class="custom-file-label">Seçim edin</label>
                             </div>
                         </div>

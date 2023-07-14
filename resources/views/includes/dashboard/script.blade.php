@@ -57,6 +57,19 @@
         <script src="/dashboard_/assets/js/main-web/admin_user.js?{{date(now())}}"></script>
         {{-- Brand --}}
         <script src="/dashboard_/assets/js/main-web/admin_brand.js"></script>
+
+        {{-- Categories --}}
+        <script src="/dashboard_/assets/js/main-web/categories.js?{{date(now())}}"></script>
+
+        {{-- Partners --}}
+        <script src="/dashboard_/assets/js/main-web/partners.js?{{date(now())}}"></script>
+
+        {{-- Partner Address --}}
+        <script src="/dashboard_/assets/js/main-web/partner_address.js?{{date(now())}}"></script>
+
+        {{-- Campaign Category --}}
+        <script src="/dashboard_/assets/js/main-web/campaign_category.js?{{date(now())}}"></script>
+
         {{-- Team --}}
         <script src="/dashboard_/assets/js/main-web/admin_team.js?{{date(now())}}"></script>
         {{-- Statistik Career --}}

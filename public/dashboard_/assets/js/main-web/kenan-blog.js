@@ -23,10 +23,10 @@ function statusBtn(data, uniq_id, className) {
 makeSideBar();
 let GetBlog = new gridjs.Grid({
        columns: [
-              { name: "Başlıq", id: "title" },
-              { name: 'Yaradılma tarixi', id: "created_at" },
-              { name: 'Status', id: "status" },
-              { name: "Əməliyyat" }
+              { name: "Başlıq", id: "title", sort: false },
+              { name: 'Yaradılma tarixi', id: "created_at", sort: false },
+              { name: 'Status', id: "status", sort: false },
+              { name: "Əməliyyat", sort: false }
        ],
        sort: true,
        pagination: {
@@ -36,7 +36,7 @@ let GetBlog = new gridjs.Grid({
               url: "/dashboard/csapi/blog/get",
               then: data => data.map(card => [
                      card.title,
-                     card.create_time,
+                     gridjs.html(moment(card.created_at).format("L")),
                      gridjs.html(statusBtn(card.status, card.uniq_id, "blogStatusBTN")),
                      gridjs.html(`
                      <div class='d-flex'>
