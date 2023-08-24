@@ -5,7 +5,7 @@ let GetCampaignRequests = new gridjs.Grid({
         { name: "Mobil nömrə", width: '200px'},
         { name: "Kampaniya mənbəsi" },
         { name: "Status", width: '155px' },
-        { name: "Mwraciət tarixi" }
+        { name: "Müraciət tarixi" }
     ],
     sort: true,
     pagination: {
