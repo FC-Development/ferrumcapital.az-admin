@@ -95,3 +95,5 @@
         <script src="/dashboard_/assets/js/campaigns.js?{{date(now())}}"></script>
         {{-- Campaign request --}}
         <script src="/dashboard_/assets/js/main-web/admin_campaignRequest.js?{{date(now())}}"></script>
+        {{-- Limit request --}}
+        <script src="/dashboard_/assets/js/main-web/admin_limit-request.js?{{date(now())}}"></script>

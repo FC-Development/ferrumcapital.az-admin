@@ -35,6 +35,7 @@ use App\Http\Controllers\MainWeb\CampaignsController;
 use App\Http\Controllers\MainWeb\CategoriesController;
 use App\Http\Controllers\MainWeb\PartnerAddressController;
 use App\Http\Controllers\MainWeb\PartnersController;
+use App\Http\Controllers\MainWeb\LimitRequestController;
 use App\Http\Middleware\SetIpAddress;
 
 Route::prefix('dashboard')->group(function () {
@@ -47,6 +48,9 @@ Route::prefix('dashboard')->group(function () {
     Route::post('/login', [UserController::class, 'store'])->name('login');
     Route::middleware(['auth'])->group(function () {
         Route::post('/logout', [UserController::class, 'destroy'])->name('logout');
+
+        //limit-request.php
+        Route::get("/limit-request-list-all", [LimitRequestController::class, 'limitPage'])->name('admin.limit-request');
         /** hr */
         Route::get("/career_blog", [CorpBlogController::class, 'blogPage'])->name('admin.career_blog');
         Route::get("/vacancy", [VacancyController::class, 'vacancyPage'])->name('admin.vacancy');
