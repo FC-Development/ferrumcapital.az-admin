@@ -14,7 +14,7 @@ let GetCampaignRequests = new gridjs.Grid({
     server: {
         url: "/dashboard/csapi/campaign/request/list",
         then: data => data.map(card => [
-            `${card.name} ${card.surname}`,
+            `${card.name} ${card.surname ? card.surname : ''}`,
             card.finCode,
             card.mobilePhone,
             gridjs.html(`${card.campaignSource}`),

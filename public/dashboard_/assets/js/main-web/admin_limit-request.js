@@ -4,6 +4,7 @@ let gridLimitRequest = new gridjs.Grid({
                      {name:"FİN kod"},
                      {name:"Telefon nömrəsi"},
                      {name:"Tələb edilən limit məbləği"},
+                     {name:"Əlavə edilən qeyd"},
                      {name:'Müraciət tarixi'},
                      {name:"Əməliyyat"}
               ],
@@ -18,6 +19,7 @@ let gridLimitRequest = new gridjs.Grid({
                      card.fin_code,
                      card.phone_number,
                      card.new_limit_amount,
+                     card.notes,
                      moment(card.created_at).lang('az').format('LLL'),
                      gridjs.html(`
                      <div class='d-flex'>

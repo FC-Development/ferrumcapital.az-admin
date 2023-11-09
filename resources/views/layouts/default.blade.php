@@ -13,9 +13,9 @@
         <div class="iq-sidebar sidebar-default sidebar-light">
             <div class="iq-sidebar-logo d-flex align-items-end justify-content-between">
                 <a href="/dashboard" class="header-logo">
-                    <img src="https://media.ferrumcapital.az/site/apple-icon.png" class="img-fluid light-logo"
+                    <img src="https://cdn.ferrumcapital.az/site/apple-icon.png" class="img-fluid light-logo"
                         alt="logo" style="height: 30px;">
-                    <img src="https://media.ferrumcapital.az/site/apple-icon.png"
+                    <img src="https://cdn.ferrumcapital.az/site/apple-icon.png"
                         class="img-fluid d-none sidebar-light-img" alt="logo">
                     <span>Admin&nbsp;Panel</span>
                 </a>
