@@ -1,6 +1,6 @@
 let gridLimitRequest = new gridjs.Grid({
        columns:[
-                     {name:"ASA"},
+                     {name:"Ad Soyad"},
                      {name:"FİN kod"},
                      {name:"Telefon nömrəsi"},
                      {name:"Tələb edilən limit məbləği"},
