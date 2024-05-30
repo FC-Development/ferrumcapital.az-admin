@@ -7,6 +7,7 @@ use \App\Actions\MainWeb\PartnersAction;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 use App\Http\Requests\MainWeb\PartnersRequest;
+use Illuminate\Support\Facades\DB;
 
 class PartnersController extends Controller
 {
@@ -49,5 +50,15 @@ class PartnersController extends Controller
         $updatePartners = new PartnersAction();
         $partners = $updatePartners->updateData($request);
         return response("Success",200);
+    }
+
+    public function PkCampaignReq()
+    {
+        return  view('dashboard.main-web.pkcampaignreq');
+    }
+    public function getPKCampaignReqList()
+    {
+        $q = DB::table('nc_a5um__pk_campaign_request')->orderBy('created_at', 'desc')->get();
+        return response($q);
     }
 }
