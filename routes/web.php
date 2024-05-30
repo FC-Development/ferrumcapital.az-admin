@@ -90,6 +90,8 @@ Route::prefix('dashboard')->group(function () {
         Route::get("/campaign_category", [CampaignCategoryController::class, 'CampaignCategoryPage'])->name('admin.campaign_category');
 
         Route::get("/team", [TeamController::class, 'teamPage'])->name('admin.team');
+        Route::get("/pk-campaign-request", [PartnersController::class, 'PkCampaignReq'])->name('admin.pkcampaignreq');
+
         Route::prefix('csapi')->group(function () {
             Route::get("/get/department/all", [DepartmentController::class, 'getDepartment']);
             Route::post("/create/department", [DepartmentController::class, 'createDepartment']);
@@ -286,6 +288,9 @@ Route::prefix('dashboard')->group(function () {
             Route::post("/team/find", [TeamController::class, 'findTeam']);
             Route::post("/team/update", [TeamController::class, 'updateTeam']);
             Route::post("/team/status/update/{id}", [TeamController::class, 'updateTeamStatus']);
+
+            //Partner Request ext
+            Route::get("/get/partner_campaign_request", [PartnersController::class, 'getPKCampaignReqList']);
         });
     });
 });
