@@ -28,6 +28,14 @@
                     @csrf
                     <div class="row">
                         <div class="col-md-12 mb-3">
+                            <div class="partnerSelectForCampaign">
+                                <label for="campaign_partner_input" class="f-sm form-label font-weight-bold text-muted text-uppercase">Partnyor</label>
+                                <select class="form-control" id="campaign_partner_input" name="campaign_partner_input" require>
+                                    <option value="Seçim edilməyib" selected>Seçim edilməyib</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
                             <label
                             for="campaign_title_input"
                             class="f-sm form-label font-weight-bold text-muted text-uppercase">Kampaniya başlıqı</label>

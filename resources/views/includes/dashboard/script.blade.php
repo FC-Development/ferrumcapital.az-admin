@@ -97,3 +97,4 @@
         <script src="/dashboard_/assets/js/main-web/admin_campaignRequest.js?{{date(now())}}"></script>
         {{-- Limit request --}}
         <script src="/dashboard_/assets/js/main-web/admin_limit-request.js?{{date(now())}}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>

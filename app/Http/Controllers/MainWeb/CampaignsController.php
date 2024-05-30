@@ -10,6 +10,7 @@ use Exception;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\MainWeb\StoreCampaignsRequest;
 
+
 class CampaignsController extends Controller
 {
     private $campaigns;
@@ -53,5 +54,10 @@ class CampaignsController extends Controller
     {
         $campaignRes=$this->campaigns->findData($request);
         return $campaignRes;
+    }
+    public function getPartnerList()
+    {
+        $res = DB::table('nc_1gn9__our_partners')->get();
+        return response($res);
     }
 }

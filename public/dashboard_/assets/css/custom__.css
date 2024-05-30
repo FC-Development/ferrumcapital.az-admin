@@ -1,15 +1,23 @@
 .changingOnAddressBox button:first-child {
     border-bottom-right-radius: 0px;
 }
+
 .changingOnAddressBox button:last-child {
     border-top-right-radius: 0px;
 }
+
 .changingOnAddressBox button {
     height: 23px;
     padding: 0px 21px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
 }
+
 .changingOnAddressBox button svg {
     margin-top: -5px;
+}
+
+.partnerSelectForCampaign {
+    display: flex;
+    flex-direction: column;
 }

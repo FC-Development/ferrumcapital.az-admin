@@ -1,5 +1,19 @@
 $(".addNewCampaignBTN").click(function() {
     $("#CampaignAddModal").modal("show")
+    $("#campaign_partner_input").empty();
+    //optionlarin hamisi onceden temizlenir
+    $.ajax({
+        type: "GET",
+        url: `/dashboard/csapi/campaigns/partner/list`,
+        success: (data) => {
+            console.log(data)
+            data.forEach( (val, key) => {
+                $("#campaign_partner_input").append(`<option value="${val.id}">${val.name}</option>`)
+            });
+            var $disabledResults = $("#campaign_partner_input");
+            $disabledResults.select2();
+        }
+    })
 })
 
 var CampaignModalEditor = CKEDITOR.replace('CampaignModalEditor_input');

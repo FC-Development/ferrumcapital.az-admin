@@ -26,7 +26,7 @@ use App\Http\Controllers\MainWeb\BrandSecController;
 use App\Http\Controllers\MainWeb\PartnerApplyController;
 use App\Http\Controllers\MainWeb\BusinessApplyController;
 use App\Http\Controllers\MainWeb\PartnerBusinessController;
-use  App\Http\Controllers\MainWeb\BrandController;
+use App\Http\Controllers\MainWeb\BrandController;
 use App\Http\Controllers\MainWeb\CampaignCategoryController;
 use App\Http\Controllers\MainWeb\TeamController;
 use App\Http\Controllers\MainWeb\MkSliderController;
@@ -38,10 +38,11 @@ use App\Http\Controllers\MainWeb\PartnersController;
 use App\Http\Controllers\MainWeb\LimitRequestController;
 use App\Http\Middleware\SetIpAddress;
 
+
+Route::get('/', function () {
+    return redirect('/dashboard/campaigns');
+});
 Route::prefix('dashboard')->group(function () {
-    Route::get('/', function () {
-        return redirect('/dashboard/campaigns');
-    });
     Route::get('/main', function () {
         return view('includes.dashboard.welcome');
     })->name('login_page')->middleware('guest');
@@ -158,6 +159,7 @@ Route::prefix('dashboard')->group(function () {
 
             /** Campaigns **/
             Route::get("/campaigns/list", [CampaignsController::class, 'getCampaigns']);
+            Route::get("/campaigns/partner/list", [CampaignsController::class, 'getPartnerList']);
             Route::post("/campaigns/new", [CampaignsController::class, 'postCampaign']);
             Route::post("/campaigns/delete/{id}", [CampaignsController::class, 'deleteCampaign']);
             /** Campaigns request */
