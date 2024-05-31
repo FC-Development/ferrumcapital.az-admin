@@ -25,7 +25,7 @@ class CampaignsAction extends AdminMethods
         public function getData()
        {
            try {
-               $response = $this->campaigns->where('status', '=', 1)->get();
+               $response = $this->campaigns->where('status', '=', 1)->orderBy('id', 'desc')->get();
                return response()->json($response);
            } catch (Throwable $e)  {
                throw new Exception($e);
