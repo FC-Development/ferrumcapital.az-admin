@@ -16,7 +16,9 @@ $(".addNewCampaignBTN").click(function() {
     })
 })
 
-var CampaignModalEditor = CKEDITOR.replace('CampaignModalEditor_input');
+if(window.location.pathname === '/dashboard/campaigns') {
+    var CampaignModalEditor = CKEDITOR.replace('CampaignModalEditor_input');
+}
 
 let CampaignListTable = new gridjs.Grid({
     columns: [
