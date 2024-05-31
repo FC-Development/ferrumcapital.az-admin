@@ -8,7 +8,7 @@ $(".addNewCampaignBTN").click(function() {
         success: (data) => {
             console.log(data)
             data.forEach( (val, key) => {
-                $("#campaign_partner_input").append(`<option value="${val.id}">${val.name}</option>`)
+                $("#campaign_partner_input").append(`<option value="${val.uniq_id}" value-name="${val.name}">${val.name}</option>`)
             });
             var $disabledResults = $("#campaign_partner_input");
             $disabledResults.select2();
@@ -83,6 +83,7 @@ if(top.location.pathname === '/dashboard/campaigns') {
         e.preventDefault();
         var fd__25 = new FormData(document.getElementById('NewCampaignForm'));
         fd__25.append('CampaignModalEditor_input', CampaignModalEditor.getData());
+        fd__25.append('CampaignPartnerModalEditor_input', $("#campaign_partner_input").find(":selected").attr('value'));
         $("#loading").show()
         $.ajax({
             type: "POST",

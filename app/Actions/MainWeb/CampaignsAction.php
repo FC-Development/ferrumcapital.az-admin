@@ -47,7 +47,8 @@ class CampaignsAction extends AdminMethods
                    'campaign_mobile_image' => $this->uploadAvatar($request,'image_mobile_campaign_input','','campaign_images'),
                    'description' => $request->input('CampaignModalEditor_input'),
                    'slug' => $slug,
-                   "end_duration" => $request->input('campaign_lastdate_input')
+                   "end_duration" => $request->input('campaign_lastdate_input'),
+                   "partner_id" => $request->input('CampaignPartnerModalEditor_input')
                ]);
                $q = DB::table('nc_1gn9__campaigns')->insert([
                     "uniq_id" => $rand_uuid,
@@ -58,7 +59,8 @@ class CampaignsAction extends AdminMethods
                     "description" => $request->input('CampaignModalEditor_input'),
                     "status" => "true",
                     "slug" => $slug,
-                    "mobile" => 1
+                    "mobile" => 1,
+                    "partner_id" => $request->input('CampaignPartnerModalEditor_input')
 
                 ]);
                return response()->json($response);
