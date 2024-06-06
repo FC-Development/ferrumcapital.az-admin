@@ -11,7 +11,7 @@ class Brands extends Model
     protected $hidden = ['id'];
     protected $table = 'nc_a5um__products';
     public $incrementing= false; 
-    protected $fillable =['status',"uniq_id","status","name","phone","adress","sector_id","city","website","logo","links"];
+    protected $fillable =['status',"uniq_id","status","name","phone","adress","sector_id","city","website","logo","links", "slider_img_path", "slider_img_status"];
     /**
          * Indicates if the model should be timestamped.
          *

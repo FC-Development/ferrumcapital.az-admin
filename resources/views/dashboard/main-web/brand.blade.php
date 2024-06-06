@@ -150,6 +150,13 @@
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
+                            <span class="f-sm form-label font-weight-bold text-muted text-uppercase">Slider image</span>
+                            <div class="custom-file mt-8">
+                                <input type="file" class="custom-file-input" id="BrandSliderImage" name="BrandSliderImage">
+                                <label for="image" class="custom-file-label">Seçim edin</label>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
                             <label for="" class="f-sm form-label font-weight-bold text-muted text-uppercase">Phone</label>
                             <input type="text" class="form-control border border-light" id="phone" name="phone"
                                 minlength="2" >
