@@ -1,13 +1,14 @@
 let GetBrand = new gridjs.Grid({
     columns: [
-        { name: "Logo", id: "logo", width: '200px' },
+        { name: "Logo", id: "logo", width: '100px' },
         { name: "Name", id: "name" },
         { name: 'Phone', id: "phone" },
         { name: 'City', id: "city", width: '120px' },
         { name: 'Status', id: "status", width: '120px' },
-        { name: "Slider" },,
+        { name: "Slider", width: '100px'},
         { name: "Slider şəkil" },
-        { name: "Əməliyyat" }
+        { name: "Slider şəkil mobil" },
+        { name: "---", width: '130px' }
     ],
     sort: true,
     pagination: {
@@ -17,13 +18,14 @@ let GetBrand = new gridjs.Grid({
     server: {
         url: "/dashboard/csapi/brand/get",
         then: data => data.map(card => [
-            gridjs.html(`<a href="${card.logo}" target="_blank">link</a>`),
+            gridjs.html(`<a href="${card.logo}" target="_blank">&#128279;</a>`),
             card.name,
             card.phone,
             card.city,
             gridjs.html(statusBtn(card.status, card.uniq_id, "brandStatusBTN")),
             gridjs.html(card.slider_img_status === "true" ? '&#9989;': '&#10060'),
-            gridjs.html(card.slider_img_status === "true" ? `<a href="${card.slider_img_path}" target="_blank">&#128279;</a>` : '---' ),
+            gridjs.html(card.slider_img_status === "true" ? `<a href="${card.slider_img_path}" target="_blank">&#128279;</a>` : '*' ),
+            gridjs.html(card.slider_img_status === "true" ? `<a href="${card.slider_img_m_path}" target="_blank">&#128279;</a>` : '*' ),
             gridjs.html(`
                      <div class='d-flex'>
                             <button class="btn btn-sm update-brand" data-uniq-id="${card.uniq_id}">
