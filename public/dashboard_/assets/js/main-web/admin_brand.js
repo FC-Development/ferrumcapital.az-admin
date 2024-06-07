@@ -198,6 +198,7 @@ $(document).on('click', '.update-brand', function() {
             let parse_data = (data)[0];
             let additional_address = JSON.parse(parse_data.additional_address);
             $("#BrendModal").modal("show");
+            $('#DisplayInSlider').prop('checked', parse_data.slider_img_status);
             $(`#BrendUpdate input[id='name']`).val(parse_data.name)
             $(`#BrendUpdate input[id='phone']`).val(parse_data.phone)
             $(`#BrendUpdate input[id='adress']`).val(parse_data.adress)
@@ -237,7 +238,9 @@ $(document).on('click', '.update-brand', function() {
 })
 $(document).on('submit', '#BrendUpdate', function(e) {
     e.preventDefault();
+    $("#loading").show()
     var fd__ = new FormData(document.getElementById('BrendUpdate'));
+    fd__.append('DisplayInSlider', $('#DisplayInSlider').is(':checked') ? true : false);
    /* let additional_address = [];
     $(".additionalAddressEdit").each((k,v) =>{ 
         additional_address.push($(v).find("textarea").val())
@@ -253,13 +256,15 @@ $(document).on('submit', '#BrendUpdate', function(e) {
         data: fd__,
         success: function(data) {
             console.log(data)
-            Swal.fire(
-                'Uğurla yeniləndi!',
-                '',
-                'success'
-            )
+            Swal.fire('Uğurla yeniləndi!', '', 'success')
             GetBrand.forceRender();
-        }
+            $("#loading").hide()
+        },
+        error: (resp) => {
+            console.log(resp.responseJSON)
+            Swal.fire('Xəta', `${resp.responseJSON}`, 'error')
+            $("#loading").hide()
+        },
     })
 })
 $(document).on('click', '.brandStatusBTN', function() {

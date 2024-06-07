@@ -214,9 +214,7 @@
                     </div>
                     <div class="row mt-4" style="float: right;">
                         <div class="col-lg-12">
-                            <button type="submit" class="btn btn-primary" id="add-cat">
-                                Əlavə et
-                            </button>
+                            <button type="submit" class="btn btn-primary" id="add-cat">Yenilə</button>
                         </div>
                     </div>
                 </form>

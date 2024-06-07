@@ -35,7 +35,10 @@ class BrandAction extends AdminMethods
                             'phone' => $value['phone'],
                             'status' => $value['status'],
                             "website" => $value['website'],
-                            "additional_address" => $value['additional_address']
+                            "additional_address" => $value['additional_address'],
+                            "slider_img_status" => $value['slider_img_status'],
+                            "slider_img_path" => $value['slider_img_path'],
+                            "slider_img_m_path" => $value['slider_img_m_path']
                      ];
                      array_push($res_arr,$tmp__);
               }
@@ -65,6 +68,9 @@ class BrandAction extends AdminMethods
               $get_data = Brands::where('uniq_id',$uniq_id)->get();
 
               $updatedLogo = $this->uploadAvatar($request,'logo',$get_data[0]['logo'],'brand_logo');
+              $updatedSliderImg = $this->uploadAvatar($request,'BrandSliderImage',$get_data[0]['slider_img_path'],'brand_slider');
+              $updatedSliderImgM = $this->uploadAvatar($request,'BrandSliderMImage',$get_data[0]['slider_img_m_path'],'brand_slider');
+              //uploadAvatar(Request $request,$img_name,$old_value,$path)
               $response = Brands::where('uniq_id',$uniq_id)->update([
                      'name' => $request['name'],
                      'sector_id' => $request['sector_id'],
@@ -73,7 +79,10 @@ class BrandAction extends AdminMethods
                      'links' =>\json_encode(['ig' => $request->input('ig'),'fb' => $request->input('fb')]),
                      'city' => $request['city'],
                      'logo' => $updatedLogo,
-                     "website" => $request['website']
+                     "website" => $request['website'],
+                     "slider_img_path" => $updatedSliderImg,
+                     "slider_img_m_path" => $updatedSliderImgM,
+                     "slider_img_status" => $request['DisplayInSlider']
               ]);
 
               return $response;
