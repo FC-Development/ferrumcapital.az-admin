@@ -56,7 +56,7 @@
         <script src="/dashboard_/assets/js/main-web/admin_brand_sec.js"></script>
         <script src="/dashboard_/assets/js/main-web/admin_user.js?{{date(now())}}"></script>
         {{-- Brand --}}
-        <script src="/dashboard_/assets/js/main-web/admin_brand.js"></script>
+        <script src="/dashboard_/assets/js/main-web/admin_brand.js?v={{date(now())}}"></script>
 
         {{-- Categories --}}
         <script src="/dashboard_/assets/js/main-web/categories.js?{{date(now())}}"></script>
