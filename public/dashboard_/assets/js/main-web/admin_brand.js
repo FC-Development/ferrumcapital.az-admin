@@ -242,7 +242,6 @@ $(document).on('click', '.update-brand', function() {
 })
 $(document).on('submit', '#BrendUpdate', function(e) {
     e.preventDefault();
-    var progressBar = $('#progress-bar');
     var uploadStatus = $('#upload-status');
     $(".progress").show();
     var fd__ = new FormData(document.getElementById('BrendUpdate'));
@@ -260,37 +259,22 @@ $(document).on('submit', '#BrendUpdate', function(e) {
         cache: false,
         processData: false,
         data: fd__,
-        xhr: function() {
-            var xhr = new window.XMLHttpRequest();
-            xhr.upload.addEventListener('progress', function(evt) {
-                if (evt.lengthComputable) {
-                    var percentComplete = Math.round((evt.loaded / evt.total) * 100);
-                    progressBar.css('width', percentComplete + '%').attr('aria-valuenow', percentComplete).text(percentComplete + '%');
-                }
-            }, false);
-            return xhr;
-        },
         beforeSend: function() {
-            progressBar.css('width', '0%').attr('aria-valuenow', 0).text('0%');
             uploadStatus.html('<p class="text-info flashing-dots">Yenilənir</p>');
         },
         success: function(data) {
             console.log(data)
-            progressBar.css('width', '100%').attr('aria-valuenow', 100).text('100%');
             uploadStatus.html('<p class="text-success">Mağaza məlumatları yeniləndi!</p>');
             GetBrand.forceRender();
         },
         error: (resp) => {
-            progressBar.css('width', '0%').attr('aria-valuenow', 0).text('0%');
             uploadStatus.html('<p class="text-danger">Xəta baş verdi bir daha cəhd edin.</p>');
             console.log(resp.responseJSON)
         },
     })
 })
 $('#BrendModal').on('hidden.bs.modal', function () {
-    var progressBar = $('#progress-bar');
     var uploadStatus = $('#upload-status');
-    progressBar.css('width', '0%').attr('aria-valuenow', 0).text('0%');
     uploadStatus.html('');
 });
 $(document).on('click', '.brandStatusBTN', function() {

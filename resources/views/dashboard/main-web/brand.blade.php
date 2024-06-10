@@ -217,9 +217,7 @@
                             <button type="submit" class="btn btn-primary" id="add-cat">Yenilə</button>
                         </div>
                     </div>
-                    <div class="progress mt-3">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="progress-bar">0%</div>
-                    </div>
+                    <span>Qeyd: slider ölçüləri desktop 376x376 <br> mobil 269x210</span>
                     <div id="upload-status" class="mt-2"></div>
                 </form>
             </div>
