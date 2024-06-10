@@ -63,16 +63,11 @@ if (top.location.pathname === '/dashboard/brand') {
     })
     $.ajax({
         type:"get",
-        url:"https://apis.digimall.az/api/Customers/GetRegions",
-        headers: {
-            'Content-Type': 'application/json',
-            'api-key': '790ED398-3C37-4AB8-ADB7-78A4657DF703',
-        },
+        url:"/api/cities/names",
         success: function(data){
-            console.log(data);
             data.forEach(each => {
-                $("#BrendForm #city").append(`<option value="${each.name}">${each.name}</option>`)
-                $("#BrendUpdate #city").append(`<option value="${each.name}">${each.name}</option>`)
+                $("#BrendForm #city").append(`<option value="${each.city_id}">${each.city_name}</option>`)
+                $("#BrendUpdate #city").append(`<option value="${each.city_id}">${each.city_name}</option>`)
             })
         }
     })
