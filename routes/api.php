@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainWeb\MkSliderController;
+use App\Http\Controllers\CityController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,3 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get("/get/FerrumCapital/MusteriKabineti/slider",[MkSliderController::class,'getData']);
+
+//get city names
+Route::get('cities/names', [CityController::class, 'getCityNames']);
