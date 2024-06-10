@@ -217,6 +217,10 @@
                             <button type="submit" class="btn btn-primary" id="add-cat">Yenilə</button>
                         </div>
                     </div>
+                    <div class="progress mt-3">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="progress-bar">0%</div>
+                    </div>
+                    <div id="upload-status" class="mt-2"></div>
                 </form>
             </div>
         </div>
@@ -226,4 +230,51 @@
             width: 100%;
         }
     </style>
+    <style>
+    .progress {
+        display: none;
+        height: 20px;
+        width: 300px;
+        border-radius: 5px;
+        background-color: #f5f5f5;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, .2);
+    }
+
+    .progress-bar {
+        line-height: 30px;
+        color: white;
+        font-weight: bold;
+        transition: width 0.4s ease;
+    }
+
+    #upload-status {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+    .flashing-dots::after {
+        content: '...';
+        animation: dots 1s steps(3, end) infinite;
+    }
+
+    @keyframes dots {
+        0%, 20% {
+            color: rgba(0, 0, 0, 0);
+            text-shadow: .25em 0 0 rgba(0, 0, 0, 0),
+                         .5em 0 0 rgba(0, 0, 0, 0);
+        }
+        40% {
+            color: black;
+            text-shadow: .25em 0 0 rgba(0, 0, 0, 0),
+                         .5em 0 0 rgba(0, 0, 0, 0);
+        }
+        60% {
+            text-shadow: .25em 0 0 black,
+                         .5em 0 0 rgba(0, 0, 0, 0);
+        }
+        80%, 100% {
+            text-shadow: .25em 0 0 black,
+                         .5em 0 0 black;
+        }
+    }
+</style>
 @endsection

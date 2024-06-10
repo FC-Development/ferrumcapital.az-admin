@@ -29,9 +29,10 @@ let GetBrand = new gridjs.Grid({
             gridjs.html(`
                      <div class='d-flex'>
                             <button class="btn btn-sm update-brand" data-uniq-id="${card.uniq_id}">
+                            <span class="flashing-dots" style="display: none;"></span>
                                 <svg xmlns="http://www.w3.org/2000/svg" height="22" class="h-5 w-5" viewBox="0 0 20 20" fill="#8f9fbc">
-                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
-                                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
+                                    <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+                                    <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
                                 </svg>
                             </button>
                             <button class="btn btn-sm delete-brand ml-3" data-uniq-id="${card.uniq_id}">
@@ -184,6 +185,8 @@ $(document).on('click', '.delete-brand', function(e) {
 })
 $(document).on('click', '.update-brand', function() {
     let tmp__ = $(this).attr('data-uniq-id')
+    $(this).children("svg").hide();
+    $(this).children(".flashing-dots").show();
     $(".additionalAddressEdit").remove()
     $(`input[name="uniq_id"]`).val(tmp__);
     $.ajax({
@@ -194,7 +197,8 @@ $(document).on('click', '.update-brand', function() {
             _token: $('meta[name="csrf-token"]').attr('content')
         },
         success: function(data) {
-            console.log((data))
+            $(".update-brand svg").show();
+            $(".flashing-dots").hide();
             let parse_data = (data)[0];
             let additional_address = JSON.parse(parse_data.additional_address);
             $("#BrendModal").modal("show");
@@ -238,7 +242,9 @@ $(document).on('click', '.update-brand', function() {
 })
 $(document).on('submit', '#BrendUpdate', function(e) {
     e.preventDefault();
-    $("#loading").show()
+    var progressBar = $('#progress-bar');
+    var uploadStatus = $('#upload-status');
+    $(".progress").show();
     var fd__ = new FormData(document.getElementById('BrendUpdate'));
     fd__.append('DisplayInSlider', $('#DisplayInSlider').is(':checked') ? true : false);
    /* let additional_address = [];
@@ -254,19 +260,39 @@ $(document).on('submit', '#BrendUpdate', function(e) {
         cache: false,
         processData: false,
         data: fd__,
+        xhr: function() {
+            var xhr = new window.XMLHttpRequest();
+            xhr.upload.addEventListener('progress', function(evt) {
+                if (evt.lengthComputable) {
+                    var percentComplete = Math.round((evt.loaded / evt.total) * 100);
+                    progressBar.css('width', percentComplete + '%').attr('aria-valuenow', percentComplete).text(percentComplete + '%');
+                }
+            }, false);
+            return xhr;
+        },
+        beforeSend: function() {
+            progressBar.css('width', '0%').attr('aria-valuenow', 0).text('0%');
+            uploadStatus.html('<p class="text-info flashing-dots">Yenilənir</p>');
+        },
         success: function(data) {
             console.log(data)
-            Swal.fire('Uğurla yeniləndi!', '', 'success')
+            progressBar.css('width', '100%').attr('aria-valuenow', 100).text('100%');
+            uploadStatus.html('<p class="text-success">Mağaza məlumatları yeniləndi!</p>');
             GetBrand.forceRender();
-            $("#loading").hide()
         },
         error: (resp) => {
+            progressBar.css('width', '0%').attr('aria-valuenow', 0).text('0%');
+            uploadStatus.html('<p class="text-danger">Xəta baş verdi bir daha cəhd edin.</p>');
             console.log(resp.responseJSON)
-            Swal.fire('Xəta', `${resp.responseJSON}`, 'error')
-            $("#loading").hide()
         },
     })
 })
+$('#BrendModal').on('hidden.bs.modal', function () {
+    var progressBar = $('#progress-bar');
+    var uploadStatus = $('#upload-status');
+    progressBar.css('width', '0%').attr('aria-valuenow', 0).text('0%');
+    uploadStatus.html('');
+});
 $(document).on('click', '.brandStatusBTN', function() {
     $("#brandStatusModal").modal("show")
     $(`#updateBrandStatusForm input[name="uniq_id"]`).val($(this).data("uniq-id"));
