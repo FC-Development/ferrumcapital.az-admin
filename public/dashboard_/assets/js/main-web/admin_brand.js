@@ -74,20 +74,20 @@ if (top.location.pathname === '/dashboard/brand') {
         }
     })
 
-    $("#BrendUpdate #city").on("change", function(){
+    $("#BrendUpdate #cityUpdateModal").on("change", function(){
         var cityId__ = $(this).val();
-        $("#BrendUpdate #region").html(''); //clear options before select
-        $("#region").siblings(".form-label").children("span").eq(0).hide();
-        $("#region").siblings(".form-label").children("span").eq(1).show();
+        $("#BrendUpdate #regionUpdateModal").html(''); //clear options before select
+        $("#regionUpdateModal").siblings(".form-label").children("span").eq(0).hide();
+        $("#regionUpdateModal").siblings(".form-label").children("span").eq(1).show();
         $.ajax({
             type: "get",
             url: `/api/regions/${cityId__}`,
             success: function(data) {
                 data.forEach(each => {
-                    $("#BrendUpdate #region").append(`<option value="${each.region_id}">${each.region_name}</option>`)
+                    $("#BrendUpdate #regionUpdateModal").append(`<option value="${each.region_id}">${each.region_name}</option>`)
                 });
-                $("#region").siblings(".form-label").children("span").eq(0).show();
-                $("#region").siblings(".form-label").children("span").eq(1).hide();
+                $("#regionUpdateModal").siblings(".form-label").children("span").eq(0).show();
+                $("#regionUpdateModal").siblings(".form-label").children("span").eq(1).hide();
             }
         })
     });

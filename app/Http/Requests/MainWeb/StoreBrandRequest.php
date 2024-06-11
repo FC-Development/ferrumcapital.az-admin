@@ -29,8 +29,7 @@ class StoreBrandRequest extends FormRequest
             'sector_id' => 'required',
             'phone' => 'required|min:3',
             'ig' => 'nullable|url',
-            'fb' => 'nullable|url',
-            'city' => 'required|min:3'
+            'fb' => 'nullable|url'
         ];
     }
 }
