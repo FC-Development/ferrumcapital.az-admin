@@ -220,7 +220,8 @@ $(document).on('click', '.update-brand', function() {
             $(`#BrendUpdate input[id='name']`).val(parse_data.name)
             $(`#BrendUpdate input[id='phone']`).val(parse_data.phone)
             $(`#BrendUpdate input[id='adress']`).val(parse_data.adress)
-            $(`#BrendUpdate input[id='city']`).val(parse_data.city)
+            // $(`#BrendUpdate input[id='city']`).val(parse_data.city) //bu artiq istifade olunmur
+            $(`#BrendUpdate #city option[value="${parse_data.city_id}"]`).prop('selected', true);
             $(`#BrendUpdate input[id='website']`).val(parse_data.website)
             $(`#BrendUpdate input[id='ig']`).val(parse_data.ig)
             $(`#BrendUpdate input[id='fb']`).val(parse_data.fb)
