@@ -71,6 +71,24 @@ if (top.location.pathname === '/dashboard/brand') {
             })
         }
     })
+
+    $("#BrendUpdate #city").on("change", function(){
+        var cityId__ = $(this).val();
+        $("#BrendUpdate #region").html(''); //clear options before select
+        $("#region").siblings(".form-label").children("span").eq(0).hide();
+        $("#region").siblings(".form-label").children("span").eq(1).show();
+        $.ajax({
+            type: "get",
+            url: `/api/regions/${cityId__}`,
+            success: function(data) {
+                data.forEach(each => {
+                    $("#BrendUpdate #region").append(`<option value="${each.region_id}">${each.region_name}</option>`)
+                });
+                $("#region").siblings(".form-label").children("span").eq(0).show();
+                $("#region").siblings(".form-label").children("span").eq(1).hide();
+            }
+        })
+    });
 }
 $(".addNewBrendBTN").click(function() {
     $(".additionalAddress").remove()
@@ -179,7 +197,8 @@ $(document).on('click', '.delete-brand', function(e) {
     })
 })
 $(document).on('click', '.update-brand', function() {
-    let tmp__ = $(this).attr('data-uniq-id')
+    $("#BrendUpdate #region").html(''); //clear region options before opening modal
+    let tmp__ = $(this).attr('data-uniq-id');
     $(this).children("svg").hide();
     $(this).children(".flashing-dots").show();
     $(".additionalAddressEdit").remove()

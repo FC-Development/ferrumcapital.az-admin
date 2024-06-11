@@ -184,7 +184,7 @@
                             <select name="city" class='form-control' id="city"></select>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for="" class="f-sm form-label font-weight-bold text-muted text-uppercase">Region</label>
+                            <label for="" class="f-sm form-label font-weight-bold text-muted text-uppercase"><span>Region</span><span class="flashing-dots"></span></label>
                             <select name="region" class='form-control' id="region"></select>
                         </div>
                         <div class="col-md-3 mb-3">
