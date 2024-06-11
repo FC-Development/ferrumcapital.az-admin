@@ -38,7 +38,9 @@ class BrandAction extends AdminMethods
                             "additional_address" => $value['additional_address'],
                             "slider_img_status" => $value['slider_img_status'],
                             "slider_img_path" => $value['slider_img_path'],
-                            "slider_img_m_path" => $value['slider_img_m_path']
+                            "slider_img_m_path" => $value['slider_img_m_path'],
+                            "city_id" => $value['city_id'],
+                            "region_id" => $value['region_id'],
                      ];
                      array_push($res_arr,$tmp__);
               }
