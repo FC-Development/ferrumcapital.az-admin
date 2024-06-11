@@ -156,14 +156,9 @@
                         <label for="" class="f-sm form-label font-weight-bold text-muted text-uppercase">Phone</label>
                         <input type="text" class="form-control border border-light" id="phone" name="phone" minlength="2">
                     </div>
-                    <div class="col-md-3 mt-4 partnerAddressBoxEdit">
+                    <div class="col-md-3 mt-4">
                         <div class="input-group">
                             <input type="text" class="form-control border border-light" id="adress" placeholder="Adress" name="adress" minlength="2">
-                            {{--<button class="btn btn-primary addNewAddressPartnerEdit" type="button">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="15" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                </button>--}}
                         </div>
                     </div>
                     <div class="col-md-3 mb-3">
