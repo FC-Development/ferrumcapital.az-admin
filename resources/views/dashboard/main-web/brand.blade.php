@@ -163,12 +163,6 @@
                                 <label for="image" class="custom-file-label">Seçim edin</label>
                             </div>
                         </div>
-                        <div class="col-md-3 mb-3 pt-5">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="DisplayInSlider" checked>
-                                <label class="form-check-label" for="DisplayInSlider">Slider də göstər</label>
-                            </div>
-                        </div>
                         <div class="col-md-3 mb-3">
                             <label for="" class="f-sm form-label font-weight-bold text-muted text-uppercase">Phone</label>
                             <input type="text" class="form-control border border-light" id="phone" name="phone"
@@ -190,22 +184,23 @@
                             <select name="city" class='form-control' id="city"></select>
                         </div>
                         <div class="col-md-3 mb-3">
+                            <label for="" class="f-sm form-label font-weight-bold text-muted text-uppercase">Region</label>
+                            <select name="region" class='form-control' id="region"></select>
+                        </div>
+                        <div class="col-md-3 mb-3">
                             <label for=""
                                 class="f-sm form-label font-weight-bold text-muted text-uppercase">Instagram</label>
-                            <input type="url" class="form-control border border-light" id="ig" name="ig" minlength="2"
-                                >
+                            <input type="url" class="form-control border border-light" id="ig" name="ig" minlength="2">
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for=""
                                 class="f-sm form-label font-weight-bold text-muted text-uppercase">Facebook</label>
-                            <input type="text" class="form-control border border-light" id="fb" name="fb" minlength="2"
-                                >
+                            <input type="text" class="form-control border border-light" id="fb" name="fb" minlength="2">
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for=""
                                 class="f-sm form-label font-weight-bold text-muted text-uppercase">Website</label>
-                            <input type="url" class="form-control border border-light" id="website" name="website" minlength="2"
-                                >
+                            <input type="url" class="form-control border border-light" id="website" name="website" minlength="2">
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="" class="f-sm form-label font-weight-bold text-muted text-uppercase">Sektor</label>
@@ -215,6 +210,12 @@
                     <div class="row mt-4" style="float: right;">
                         <div class="col-lg-12">
                             <button type="submit" class="btn btn-primary" id="add-cat">Yenilə</button>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3" style="padding: 0;">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="DisplayInSlider" checked>
+                            <label class="form-check-label" for="DisplayInSlider">Slider də göstər</label>
                         </div>
                     </div>
                     <span>Qeyd: slider ölçüləri desktop 376x376 <br> mobil 269x210</span>
