@@ -13,7 +13,7 @@ class BrandAction extends AdminMethods
 
        public function getData()
        {
-              $response = Brands::all();
+              $response = Brands::with(['city', 'region'])->get();
               return response()->json($response);
        }
        public function findData(Request $request)
@@ -26,7 +26,6 @@ class BrandAction extends AdminMethods
                      $tmp__ = [
                             'uniq_id' => $value['uniq_id'],
                             'adress' => $value['adress'],
-                            'city' => $value['city'],
                             'sector_id' => $value['sector_id'],
                             'ig' => \json_decode($value['links'],true)['ig'],
                             'fb' => \json_decode($value['links'],true)['fb'],
@@ -40,7 +39,7 @@ class BrandAction extends AdminMethods
                             "slider_img_path" => $value['slider_img_path'],
                             "slider_img_m_path" => $value['slider_img_m_path'],
                             "city_id" => $value['city_id'],
-                            "region_id" => $value['region_id'],
+                            "region_id" => $value['region_id']
                      ];
                      array_push($res_arr,$tmp__);
               }

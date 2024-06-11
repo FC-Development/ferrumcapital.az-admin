@@ -11,13 +11,17 @@ class Region extends Model
 
     protected $fillable = [
         'region_id',
-        'region_name',
         'city_id',
+        'region_name',
+        'created_at',
+        'updated_at'
     ];
 
-    /**
-     * Get the city that owns the region.
-     */
+    public function brands()
+    {
+        return $this->hasMany(Brands::class, 'region_id', 'region_id');
+    }
+
     public function city()
     {
         return $this->belongsTo(City::class, 'city_id', 'city_id');
