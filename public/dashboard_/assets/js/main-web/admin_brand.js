@@ -221,7 +221,33 @@ $(document).on('click', '.update-brand', function() {
             $(`#BrendUpdate input[id='phone']`).val(parse_data.phone)
             $(`#BrendUpdate input[id='adress']`).val(parse_data.adress)
             // $(`#BrendUpdate input[id='city']`).val(parse_data.city) //bu artiq istifade olunmur
-            $(`#BrendUpdate #city option[value="${parse_data.city_id}"]`).prop('selected', true);
+            $("#cityUpdateModal").siblings(".form-label").children("span").eq(0).hide();
+            $("#cityUpdateModal").siblings(".form-label").children("span").eq(1).show();
+            $.ajax({
+                type: "get",
+                url: `/api/cities/names`,
+                success: function(data) {
+                    data.forEach(each => {
+                        $("#BrendUpdate #city").append(`<option value="${each.city_id}">${each.city_name}</option>`)
+                    });
+                    $(`#BrendUpdate #city option[value="${parse_data.city_id}"]`).prop('selected', true);
+                    $("#cityUpdateModal").siblings(".form-label").children("span").eq(0).show();
+                    $("#cityUpdateModal").siblings(".form-label").children("span").eq(1).hide();
+                }
+            });
+            $("#region").siblings(".form-label").children("span").eq(0).hide();
+            $("#region").siblings(".form-label").children("span").eq(1).show();
+            $.ajax({
+                type: "get",
+                url: `/api/regions/${parse_data.city_id}`,
+                success: function(data) {
+                    data.forEach(each => {
+                        $("#BrendUpdate #region").append(`<option value="${each.region_id}">${each.region_name}</option>`)
+                    });
+                    $("#region").siblings(".form-label").children("span").eq(0).show();
+                    $("#region").siblings(".form-label").children("span").eq(1).hide();
+                }
+            });
             $(`#BrendUpdate input[id='website']`).val(parse_data.website)
             $(`#BrendUpdate input[id='ig']`).val(parse_data.ig)
             $(`#BrendUpdate input[id='fb']`).val(parse_data.fb)

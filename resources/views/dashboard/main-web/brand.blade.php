@@ -180,8 +180,8 @@
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for="" class="f-sm form-label font-weight-bold text-muted text-uppercase">City</label>
-                            <select name="city" class='form-control' id="city"></select>
+                            <label for="" class="f-sm form-label font-weight-bold text-muted text-uppercase"><span>City</span><span class="flashing-dots"></span></label>
+                            <select name="cityUpdateModal" class='form-control' id="cityUpdateModal"></select>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="" class="f-sm form-label font-weight-bold text-muted text-uppercase"><span>Region</span><span class="flashing-dots"></span></label>
