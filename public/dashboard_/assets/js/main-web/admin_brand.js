@@ -147,6 +147,7 @@ $(document).on('click', '.delete-brand', function(e) {
     })
 })
 $(document).on('click', '.update-brand', function() {
+    $("#BrendUpdate")[0].reset(); //reset form
     $("#BrendUpdate #cityUpdateModal").html(''); //clear city options before opening modal
     $("#BrendUpdate #regionUpdateModal").html(''); //clear region options before opening modal
     $('label[for="BrandSliderImage"]').text('Choose file'); //clear old selected slider image
