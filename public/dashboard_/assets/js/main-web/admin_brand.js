@@ -101,12 +101,6 @@ $(".addNewBrendBTN").click(function() {
 $("#BrendForm").submit(function(e) {
     e.preventDefault();
     var fd = new FormData(document.getElementById("BrendForm"));
-   /* let additional_address = [];
-    $(".additionalAddress").each((k,v) =>{ 
-        additional_address.push($(v).find("input").val())
-    })
-    console.log(additional_address);
-    fd.append("additional_address",JSON.stringify(additional_address)) */
     $.ajax({
         type: "post",
         processData: false,
@@ -171,9 +165,8 @@ $(document).on('click', '.update-brand', function() {
             $(".update-brand svg").show();
             $(".flashing-dots").hide();
             let parse_data = (data)[0];
-            let additional_address = JSON.parse(parse_data.additional_address);
             $("#BrendModal").modal("show");
-            $('#DisplayInSlider').prop('checked', parse_data.slider_img_status);
+            $('#DisplayInSlider').prop('checked', parse_data.slider_img_status === "true" ? true : false);
             $(`#BrendUpdate input[id='name']`).val(parse_data.name)
             $(`#BrendUpdate input[id='phone']`).val(parse_data.phone)
             $(`#BrendUpdate input[id='adress']`).val(parse_data.adress)
