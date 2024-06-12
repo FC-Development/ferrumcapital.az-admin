@@ -149,6 +149,8 @@ $(document).on('click', '.delete-brand', function(e) {
 $(document).on('click', '.update-brand', function() {
     $("#BrendUpdate #cityUpdateModal").html(''); //clear city options before opening modal
     $("#BrendUpdate #regionUpdateModal").html(''); //clear region options before opening modal
+    $('label[for="BrandSliderImage"]').text('Choose file');
+    $('label[for="BrandSliderMImage"]').text('Choose file');
     let tmp__ = $(this).attr('data-uniq-id');
     $(this).children("svg").hide();
     $(this).children(".flashing-dots").show();

@@ -153,14 +153,14 @@
                             <span class="f-sm form-label font-weight-bold text-muted text-uppercase">Slider image</span>
                             <div class="custom-file mt-8">
                                 <input type="file" class="custom-file-input" id="BrandSliderImage" name="BrandSliderImage">
-                                <label for="image" class="custom-file-label">Seçim edin</label>
+                                <label for="BrandSliderImage" class="custom-file-label" >Seçim edin</label>
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <span class="f-sm form-label font-weight-bold text-muted text-uppercase">Slider mobile image</span>
                             <div class="custom-file mt-8">
                                 <input type="file" class="custom-file-input" id="BrandSliderMImage" name="BrandSliderMImage">
-                                <label for="image" class="custom-file-label">Seçim edin</label>
+                                <label for="BrandSliderMImage" class="custom-file-label">Seçim edin</label>
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
