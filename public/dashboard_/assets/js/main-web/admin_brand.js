@@ -1,5 +1,6 @@
 let GetBrand = new gridjs.Grid({
     columns: [
+        { name: "ID", width: '100px' },
         { name: "Logo", id: "logo", width: '100px' },
         { name: "Name", id: "name" },
         { name: 'Phone', id: "phone" },
@@ -19,6 +20,7 @@ let GetBrand = new gridjs.Grid({
     server: {
         url: "/dashboard/csapi/brand/get",
         then: data => data.map(card => [
+            card.id,
             gridjs.html(`<a href="${card.logo}" target="_blank">&#128279;</a>`),
             card.name,
             card.phone,
@@ -175,6 +177,7 @@ $(document).on('click', '.update-brand', function() {
             $(`#BrendUpdate input[id='adress']`).val(parse_data.adress)
             $("#cityUpdateModal").siblings(".form-label").children("span").eq(0).hide();
             $("#cityUpdateModal").siblings(".form-label").children("span").eq(1).show();
+            $("#BrendUpdate #cityUpdateModal").append(`<option value="">Seçim edin</option>`)
             $.ajax({
                 type: "get",
                 url: `/api/cities/names`,
@@ -189,6 +192,7 @@ $(document).on('click', '.update-brand', function() {
             });
             $("#regionUpdateModal").siblings(".form-label").children("span").eq(0).hide();
             $("#regionUpdateModal").siblings(".form-label").children("span").eq(1).show();
+            $("#BrendUpdate #regionUpdateModal").append(`<option value="">Seçim edin</option>`)
             $.ajax({
                 type: "get",
                 url: `/api/regions/${parse_data.city_id}`,

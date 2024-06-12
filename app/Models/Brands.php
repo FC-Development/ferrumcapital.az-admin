@@ -10,8 +10,7 @@ use App\Models\Region;
 class Brands extends Model
 {
     use HasFactory;
-
-    protected $hidden = ['id'];
+    
     protected $table = 'nc_a5um__products';
     public $incrementing = false;
     protected $fillable = [
