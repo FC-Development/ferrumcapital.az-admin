@@ -9,12 +9,11 @@ class Region extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'id'; // assuming 'id' is the primary key
     protected $fillable = [
-        'region_id',
-        'city_id',
-        'region_name',
-        'created_at',
-        'updated_at'
+        'region_id', // unique key
+        'city_id', // foreign key
+        'region_name'
     ];
 
     public function brands()
