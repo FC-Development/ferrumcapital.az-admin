@@ -2,14 +2,21 @@ $(".addNewCampaignBTN").click(function() {
     $("#CampaignAddModal").modal("show")
     $("#campaign_partner_input").empty();
     //optionlarin hamisi onceden temizlenir
+    $("#campaign_partner_input").empty();
     $.ajax({
         type: "GET",
         url: `/dashboard/csapi/campaigns/partner/list`,
         success: (data) => {
-            console.log(data)
-            data.forEach( (val, key) => {
-                $("#campaign_partner_input").append(`<option value="${val.uniq_id}" value-name="${val.name}">${val.name}</option>`)
+            // Sort data alphabetically by the 'name' property
+            data.sort((a, b) => {
+                return a.name.localeCompare(b.name);
             });
+
+            // Append sorted options to the select element
+            data.forEach((val) => {
+                $("#campaign_partner_input").append(`<option value="${val.uniq_id}" value-name="${val.name}">${val.name}</option>`);
+            });
+
             var $disabledResults = $("#campaign_partner_input");
             $disabledResults.select2({
                 dropdownParent: $("#CampaignAddModal"),
@@ -18,7 +25,7 @@ $(".addNewCampaignBTN").click(function() {
                 allowClear: true // Adds a clear button
             });
         }
-    })
+    });
 })
 
 if(window.location.pathname === '/dashboard/campaigns') {
