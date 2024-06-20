@@ -7,20 +7,16 @@ $(".addNewCampaignBTN").click(function() {
         type: "GET",
         url: `/dashboard/csapi/campaigns/partner/list`,
         success: (data) => {
-            data.sort((a, b) => {
-                return a.name.localeCompare(b.name);
-            });
-
+            data.sort((a, b) => { return a.name.localeCompare(b.name); });
             data.forEach((val) => {
                 $("#campaign_partner_input").append(`<option value="${val.uniq_id}" value-name="${val.name}">${val.name}</option>`);
             });
-
             var $disabledResults = $("#campaign_partner_input");
             $disabledResults.select2({
                 dropdownParent: $("#CampaignAddModal"),
-                minimumResultsForSearch: 0, // Forces the search box to always appear
-                placeholder: "Seç", // Adds a placeholder
-                allowClear: true // Adds a clear button
+                minimumResultsForSearch: 0,
+                placeholder: "Seç",
+                allowClear: true
             });
         }
     });
