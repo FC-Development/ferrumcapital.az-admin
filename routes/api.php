@@ -24,3 +24,4 @@ Route::get("/get/FerrumCapital/MusteriKabineti/slider",[MkSliderController::clas
 //get city and region names
 Route::get('cities/names', [CityController::class, 'getCityNames']);
 Route::get('regions/{city_id}', [RegionController::class, 'getRegionsByCityId']);
+
