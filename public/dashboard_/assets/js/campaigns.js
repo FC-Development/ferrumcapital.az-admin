@@ -7,12 +7,10 @@ $(".addNewCampaignBTN").click(function() {
         type: "GET",
         url: `/dashboard/csapi/campaigns/partner/list`,
         success: (data) => {
-            // Sort data alphabetically by the 'name' property
             data.sort((a, b) => {
                 return a.name.localeCompare(b.name);
             });
 
-            // Append sorted options to the select element
             data.forEach((val) => {
                 $("#campaign_partner_input").append(`<option value="${val.uniq_id}" value-name="${val.name}">${val.name}</option>`);
             });
