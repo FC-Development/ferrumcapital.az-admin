@@ -12,6 +12,7 @@ $(".addNewCampaignBTN").click(function() {
             });
             var $disabledResults = $("#campaign_partner_input");
             $disabledResults.select2({
+                dropdownParent: $("#CampaignAddModal"),
                 minimumResultsForSearch: 0, // Forces the search box to always appear
                 placeholder: "Seç", // Adds a placeholder
                 allowClear: true // Adds a clear button
