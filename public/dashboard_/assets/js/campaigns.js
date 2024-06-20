@@ -11,7 +11,9 @@ $(".addNewCampaignBTN").click(function() {
                 $("#campaign_partner_input").append(`<option value="${val.uniq_id}" value-name="${val.name}">${val.name}</option>`)
             });
             var $disabledResults = $("#campaign_partner_input");
-            $disabledResults.select2();
+            $disabledResults.select2({
+                minimumResultsForSearch: 0  // This forces the search box to always appear
+            });
         }
     })
 })
