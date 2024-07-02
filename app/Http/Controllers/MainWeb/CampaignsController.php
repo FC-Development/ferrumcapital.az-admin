@@ -57,7 +57,8 @@ class CampaignsController extends Controller
     }
     public function getPartnerList()
     {
-        $res = DB::table('nc_1gn9__our_partners')->get();
+        //nedir bu bele nc_1gn9__our_partners
+        $res = DB::table('nc_a5um__products')->get();
         return response($res);
     }
 }
