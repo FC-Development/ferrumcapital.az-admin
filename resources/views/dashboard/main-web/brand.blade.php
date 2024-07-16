@@ -19,7 +19,7 @@
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Əlavə et</h5>
+                    <h5 class="modal-title">Yeni partnyor əlavə et</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -46,20 +46,17 @@
                             <input type="text" class="form-control border border-light" id="phone" name="phone"
                                 minlength="2" >
                         </div>
-                        <div class="col-md-3 mt-4 partnerAddressBox">
-                            <div class="input-group">
-                                <input type="text" class="form-control border border-light" id="adress" placeholder="Adress" name="adress"
-                                    minlength="2" >
-                               {{--<button class="btn btn-primary addNewAddressPartner" type="button">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="15" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                </button> --}} 
-                            </div>
+                        <div class="col-md-3 mb-3 partnerAddressBox">
+                            <label for="adress" class="f-sm form-label font-weight-bold text-muted text-uppercase">Adress</label>
+                            <input type="text" class="form-control border border-light" id="adress" name="adress" minlength="2">
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="" class="f-sm form-label font-weight-bold text-muted text-uppercase">City</label>
                             <select name="city" class='form-control' id="city"></select>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="regionBrandNew" class="f-sm form-label font-weight-bold text-muted text-uppercase">Region</label>
+                            <select name="regionBrandNew" class='form-control' id="regionBrandNew"></select>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for=""
