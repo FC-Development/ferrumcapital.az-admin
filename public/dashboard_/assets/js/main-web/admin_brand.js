@@ -110,20 +110,16 @@ $(".addNewBrendBTN").click(function() {
     })
 });
 
-$("#regionForNewPartner").on("change", function(){
+$("#cityForNewPartner").on("change", function(){
     var cityId__ = $(this).val();
-    $("#BrendUpdate #regionUpdateModal").html(''); //clear options before select
-    $("#regionUpdateModal").siblings(".form-label").children("span").eq(0).hide();
-    $("#regionUpdateModal").siblings(".form-label").children("span").eq(1).show();
+    $("#regionForNewPartner").html(''); //clear options before select
     $.ajax({
         type: "get",
         url: `/api/regions/${cityId__}`,
         success: function(data) {
             data.forEach(each => {
-                $("#BrendUpdate #regionUpdateModal").append(`<option value="${each.region_id}">${each.region_name}</option>`)
+                $("#regionForNewPartner").append(`<option value="${each.region_id}">${each.region_name}</option>`)
             });
-            $("#regionUpdateModal").siblings(".form-label").children("span").eq(0).show();
-            $("#regionUpdateModal").siblings(".form-label").children("span").eq(1).hide();
         }
     })
 });
