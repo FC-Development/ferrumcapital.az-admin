@@ -65,16 +65,16 @@ if (top.location.pathname === '/dashboard/brand') {
             })
         }
     })
-    $.ajax({
-        type:"get",
-        url:"/api/cities/names",
-        success: function(data){
-            data.forEach(each => {
-                $("#BrendForm #city").append(`<option value="${each.city_id}">${each.city_name}</option>`)
-                $("#BrendUpdate #city").append(`<option value="${each.city_id}">${each.city_name}</option>`)
-            })
-        }
-    })
+    // $.ajax({
+    //     type:"get",
+    //     url:"/api/cities/names",
+    //     success: function(data){
+    //         data.forEach(each => {
+    //             $("#BrendForm #city").append(`<option value="${each.city_id}">${each.city_name}</option>`)
+    //             $("#BrendUpdate #city").append(`<option value="${each.city_id}">${each.city_name}</option>`)
+    //         })
+    //     }
+    // })
 
     $("#BrendUpdate #cityUpdateModal").on("change", function(){
         var cityId__ = $(this).val();
@@ -98,6 +98,34 @@ $(".addNewBrendBTN").click(function() {
     $(".additionalAddress").remove()
     $("#NewBrendModal").modal("show");
     $("#BrendForm")[0].reset();
+    // $("#cityForNewPartner").val()
+    $.ajax({
+        type:"get",
+        url:"/api/cities/names",
+        success: function(data){
+            data.forEach(each => {
+                $("#cityForNewPartner").append(`<option value="${each.city_id}">${each.city_name}</option>`)
+            })
+        }
+    })
+});
+
+$("#regionForNewPartner").on("change", function(){
+    var cityId__ = $(this).val();
+    $("#BrendUpdate #regionUpdateModal").html(''); //clear options before select
+    $("#regionUpdateModal").siblings(".form-label").children("span").eq(0).hide();
+    $("#regionUpdateModal").siblings(".form-label").children("span").eq(1).show();
+    $.ajax({
+        type: "get",
+        url: `/api/regions/${cityId__}`,
+        success: function(data) {
+            data.forEach(each => {
+                $("#BrendUpdate #regionUpdateModal").append(`<option value="${each.region_id}">${each.region_name}</option>`)
+            });
+            $("#regionUpdateModal").siblings(".form-label").children("span").eq(0).show();
+            $("#regionUpdateModal").siblings(".form-label").children("span").eq(1).hide();
+        }
+    })
 });
 
 $("#BrendForm").submit(function(e) {

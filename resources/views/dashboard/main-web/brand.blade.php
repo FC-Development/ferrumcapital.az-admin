@@ -52,11 +52,11 @@
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="" class="f-sm form-label font-weight-bold text-muted text-uppercase">City</label>
-                            <select name="city" class='form-control' id="city"></select>
+                            <select name="city" class='form-control' id="cityForNewPartner"></select>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="regionBrandNew" class="f-sm form-label font-weight-bold text-muted text-uppercase">Region</label>
-                            <select name="regionBrandNew" class='form-control' id="regionBrandNew"></select>
+                            <select name="regionBrandNew" class='form-control' id="regionForNewPartner"></select>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for=""
