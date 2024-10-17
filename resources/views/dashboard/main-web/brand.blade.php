@@ -81,8 +81,10 @@
                             <select name="sector_id" class="form-control brand_sector"></select>
                         </div>
                     </div>
+                    <span>Qeyd: logo ölçüsü 40x40</span>
                     <div class="row mt-4" style="float: right;">
                         <div class="col-lg-12">
+                            
                             <button type="submit" class="btn btn-primary" id="add-cat">
                                 Əlavə et
                             </button>
