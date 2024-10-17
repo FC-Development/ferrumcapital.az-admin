@@ -47,17 +47,22 @@ class BrandAction extends AdminMethods
        }
        public function postData(Request $request)
        {
+
+              $var_id = Str::random(6);
+              $logo = $this->uploadAvatar($request,'NewPartnerLogo', '', 'brand_logo');
+              //             uploadAvatar($request,$img_name,$old_value,$path)
               $response= Brands::create([
-                     'uniq_id' => Str::random(6),
+                     'uniq_id' => $var_id,
                      'status' => 'active',
                      'name' => $request->input('name'),
                      'phone' => $request->input('phone'),
                      'adress' => $request->input('adress'),
                      'sector_id' => $request->input('sector_id'),
-                     'city' => $request->input('city'),
                      "website" => $request->input('website'),
-                     'logo' =>$this->uploadAvatar($request,'logo','','brand_logo'),
-                     'links' => \json_encode(['ig' => $request->input('ig'),'fb' => $request->input('fb')])
+                     'logo' => $logo,
+                     'links' => \json_encode(['ig' => $request->input('ig'),'fb' => $request->input('fb')]),
+                     'city_id' => $request['cityForNewPartner'],
+                     'region_id' => $request['regionForNewPartner'],
               ]);
               return $response;
        }

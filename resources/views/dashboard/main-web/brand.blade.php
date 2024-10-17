@@ -37,8 +37,8 @@
                         <div class="col-md-3 mb-3">
                             <span class="f-sm form-label font-weight-bold text-muted text-uppercase">Logo</span>
                             <div class="custom-file mt-8">
-                                <input type="file" class="custom-file-input" id="logo" name="logo">
-                                <label for="image" class="custom-file-label">Seçim edin</label>
+                                <input id="NewPartnerLogo" type="file" class="custom-file-input" name="NewPartnerLogo">
+                                <label for="NewPartnerLogo" class="custom-file-label">Seçim edin</label>
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
@@ -51,12 +51,12 @@
                             <input type="text" class="form-control border border-light" id="adress" name="adress" minlength="2">
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for="" class="f-sm form-label font-weight-bold text-muted text-uppercase">City</label>
-                            <select name="city" class='form-control' id="cityForNewPartner"></select>
+                            <label for="cityForNewPartner" class="f-sm form-label font-weight-bold text-muted text-uppercase">City</label>
+                            <select name="cityForNewPartner" class='form-control' id="cityForNewPartner"></select>
                         </div>
                         <div class="col-md-3 mb-3">
-                            <label for="regionBrandNew" class="f-sm form-label font-weight-bold text-muted text-uppercase">Region</label>
-                            <select name="regionBrandNew" class='form-control' id="regionForNewPartner"></select>
+                            <label for="regionForNewPartner" class="f-sm form-label font-weight-bold text-muted text-uppercase">Region</label>
+                            <select name="regionForNewPartner" class='form-control' id="regionForNewPartner"></select>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for=""

@@ -56,7 +56,7 @@ abstract class AdminMethods
                      $ext_img = $request->file($img_name)->extension();
                      $name = Str::random(6)."_era.".$ext_img;
                      $saving = Storage::disk('s3')->put("/$path/$name",fopen($image,'r+'),'public');
-                     $image_s3_path = "https://fc-store.s3.eu-north-1.amazonaws.com"."/$path/".$name;
+                     $image_s3_path = "https://cdn.ferrumcapital.az"."/$path/".$name;
                      return $image_s3_path;
                }
                else{

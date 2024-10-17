@@ -24,7 +24,6 @@ class StoreBrandRequest extends FormRequest
     public function rules()
     {
         return [
-            'logo' => 'required_if:condition,require|mimes:svg,png,jpeg,webp',
             'name' => 'required|min:3',
             'sector_id' => 'required',
             'phone' => 'required|min:3',
