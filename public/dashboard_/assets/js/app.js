@@ -145,7 +145,7 @@ Index Of Script
         Counter
         -----------------------------------------------------------------------*/
         if (window.counterUp !== undefined) {
-            const counterUp = window.counterUp["default"]
+             const counterUp = window.counterUp["default"]
             const $counters = $(".counter");
             $counters.each(function (ignore, counter) {
                 var waypoint = new Waypoint( {
