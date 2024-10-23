@@ -66,7 +66,7 @@
                         </div>
                         <div class="col-md-12 mb-3">
                             <label for="campaign_lastdate_input">Son tarix</label>
-                            <input type="date" class="form-control" name="campaign_lastdate_input" id="campaign_lastdate_input">
+                            <input type="date" class="form-control" name="campaign_lastdate_input" id="campaign_lastdate_input" required>
                         </div>
                         <div class="col-md-12 mb-3">
                             <div class="input-group mb-4">

@@ -103,29 +103,34 @@ if(top.location.pathname === '/dashboard/campaigns') {
         var fd__25 = new FormData(document.getElementById('NewCampaignForm'));
         fd__25.append('CampaignModalEditor_input', CampaignModalEditor.getData());
         fd__25.append('CampaignPartnerModalEditor_input', $("#campaign_partner_input").find(":selected").attr('value'));
-        $("#loading").show()
-        $.ajax({
-            type: "POST",
-            url: `/dashboard/csapi/campaigns/new`,
-            contentType: false,
-            cache: false,
-            processData: false,
-            data: fd__25,
-            success: () => {
-                Swal.fire('Məlumat', 'yeni kampaniya uğurla əlavə edildi', 'success')
-                $("#loading").hide()
-            },
-            error: (resp) => {
-                console.log(resp.responseJSON)
-                Swal.fire('Xəta', `${resp.responseJSON}`, 'error')
-                $("#loading").hide()
-            },
-            complete: (data) => {
-                $("#CampaignAddModal").modal("hide")
-                CampaignListTable.forceRender(document.getElementById("CampaignListTable"));
-                $("#loading").hide()
-                console.log(data);
-            }
-        })
+        if(CampaignModalEditor.getData().length > 3) {
+            $("#loading").show()
+            $.ajax({
+                type: "POST",
+                url: `/dashboard/csapi/campaigns/new`,
+                contentType: false,
+                cache: false,
+                processData: false,
+                data: fd__25,
+                success: () => {
+                    Swal.fire('Məlumat', 'yeni kampaniya uğurla əlavə edildi', 'success')
+                    $("#loading").hide()
+                },
+                error: (resp) => {
+                    console.log(resp.responseJSON)
+                    Swal.fire('Xəta', `${resp.responseJSON}`, 'error')
+                    $("#loading").hide()
+                },
+                complete: (data) => {
+                    $("#CampaignAddModal").modal("hide")
+                    CampaignListTable.forceRender(document.getElementById("CampaignListTable"));
+                    $("#loading").hide()
+                    console.log(data);
+                }
+            })
+        }
+        else {
+            alert("Açıqlama doldurun")
+        }
     })
 }
