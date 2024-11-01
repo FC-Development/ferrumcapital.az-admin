@@ -123,10 +123,20 @@ $("#cityForNewPartner").on("change", function(){
         }
     })
 });
+if(window.location.pathname === '/dashboard/brand') {
+    $(document).ready(function() {
+        $('#new_partner_sector_id').select2({
+            placeholder: "Seç",
+            allowClear: true
+        });
+    });
+}
+
 
 $("#BrendForm").submit(function(e) {
     e.preventDefault();
     var fd = new FormData(document.getElementById("BrendForm"));
+    //array list verilmediri
     $.ajax({
         type: "post",
         processData: false,
