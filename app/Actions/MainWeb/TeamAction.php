@@ -24,6 +24,7 @@ class TeamAction extends AdminMethods
                      foreach((\json_decode($response,true)) as $key => $value)
                      {
                             $tmp__ = [
+                                   // 'uniq_id' =>  Str::random(6),
                                    'uniq_id' => $value['uniq_id'],
                                    'fullname_az' => \json_decode($value['fullname'],true)['az'],
                                    'fullname_en' =>  \json_decode($value['fullname'],true)['en'],

@@ -10,4 +10,5 @@ class Team extends Model
     use HasFactory;
     protected $hidden = ['id'];
     protected $table = 'nc_a5um__team';
+    protected $fillable = ['uniq_id', 'fullname'];
 }
