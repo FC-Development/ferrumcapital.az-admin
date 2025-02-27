@@ -76,9 +76,9 @@
                             <input type="url" class="form-control border border-light" id="website" name="website" minlength="2"
                                 >
                         </div>
-                        <div class="col-md-3 mb-3">
+                        <div class="col-md-9 mb-3" style="display: flex; flex-direction: column;">
                             <label for="" class="f-sm form-label font-weight-bold text-muted text-uppercase">Sektor</label>
-                            <select name="sector_id" class="form-control brand_sector"></select>
+                            <select name="sector_id" id="new_partner_sector_id" class="form-control brand_sector" multiple="multiple"></select>
                         </div>
                     </div>
                     <span>Qeyd: logo ölçüsü 40x40</span>

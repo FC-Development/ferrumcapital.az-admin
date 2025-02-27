@@ -26,6 +26,8 @@
         <script src="/dashboard_/assets/js/slider.js"></script>
         <!-- app JavaScript -->
         <script src="/dashboard_/assets/js/app.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        
         <script src="https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="/dashboard_/assets/js/dash_settings.js"></script>
@@ -97,4 +99,4 @@
         <script src="/dashboard_/assets/js/main-web/admin_campaignRequest.js?{{date(now())}}"></script>
         {{-- Limit request --}}
         <script src="/dashboard_/assets/js/main-web/admin_limit-request.js?{{date(now())}}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        
